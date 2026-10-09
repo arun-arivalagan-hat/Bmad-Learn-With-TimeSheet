@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Friday Deadline Keepsake</title>
+<style>
+:root{
+  --bg:#f5efe2;--paper:#fffaf0;--ink:#1f2430;--mute:#6a6a66;--line:#d9cfb8;
+  --amber:#d9822b;--teal:#1f8a70;--rose:#c8475a;--violet:#6b5bd6;--blue:#2f6fc2;--gold:#b8901f;
+  --soft:#f0e7d2;--shadow:0 2px 0 rgba(0,0,0,.06),0 8px 22px rgba(60,40,10,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#14161c;--paper:#1c1f27;--ink:#ebe8df;--mute:#9a9a94;--line:#363a46;
+  --amber:#f0a050;--teal:#47c3a0;--rose:#ee7488;--violet:#9d90f5;--blue:#6fa4ec;--gold:#e3bb4a;
+  --soft:#252936;--shadow:0 2px 0 rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.35);}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Georgia,"Iowan Old Style",serif;
+  background-image:repeating-linear-gradient(to bottom,transparent 0 31px,color-mix(in srgb,var(--line) 45%,transparent) 31px 32px)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px 80px}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+h1,h2,h3{line-height:1.15;margin:0}
+/* hero */
+.hero{padding:44px 0 24px;display:grid;gap:22px;grid-template-columns:1fr}
+@media(min-width:760px){.hero{grid-template-columns:1.4fr 1fr;align-items:center}}
+.hero h1{font-size:clamp(2.2rem,8vw,4.4rem);letter-spacing:-.02em}
+.hero h1 em{color:var(--amber);font-style:italic}
+.hero p{color:var(--mute);max-width:46ch}
+.goal{border-left:4px solid var(--teal);padding:6px 12px;margin-top:14px;background:var(--paper)}
+.clockbox{background:var(--paper);border:2px solid var(--ink);border-radius:18px;padding:16px;text-align:center;box-shadow:var(--shadow)}
+.clockbox svg{width:100%;max-width:230px}
+.counts{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.pill{font:600 .78rem ui-monospace,Menlo,monospace;border:1.5px solid var(--ink);border-radius:99px;padding:3px 10px;background:var(--paper)}
+.weekstrip{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:16px 0 6px}
+.weekstrip a{text-decoration:none;color:var(--ink);text-align:center;border:1.5px solid var(--line);border-radius:10px;padding:8px 2px;background:var(--paper);font:600 .72rem ui-monospace,monospace}
+.weekstrip a b{display:block;font-size:1rem}
+.weekstrip a.fri{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 16%,var(--paper))}
+nav.toc{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+nav.toc a{font:.74rem ui-monospace,monospace;color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:2px 7px;background:var(--paper)}
+nav.toc a:hover{border-color:var(--amber)}
+/* technique shell */
+section.tech{margin:54px 0 0;scroll-margin-top:12px}
+.thead{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;border-bottom:3px double var(--ink);padding-bottom:8px;margin-bottom:16px}
+.thead .no{font:700 .8rem ui-monospace,monospace;color:var(--amber)}
+.thead h2{font-size:clamp(1.5rem,5vw,2.2rem)}
+.thead .sub{flex-basis:100%;color:var(--mute);font-style:italic;font-size:.92rem}
+.thead .n{margin-left:auto;font:600 .78rem ui-monospace,monospace;border:1.5px solid var(--ink);border-radius:99px;padding:2px 10px}
+.invented{font:700 .68rem ui-monospace,monospace;background:var(--violet);color:#fff;border-radius:4px;padding:1px 6px;letter-spacing:.06em}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+/* 1 anti-solution flip cards */
+.flip{perspective:900px;cursor:pointer;min-height:150px;border:0;background:none;padding:0;text-align:left;font:inherit;color:inherit}
+.flip>div{position:relative;min-height:150px;transition:transform .55s;transform-style:preserve-3d}
+.flip.on>div{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;padding:14px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow)}
+.flip .f{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--rose) 14%,var(--paper)) 0 10px,var(--paper) 10px 20px);border:2px dashed var(--rose)}
+.flip .f strong{text-decoration:line-through;text-decoration-color:var(--rose);text-decoration-thickness:3px}
+.flip .b{transform:rotateY(180deg);background:color-mix(in srgb,var(--teal) 16%,var(--paper));border:2px solid var(--teal)}
+.flip small{font:700 .68rem ui-monospace,monospace;letter-spacing:.08em;color:var(--mute)}
+.flipall{font:600 .8rem ui-monospace,monospace;background:var(--ink);color:var(--bg);border:0;border-radius:8px;padding:7px 14px;cursor:pointer;margin-bottom:12px}
+/* 2 persona */
+.track{display:flex;overflow-x:auto;gap:0;padding:6px 2px 14px;position:relative}
+.track button{flex:0 0 auto;position:relative;background:none;border:0;font:inherit;color:inherit;cursor:pointer;text-align:center;padding:0 12px}
+.track button::before{content:"";position:absolute;top:19px;left:-50%;width:100%;height:4px;background:var(--line);z-index:0}
+.track button:first-child::before{display:none}
+.track .dot{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;border:3px solid var(--ink);background:var(--paper);display:grid;place-items:center;font:700 .9rem ui-monospace,monospace;margin:0 auto 4px}
+.track button.on .dot{background:var(--amber);color:#1f2430}
+.track button.on::before,.track button.done::before{background:var(--amber)}
+.track small{font:.72rem ui-monospace,monospace;display:block}
+.pcard{background:var(--paper);border:2px solid var(--ink);border-radius:14px;padding:14px;box-shadow:var(--shadow);min-height:110px}
+.pcard li{margin:6px 0}
+/* 3 emotion */
+.lanes{display:grid;gap:10px}
+.lane{display:grid;grid-template-columns:76px 1fr;gap:10px;align-items:start;background:var(--paper);border-radius:12px;padding:10px;border:1.5px solid var(--line)}
+.lane .nm{font:700 .8rem ui-monospace,monospace;text-transform:uppercase;writing-mode:horizontal-tb}
+.lane .bars{display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:6px}
+.lane .bars i{flex:1;border-radius:3px 3px 0 0;background:var(--c);animation:eq 1.6s ease-in-out infinite alternate}
+@keyframes eq{from{transform:scaleY(.35)}to{transform:scaleY(1)}}
+.lane .bars i{transform-origin:bottom}
+.notes{display:flex;flex-wrap:wrap;gap:8px}
+.note{display:flex;gap:8px;align-items:flex-start;flex:1 1 260px;font-size:.92rem;border-radius:10px;padding:6px 8px;background:color-mix(in srgb,var(--c) 11%,var(--paper));border:1px solid color-mix(in srgb,var(--c) 40%,transparent)}
+.note::before{content:"";flex:0 0 12px;height:12px;border-radius:50%;background:var(--c);margin-top:6px;box-shadow:3px -9px 0 -3px var(--c)}
+/* 4 cafe */
+.menu{background:#2a2118;color:#f3e7cf;border-radius:16px;padding:20px 16px;border:6px solid #8a6a3c;box-shadow:var(--shadow)}
+.menu h3{font-style:italic;text-align:center;color:#f0c46b;font-size:1.4rem;margin-bottom:12px}
+.menu ul{list-style:none;margin:0;padding:0;display:grid;gap:4px 28px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.menu li{display:flex;gap:8px;align-items:baseline;padding:6px 0;border-bottom:1px dotted #8a6a3c;font-size:.93rem}
+.menu li b{color:#f0c46b;white-space:nowrap;font-weight:600}
+.menu li span.num{font:.7rem ui-monospace,monospace;opacity:.6;flex:0 0 22px}
+/* 5 roles */
+.roles{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.role{background:var(--paper);border:2px solid var(--ink);border-radius:16px;padding:12px;box-shadow:var(--shadow);position:relative}
+.role h3{font-size:1rem;display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.role .mask{width:30px;height:30px;border-radius:50%;background:var(--amber);display:grid;place-items:center;font-size:.9rem;color:#1f2430;font-weight:700}
+.tri{display:grid;gap:6px}
+.tri div{border-radius:10px;padding:6px 10px;font-size:.9rem}
+.tri .w{background:color-mix(in srgb,var(--teal) 15%,var(--paper))}
+.tri .fe{background:color-mix(in srgb,var(--rose) 15%,var(--paper))}
+.tri .d{background:color-mix(in srgb,var(--blue) 15%,var(--paper))}
+.tri b{display:block;font:700 .65rem ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;opacity:.75}
+/* 6 inner child */
+.kid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.sticker{padding:14px;font-family:"Comic Sans MS","Chalkboard SE","Marker Felt",cursive;font-size:.98rem;border:3px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px;background:var(--bg2,var(--paper));box-shadow:4px 4px 0 var(--ink);transform:rotate(var(--r))}
+.sticker .q{font-weight:700;margin-bottom:6px}
+.sticker .q::before{content:"why? ";color:var(--rose)}
+.sticker:nth-child(4n+1){--bg2:color-mix(in srgb,var(--amber) 20%,var(--paper))}
+.sticker:nth-child(4n+2){--bg2:color-mix(in srgb,var(--teal) 18%,var(--paper))}
+.sticker:nth-child(4n+3){--bg2:color-mix(in srgb,var(--violet) 18%,var(--paper))}
+.sticker:nth-child(4n){--bg2:color-mix(in srgb,var(--rose) 16%,var(--paper))}
+/* 7 alien */
+.alien{background:#10241d;color:#9cf5c7;border-radius:14px;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:.86rem;border:2px solid #2ecb85;position:relative;overflow:hidden}
+.alien::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(0,0,0,.15) 3px 4px);pointer-events:none}
+.alien .row{display:grid;gap:4px 14px;grid-template-columns:1fr;padding:9px 0;border-bottom:1px dashed #2ecb85}
+@media(min-width:700px){.alien .row{grid-template-columns:42px 1fr 1fr}}
+.alien .row:last-child{border:0}
+.alien .obs{color:#ffd47a}
+.alien .id{opacity:.7}
+.alien .fix::before{content:"EARTH FIX > ";opacity:.6}
+.alien .obs::before{content:"OBSERVED > ";opacity:.6}
+/* 8 ladder */
+.ladder{display:grid;gap:0;position:relative;padding-left:0}
+.rung{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:stretch;margin-bottom:0}
+.rung .yr{writing-mode:horizontal-tb;display:grid;place-items:center;font:800 1.05rem ui-monospace,monospace;border:3px solid var(--ink);border-radius:10px;background:var(--amber);color:#1f2430;margin:10px 0;position:relative}
+.rung .yr::before,.rung .yr::after{content:"";position:absolute;left:50%;width:8px;height:12px;background:var(--ink);transform:translateX(-50%)}
+.rung .yr::before{top:-12px}.rung .yr::after{bottom:-12px}
+.rung .yrs{background:var(--paper);border:1.5px solid var(--line);border-radius:12px;margin:10px 0;padding:8px 12px}
+.rung.r10 .yr{background:var(--blue);color:#fff}
+.rung.r100 .yr{background:var(--violet);color:#fff}
+.rung ul,.pcard ul,.q ul{margin:0;padding-left:18px}
+.rung li{margin:4px 0}
+.split{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:10px}
+.survive{border:2px solid var(--teal);background:color-mix(in srgb,var(--teal) 12%,var(--paper));border-radius:12px;padding:10px 14px}
+.breaks{border:2px dashed var(--rose);background:color-mix(in srgb,var(--rose) 10%,var(--paper));border-radius:12px;padding:10px 14px;text-decoration-color:var(--rose)}
+.split b{font:700 .72rem ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;display:block}
+/* 9 star */
+.starwrap{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:800px){.starwrap{grid-template-columns:320px 1fr;align-items:start}}
+.star{width:100%;max-width:340px;margin:0 auto;display:block}
+.star g.ray{cursor:pointer}
+.star g.ray polygon{fill:var(--paper);stroke:var(--ink);stroke-width:2;transition:fill .2s}
+.star g.ray.on polygon,.star g.ray:hover polygon{fill:var(--amber)}
+.star text{font:700 11px ui-monospace,monospace;fill:var(--ink);pointer-events:none}
+.star g.ray.on text{fill:#1f2430}
+.qlist{display:grid;gap:8px}
+.qitem{background:var(--paper);border:1.5px solid var(--line);border-left:6px solid var(--amber);border-radius:8px;padding:8px 12px}
+.qitem small{font:700 .66rem ui-monospace,monospace;color:var(--amber);letter-spacing:.08em}
+/* 10 rescue */
+.rescue{background:var(--paper);border:3px solid var(--amber);border-radius:18px;padding:16px;box-shadow:var(--shadow)}
+.rtop{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.digital{font:800 2.6rem ui-monospace,monospace;color:var(--amber);letter-spacing:.04em}
+.bar{flex:1 1 200px;height:12px;background:var(--soft);border-radius:99px;overflow:hidden;border:1.5px solid var(--ink)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--amber),var(--rose))}
+.rsteps{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:14px}
+.rstep{border:2px solid var(--line);border-radius:12px;padding:10px;opacity:.38;transition:.4s;background:var(--bg)}
+.rstep.lit{opacity:1;border-color:var(--amber);transform:translateY(-3px)}
+.rstep b{font:700 .72rem ui-monospace,monospace;color:var(--amber);display:block}
+/* 11 auction */
+.tags{display:grid;gap:22px 14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));padding-top:20px}
+.tag{position:relative;background:var(--paper);border:2px solid var(--ink);border-radius:6px 6px 14px 14px;padding:22px 12px 12px;clip-path:polygon(14% 0,86% 0,100% 14%,100% 100%,0 100%,0 14%);box-shadow:var(--shadow)}
+.tag::before{content:"";position:absolute;top:8px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:var(--bg);border:2px solid var(--ink)}
+.tag b{font:700 .7rem ui-monospace,monospace;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:4px}
+.tag.free{background:color-mix(in srgb,var(--teal) 14%,var(--paper))}
+.tag.prem{background:linear-gradient(160deg,color-mix(in srgb,var(--gold) 24%,var(--paper)),var(--paper))}
+.tag .tier{position:absolute;right:16px;top:8px;font:800 .65rem ui-monospace,monospace}
+.tags .tag{transform:rotate(var(--r))}
+/* 12 swarm */
+.swarmbox{background:var(--paper);border:2px solid var(--ink);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+canvas{display:block;width:100%;height:230px;background:var(--soft)}
+.swarmbox .cap{display:flex;justify-content:space-between;padding:8px 14px;font:.75rem ui-monospace,monospace;border-top:2px solid var(--ink)}
+.rules{counter-reset:r;list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.rules li{counter-increment:r;border:1.5px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px 8px 44px;position:relative;font-size:.92rem}
+.rules li::before{content:counter(r);position:absolute;left:10px;top:8px;width:24px;height:24px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font:700 .8rem ui-monospace,monospace}
+/* 13 budget */
+.gold{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.gcard{border-radius:14px;padding:14px;border:2px solid var(--gold);background:linear-gradient(135deg,color-mix(in srgb,var(--gold) 22%,var(--paper)),var(--paper) 60%);box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 20%,transparent),var(--shadow);position:relative;overflow:hidden}
+.gcard::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);animation:shine 4.5s infinite}
+@keyframes shine{to{left:130%}}
+.gcard b{font:800 1.4rem Georgia,serif;color:var(--gold);display:block}
+/* climax */
+.climax{margin-top:80px;border-radius:24px;border:3px solid var(--ink);background:var(--paper);padding:22px 16px 28px;box-shadow:var(--shadow);position:relative}
+.climax h2{font-size:clamp(1.8rem,6vw,3rem);text-align:center}
+.climax .lead{text-align:center;color:var(--mute);max-width:52ch;margin:8px auto 22px}
+.themes{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:22px}
+.theme{border-radius:12px;padding:10px 12px;border:1.5px solid var(--line);background:var(--bg)}
+.theme b{font:700 .68rem ui-monospace,monospace;color:var(--amber);display:block;letter-spacing:.08em}
+.syn{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));counter-reset:s}
+.syn div{counter-increment:s;border:2px solid var(--ink);border-radius:14px;padding:12px 12px 12px 52px;position:relative;background:var(--bg)}
+.syn div::before{content:counter(s);position:absolute;left:10px;top:10px;font:800 1.3rem ui-monospace,monospace;width:32px;height:32px;display:grid;place-items:center;border-radius:8px;background:var(--amber);color:#1f2430}
+.sheet{margin:30px auto 10px;max-width:640px;border:3px solid var(--ink);border-radius:12px;background:var(--bg);overflow:hidden;position:relative}
+.sheet .top{display:flex;justify-content:space-between;gap:8px;padding:8px 12px;background:var(--ink);color:var(--bg);font:700 .78rem ui-monospace,monospace}
+.cells{display:grid;grid-template-columns:repeat(5,1fr)}
+.cell{padding:10px 8px 14px;border-right:1.5px solid var(--line);min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;font-size:.78rem;line-height:1.3;position:relative}
+.cell:last-child{border:0}
+.cell .day{font:700 .7rem ui-monospace,monospace;color:var(--mute);position:absolute;top:8px;left:8px}
+.cell .fill{background:var(--c);color:#1f2430;border-radius:8px;padding:8px 6px;height:0;overflow:hidden;opacity:0;transition:height .9s cubic-bezier(.2,.8,.2,1),opacity .6s;font-weight:700;font-family:ui-monospace,monospace;font-size:.72rem}
+.cells.go .fill{height:var(--h);opacity:1}
+.cells.go .cell:nth-child(2) .fill{transition-delay:.25s}.cells.go .cell:nth-child(3) .fill{transition-delay:.5s}.cells.go .cell:nth-child(4) .fill{transition-delay:.75s}.cells.go .cell:nth-child(5) .fill{transition-delay:1s}
+.stamp{position:absolute;right:10px;bottom:10px;border:4px solid var(--teal);color:var(--teal);font:900 1.1rem ui-monospace,monospace;padding:4px 12px;border-radius:8px;transform:rotate(-9deg) scale(2.4);opacity:0;transition:.5s 1.8s cubic-bezier(.3,1.6,.5,1);background:color-mix(in srgb,var(--bg) 85%,transparent)}
+.cells.go ~ .stamp{opacity:1;transform:rotate(-9deg) scale(1)}
+.open{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:22px}
+.open div{border:2px dashed var(--mute);border-radius:12px;padding:8px 12px;font-size:.9rem}
+.open div::before{content:"? ";font:800 1.1rem ui-monospace,monospace;color:var(--amber)}
+.sec{font:700 .75rem ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:22px 0 8px;text-align:center}
+footer{margin-top:50px;text-align:center;color:var(--mute);font:.78rem ui-monospace,monospace}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media(max-width:520px){.lane{grid-template-columns:1fr}.cell{font-size:.68rem;padding:8px 4px}.cell .fill{padding:6px 3px;font-size:.62rem}.digital{font-size:2rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="mono" style="color:var(--amber);font-weight:700">BRAINSTORM KEEPSAKE / 2026-10-10</div>
+    <h1>Make the <em>Friday&nbsp;5:00</em> deadline feel like a gift</h1>
+    <p>One week of ideas on a timesheet module people enjoy filling on time, with premium-tier ideas and the approval and billing flows behind it.</p>
+    <div class="goal"><b>Goal:</b> make users happy and willing to submit on time; premium-tier ideas.</div>
+    <div class="counts">
+      <span class="pill" id="cTotal"></span><span class="pill">13 techniques</span><span class="pill">2 invented techniques</span>
+    </div>
+  </div>
+  <div class="clockbox" aria-label="Animated Friday clock">
+    <svg viewBox="0 0 200 200" role="img" aria-label="Clock counting down to Friday five o'clock">
+      <circle cx="100" cy="100" r="90" fill="none" stroke="var(--line)" stroke-width="12"/>
+      <circle id="ring" cx="100" cy="100" r="90" fill="none" stroke="var(--amber)" stroke-width="12" stroke-linecap="round" stroke-dasharray="565.5" stroke-dashoffset="0" transform="rotate(-90 100 100)"/>
+      <g stroke="var(--ink)" stroke-width="3" id="ticks"></g>
+      <line id="hand" x1="100" y1="100" x2="100" y2="34" stroke="var(--ink)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="100" cy="100" r="7" fill="var(--ink)"/>
+      <text x="100" y="152" text-anchor="middle" font-family="ui-monospace,monospace" font-weight="800" font-size="20" fill="var(--ink)" id="clockT">4:55</text>
+    </svg>
+    <div class="mono" style="font-size:.78rem;color:var(--mute)" id="clockMsg">Five minutes. Plenty, if the sheet is already drafted.</div>
+  </div>
+</header>
+
+<div class="weekstrip" aria-label="The week">
+  <a href="#t1"><b>Mon</b>flip</a><a href="#t5"><b>Tue</b>roles</a><a href="#t9"><b>Wed</b>ask</a><a href="#t10"><b>Thu</b>build</a><a href="#climax" class="fri"><b>Fri</b>5:00</a>
+</div>
+<nav class="toc" id="toc"></nav>
+
+<div id="techs"></div>
+
+<section class="climax" id="climax">
+  <div class="mono" style="text-align:center;color:var(--amber);font-weight:700">FRIDAY 5:00 PM / SUBMITTED</div>
+  <h2>The week, synthesised</h2>
+  <p class="lead">Thirteen techniques, one shape. Draft the week for people, clear the reviewer inbox of everything clean, lock what was approved, and celebrate teams, never individuals.</p>
+
+  <div class="sec">Insights along the way</div>
+  <div class="themes" id="themes"></div>
+
+  <div class="sec">Synthesis</div>
+  <div class="syn" id="syn"></div>
+
+  <div class="sec">Chosen directions carried into the spec</div>
+  <div class="sheet">
+    <div class="top"><span>WEEK 41 / SPEC DIRECTIONS</span><span>5 lines</span></div>
+    <div class="cells" id="cells">
+      <div class="cell"><span class="day">DIR 1</span><div class="fill" style="--c:var(--amber);--h:130px">Auto-draft week</div></div>
+      <div class="cell"><span class="day">DIR 2</span><div class="fill" style="--c:var(--teal);--h:110px">Exceptions-based approval</div></div>
+      <div class="cell"><span class="day">DIR 3</span><div class="fill" style="--c:var(--blue);--h:140px">Locked approved snapshots</div></div>
+      <div class="cell"><span class="day">DIR 4</span><div class="fill" style="--c:var(--rose);--h:100px">Team-level kudos</div></div>
+      <div class="cell"><span class="day">DIR 5</span><div class="fill" style="--c:var(--gold);--h:150px">Premium = automation, intelligence, client portal</div></div>
+    </div>
+    <div class="stamp">LOCKED</div>
+  </div>
+  <p class="mono" style="text-align:center;font-size:.8rem;color:var(--mute)">Wildcard breakthrough: reviewer-reason mandate + change diff + immutable approved snapshot make approvals trusted, which makes real-time billing possible.</p>
+
+  <div class="sec">Open decisions for the spec</div>
+  <div class="open">
+    <div>Where does the billable flag live?</div><div>What is the resubmission policy?</div><div>What is the identity and project source?</div><div>Is auto-drafting in scope?</div>
+  </div>
+</section>
+
+<footer>Built from .memlog.md / every idea below is from the session, nothing added.</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)};
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+
+/* ---------- DATA (from memlog) ---------- */
+var anti=[
+["40 mandatory fields","smart defaults prefill the week from last week, calendar and tickets"],
+["sheet only opens Friday 6pm","log-as-you-go, one-tap daily entries all week"],
+["login every time","SSO plus magic link from a reminder, zero-login one-tap submit"],
+["errors only at submit","live validation as you type, with the rule explained in plain words"],
+["no feedback after submit","instant confirmation with a satisfying completion moment"],
+["reminders that shame","friendly, personalised nudges at the time you usually work"],
+["lose data on timeout","autosave drafts every keystroke, resume on any device"],
+["reviewer rejects without reason","rejection must carry a reason and a one-click fix link"],
+["approval takes weeks","auto-approve low-risk lines, reviewer SLA timer with escalation"],
+["hours typed from memory","auto-suggest hours from calendar, commits, tickets, meetings"],
+["confusing project list","recent and pinned projects first, type-ahead search"],
+["PTO math by hand","PTO auto-filled from the holiday calendar and approved leave, 8h per day"],
+["nobody sees where hours go","personal weekly insight card, time by project as a simple chart"],
+["mobile unusable","mobile-first sheet with thumb-sized steppers in 0.5h steps"],
+["duplicate entry across systems","one entry feeds billing and utilization, no re-keying"],
+["unclear deadline","countdown chip and calendar invite for submission day"],
+["forgot to submit means penalty","grace window plus one-tap late submit with no scolding"],
+["accomplishments left blank","suggest accomplishments from the week's tickets, edit and go"],
+["learnings feel pointless","learnings become a personal skill log with Beginner/Intermediate/Advanced progress"],
+["manager gets no summary","one-page team digest, who is late, who is overloaded"]
+];
+var personas=[
+["New joiner","NJ",["Guided first-timesheet walkthrough with sample data and friendly tooltips","See how teammates typically split their week, anonymised"]],
+["Reviewer","RV",["Swipe to approve, swipe to reject with templated reasons, like an inbox","Batch approve every sheet with no anomalies, review only flagged ones","Anomaly flags, e.g. 60h week, hours on a closed project, big jump vs last week","Weekly digest email with a single Approve all clean sheets button"]],
+["Finance lead","FL",["Live billable vs non-billable dashboard that updates as approvals land","Forecast of this month billing from approved plus pending hours","Lock the week after approval so billed numbers never change silently","Export-ready billing feed per project and client with an audit trail"]],
+["Contractor","CT",["Time zone aware deadlines and reminders in local time","Offline entry on a flight, sync when back online"]],
+["Employee","EM",["Timer mode, start and stop on a project, converts to hours in 0.5 steps","Copy last week then edit, one click","Voice entry, say 4 hours on Atlas reviewing designs","Slack or Teams bot to log hours in a message, daily end-of-day prompt","Friday wrap-up screen, here is your week in 10 seconds, confirm and done","Privacy-first, only I see my learnings unless I share them","Weekly highlights reel from accomplishments, shareable in performance reviews"]],
+["Project lead","PL",["See hours burn against budget per project in real time","Capacity heat map of who has spare hours next week"]],
+["Admin","AD",["Configurable rules per org, e.g. max hours, allowed increments, required fields","Delegate approver when a reviewer is on leave"]],
+["Executive","EX",["Utilization trends by team, quarter over quarter, with plain-English insights"]],
+["HR","HR",["Burnout watch, repeated weeks over 45 hours surface gently to the manager"]]
+];
+var emo=[
+["Joy","var(--amber)",["Confetti or a calm sound when you submit on time, optional and tasteful","On-time streak counter, weeks submitted before deadline in a row","Seasonal themes and a dark mode people actually like","A tiny daily win, your day is logged, here is a one-line kudos"]],
+["Fear","var(--blue)",["Remove the fear, no public shaming leaderboards, only private nudges","Reassure that hours are not a performance score, copy says this is for billing and resourcing"]],
+["Hope","var(--teal)",["Show how your hours help the team, this week your hours unblocked 3 billing runs","Skill growth map from learnings, you levelled up in React this quarter","Premium career pack, a quarter-end summary of your work ready for review conversations"]],
+["Rage","var(--rose)",["Rejection loops, so one-click resubmit that keeps history of changes","Re-entering the same task descriptions, so reusable task templates per project","Slow page, so sub-second loads and optimistic UI"]],
+["Pride","var(--violet)",["Team-level on-time rate badge, celebrating the team not the individual","Milestone badges at 10, 25, 50 submitted weeks, quiet and opt-in","Learning of the month shared on a team wall, Beginner to Advanced tagged"]],
+["Premium","var(--gold)",["AI assistant drafts the whole week from calendar and tickets, you only review","Smart anomaly detection catches errors before the reviewer does","Natural-language reports, ask how many billable hours did Atlas get last month","Custom dashboards and scheduled report emails for managers","Integrations pack, Jira, GitHub, Google and Outlook calendar, Slack, Teams","Client-facing billing portal with approved hours and sign-off links","Budget alerts when a project reaches 80 percent of hours","Multi-currency and rate cards per role for finance","Priority approval lane, reviewer notified and SLA tracked","White-label themes and company branding on reports"]]
+];
+var cafe=[
+["time logs itself","ambient tracking from tools, you only correct exceptions"],
+["nobody submits","the system closes the week on its own and asks only about gaps"],
+["approval is instant","trust by default, audit on random samples"],
+["hours are a currency","teams trade spare capacity in a visible marketplace"],
+["the week never ends","continuous rolling timesheet, no deadline day"],
+["reminders are gifts","the on-time team earns a team lunch or charity donation"],
+["no PTO math","leave is a calendar toggle, the sheet adapts itself"],
+["billing is real-time","clients see hours as they are approved"],
+["the sheet is a story","weekly narrative summary generated from your entries"],
+["managers coach, not chase","the tool shows who needs help not who is late"],
+["projects pitch for your time","suggested allocation based on skills and availability"],
+["learnings pay","Advanced-tagged learnings feed an internal knowledge base with credits"],
+["a shared team week-board","a glanceable picture of who worked on what"],
+["mistakes are cheap","undo, history and one-click correction after submission within a window"],
+["the reviewer is a bot first","AI pre-check then human only on exceptions"],
+["utilization is a gentle gauge, not a grade","personal balance meter showing work, PTO, learning"],
+["deadlines flex","auto-extension for people on leave or travel"],
+["timesheets talk back","weekly tip such as you spent 70 percent on one project, want to rebalance"],
+["finance and employees share one truth","single data model for hours, billing and utilization"]
+];
+var roles=[
+["Employee","Finish in 2 minutes","Data loss and being judged by hours","Autosave and plain-language rules"],
+["Reviewer","Only exceptions in the queue","Approving wrong hours","Comparisons to last week and plan"],
+["Reviewer",null,null,"A bulk mode with per-line override so one bad line does not block the whole sheet"],
+["Finance","Hours frozen after approval","Silent edits after invoicing","Immutable approved snapshots"],
+["HR","Signals of overload and PTO anomalies","Surveillance feeling","Aggregated, opt-in wellbeing views"],
+["Client","Transparency on billed hours","Padding","Approved-hours statement with task descriptions"],
+["CTO","Low maintenance and secure SSO","Another silo","APIs and a single identity source"],
+["Support desk","A why-was-this-rejected audit trail for every sheet to answer tickets fast",null,null],
+["Employee",null,null,"A what-changed diff when a reviewer edits or rejects a line"]
+];
+var kid=[
+["do we fill it only once a week?","Daily tiny check-in with a smiley and hours."],
+["do hours have to be typed?","Drag blocks on a picture of the week like building with Lego."],
+["is it boring?","Your week as a colourful bar that grows as you add projects."],
+["can't it say well done?","Friendly mascot that celebrates on-time submissions."],
+["can't I see what my friends did?","Optional team wall of shared learnings."],
+["do I need to remember the project name?","Tap a project sticker, pick from pinned ones."],
+["isn't there a treasure at the end?","Unlock a premium perk after a run of on-time weeks."],
+["can't the computer just know?","Assistant that already filled in what it saw, I only say yes."],
+["can't I draw my week?","Sketch-style timeline view for time blocks."]
+];
+var alien=[
+["Humans write hours on 5 forms for 5 bosses then somebody retypes it for money","End the retyping with one source of truth"],
+["They must remember a week afterwards","Shorten the memory distance, capture at the moment of work"],
+["They promise 40 hours as a magic number","Show real distribution and let reality inform planning"],
+["They invent a ritual called rejection with no explanation","Make the reason mandatory and visible"],
+["They fear a deadline but nobody tells them what happens next","Show the sheet journey tracker, submitted to reviewed to billed"],
+["They enter PTO in hours","Auto-convert from leave days at 8 hours a day"],
+["They guess which colleague approves","Show the reviewer name, avatar and typical response time"],
+["They call learnings a field","Turn them into a personal library that pays them back"]
+];
+var ladder=[
+["1 YEAR","r1",["Auto-drafted sheets from calendar and tickets are the norm, people only confirm","Reviewers work from an exceptions inbox, 80 percent of sheets auto-cleared","Billing reads approved hours live, month-end close takes hours not days"]],
+["10 YEARS","r10",["Ambient time capture, no explicit timesheet, only exception corrections","AI forecasts capacity and proposes staffing before anyone asks","Skills graph built from learnings feeds hiring and training budgets"]],
+["100 YEARS","r100",["Timesheet as a concept disappears; value tracking is continuous and consensual"]]
+];
+var survives="Audit trail, human consent, and fairness in how hours become pay and billing";
+var breaks="Weekly deadlines, manual rekeying, fixed 40 hour assumptions";
+var stars=[
+["WHO","Who needs the hours first: employee, reviewer, finance or client, and in what order?"],
+["WHAT","What counts as billable: project, person or line, and who decides?"],
+["WHERE","Where do project and reviewer lists come from: HRMS, admin, or both?"],
+["WHEN","When is a week closed, and what happens to a late sheet?"],
+["WHY","Why 5 projects maximum, what do people do with a sixth?"],
+["HOW","How is an edit after submission handled, versioned or reopened?"],
+["WHO","Who can see learnings and accomplishments, and why?"],
+["HOW","How does an on-time rate get measured fairly with leave and holidays?"],
+["WHAT","What would make a reviewer approve without opening the sheet?"],
+["HOW","How would we know people are happy, what is the metric beyond submission time?"]
+];
+var rescue=[
+["4:55","One-tap Fill it for me: assistant drafts from the week's signals, user confirms"],
+["4:56","Panic mode: shows only the 3 missing items and nothing else"],
+["4:57","Reminder that carries the sheet itself, edit inside the email or chat message"],
+["4:58","Delegate to a buddy: ask a teammate to confirm a shared meeting block"],
+["4:59","Send-for-later: schedule auto submit at 5pm unless you object"],
+["5:00","Late but kind: one-tap request for a 24 hour extension with a reason chip"]
+];
+var auction=[
+["Team pays for","zero-effort week drafting, because it saves hours every Friday","P"],
+["Managers pay for","forecasting and anomaly intelligence that prevents billing leakage","P"],
+["Finance pays for","client-ready statements and immutable audit exports","P"],
+["Clients pay for","live transparency portals, so billing disputes drop","P"],
+["Execs pay for","utilization insights in plain English with benchmarks","P"],
+["Everyone pays for","setup done for me, import from old tools and migration help","P"],
+["Free tier vs premium","Free tier: basic sheet, reminders, simple reports. Premium: automation, integrations, insights","F"]
+];
+var swarm=[
+"Each person only sees one next action, add hours or submit; the sheet emerges from small steps",
+"If I log time, a teammate on the same project gets a gentle see-if-you-match prompt",
+"Reviewers approve whatever matches the plan within tolerance, flag the rest",
+"When 80 percent of a team submitted, remaining members get a friendly nudge, not before",
+"If a project burns past budget, the nearest lead is pinged automatically",
+"If a week is empty, ask a yes/no question, were you on leave"
+];
+var budget=[
+"A concierge who fills your timesheet by interviewing you in 60 seconds",
+"Per-project dashboards with real-time client viewers",
+"Automatic capture from every tool and device, with privacy controls",
+"A global leaderboard of teams happiest with their process, ranked by a survey not hours",
+"Auto-generated quarterly career report for every employee",
+"Instant payroll and billing reconciliation at approval time"
+];
+var themes=[
+["THEME 1","Removing effort (prefill, auto-suggest, one-tap) beats reminding."],
+["THEME 2","Reviewer speed and clarity drives on-time culture."],
+["THEME 3","Premium = AI draft, integrations, dashboards, client portal."],
+["THEME 4","Celebrate teams and streaks, never shame."],
+["REMINDER-FREE DESIGN","The strongest on-time levers are drafting for the user, one-tap flows and a friendly deadline recovery path. Premium value sits with automation, intelligence and client-facing transparency; the free tier covers the core sheet."]
+];
+var synth=[
+"Auto-draft week + exceptions inbox for reviewers is the one idea behind 20+ ideas (prefill, ambient capture, panic mode, bot-first review).",
+"Friday 4:55pm rescue + grace extension solves lateness with kindness, the same tension Emotion Orchestra raised about shame.",
+"Premium tier = automation + intelligence + client transparency; free tier = core sheet and reminders.",
+"Wildcard breakthrough: reviewer-reason mandate plus change diff plus immutable approved snapshot make approvals trusted, which makes billing real-time possible."
+];
+
+/* ---------- counts ---------- */
+var total=anti.length;
+personas.forEach(function(p){total+=p[2].length});
+emo.forEach(function(p){total+=p[2].length});
+total+=cafe.length+roles.length+kid.length+alien.length;
+ladder.forEach(function(r){total+=r[2].length});total+=2;
+total+=stars.length+rescue.length+auction.length+swarm.length+budget.length;
+$("#cTotal").textContent=total+" ideas, all shown";
+
+/* ---------- shell ---------- */
+var techs=$("#techs"),toc=$("#toc"),tn=0;
+function tech(title,sub,n,inv){
+  tn++;
+  var s=el("section","tech");s.id="t"+tn;
+  var h=el("div","thead");
+  h.innerHTML='<span class="no">TECHNIQUE '+(tn<10?"0":"")+tn+'/13</span><h2>'+esc(title)+'</h2>'+(inv?'<span class="invented">INVENTED</span>':"")+'<span class="n">'+n+' ideas</span><div class="sub">'+esc(sub)+'</div>';
+  s.appendChild(h);techs.appendChild(s);
+  var a=el("a",null,(tn<10?"0":"")+tn+" "+esc(title.split(" (")[0]));a.href="#t"+tn;toc.appendChild(a);
+  return s;
+}
+
+/* 1 anti-solution */
+(function(){
+  var s=tech("Anti-Solution","Make timesheets spectacularly worse, then invert. Tap a card to flip the nightmare into the fix.",anti.length);
+  var b=el("button","flipall","Flip all");var on=false;s.appendChild(b);
+  var g=el("div","grid");
+  anti.forEach(function(p,i){
+    var c=el("button","flip");
+    c.innerHTML='<div><span class="f"><small>WORST #'+(i+1)+'</small><strong>'+esc(p[0])+'</strong><small>tap to invert</small></span><span class="b"><small>INVERTED</small><span>'+esc(p[1])+'</span><small>#'+(i+1)+'</small></span></div>';
+    c.onclick=function(){c.classList.toggle("on")};
+    g.appendChild(c);
+  });
+  b.onclick=function(){on=!on;g.querySelectorAll(".flip").forEach(function(c){c.classList.toggle("on",on)});b.textContent=on?"Flip back":"Flip all"};
+  s.appendChild(g);
+})();
+
+/* 2 persona journey */
+(function(){
+  var n=0;personas.forEach(function(p){n+=p[2].length});
+  var s=tech("Persona Journey","Nine people walk the same sheet. Follow the track from new joiner to HR.",n);
+  var tr=el("div","track"),card=el("div","pcard");
+  function sel(i){
+    [].forEach.call(tr.children,function(b,j){b.classList.toggle("on",j===i);b.classList.toggle("done",j<i)});
+    card.innerHTML='<h3 style="margin-bottom:8px">'+esc(personas[i][0])+' <span class="mono" style="font-size:.75rem;color:var(--mute)">'+personas[i][2].length+' ideas</span></h3><ul>'+personas[i][2].map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul>";
+  }
+  personas.forEach(function(p,i){var b=el("button",null,'<span class="dot">'+p[1]+'</span><small>'+esc(p[0])+'</small>');b.onclick=function(){sel(i)};tr.appendChild(b)});
+  s.appendChild(tr);s.appendChild(card);sel(0);
+})();
+
+/* 3 emotion orchestra */
+(function(){
+  var n=0;emo.forEach(function(e){n+=e[2].length});
+  var s=tech("Emotion Orchestra","Six sections: joy, fear, hope, rage, pride, premium. Each ripple is an idea; the bars sway to the section's size.",n);
+  var l=el("div","lanes");
+  emo.forEach(function(e,k){
+    var lane=el("div","lane");lane.style.setProperty("--c",e[1]);
+    var left=el("div",null,'<div class="nm" style="color:'+e[1]+'">'+e[0]+'</div><div class="mono" style="font-size:.7rem;color:var(--mute)">'+e[2].length+' notes</div>');
+    var bars=el("div","bars");for(var i=0;i<Math.min(e[2].length+3,12);i++){var b=el("i");b.style.height=(40+((i*37+k*19)%60))+"%";b.style.animationDelay=(i*0.13)+"s";b.style.animationDuration=(1.1+((i+k)%4)*0.3)+"s";bars.appendChild(b)}
+    left.appendChild(bars);lane.appendChild(left);
+    var notes=el("div","notes");e[2].forEach(function(t){notes.appendChild(el("div","note",esc(t)))});
+    lane.appendChild(notes);l.appendChild(lane);
+  });
+  s.appendChild(l);
+})();
+
+/* 4 cafe */
+(function(){
+  var s=tech("Parallel Universe Cafe","Rewrite one rule of reality and order from the menu.",cafe.length);
+  var m=el("div","menu");m.innerHTML="<h3>Today's Universes</h3>";
+  var u=el("ul");cafe.forEach(function(c,i){u.appendChild(el("li",null,'<span class="num">'+(i+1)+'</span><span><b>A universe where '+esc(c[0])+'.</b> '+esc(c[1])+'</span>'))});
+  m.appendChild(u);s.appendChild(m);
+})();
+
+/* 5 role playing */
+(function(){
+  var s=tech("Role Playing","Step into seven seats: wants, fears, demands.",roles.length);
+  var g=el("div","roles");
+  roles.forEach(function(r){
+    var c=el("div","role");
+    c.innerHTML='<h3><span class="mask">'+esc(r[0].charAt(0))+'</span>'+esc(r[0])+'</h3><div class="tri">'+
+     (r[1]?'<div class="w"><b>Wants</b>'+esc(r[1])+'</div>':"")+(r[2]?'<div class="fe"><b>Fears</b>'+esc(r[2])+'</div>':"")+(r[3]?'<div class="d"><b>Demands</b>'+esc(r[3])+'</div>':"")+'</div>';
+    g.appendChild(c);
+  });
+  s.appendChild(g);
+})();
+
+/* 6 inner child */
+(function(){
+  var s=tech("Inner Child Conference","Naive why-why-why, and wonder. Stickers, crayons, no adult words.",kid.length);
+  var g=el("div","kid");
+  kid.forEach(function(k,i){var c=el("div","sticker",'<div class="q">'+esc(k[0])+'</div><div>'+esc(k[1])+'</div>');c.style.setProperty("--r",((i%5)-2)*0.9+"deg");g.appendChild(c)});
+  s.appendChild(g);
+})();
+
+/* 7 alien */
+(function(){
+  var s=tech("Alien Anthropologist","Field notes from a baffled outsider watching humans fill in time.",alien.length);
+  var a=el("div","alien");
+  alien.forEach(function(x,i){a.appendChild(el("div","row",'<span class="id">#0'+(i+1)+'</span><span class="obs">'+esc(x[0])+'</span><span class="fix">'+esc(x[1])+'</span>'))});
+  s.appendChild(a);
+})();
+
+/* 8 ladder */
+(function(){
+  var n=2;ladder.forEach(function(r){n+=r[2].length});
+  var s=tech("Time Horizon Ladder","Climb from 1 year to 100 years, then check what survives and what breaks.",n);
+  var l=el("div","ladder");
+  ladder.slice().forEach(function(r){
+    l.appendChild(el("div","rung "+r[1],'<div class="yr">'+r[0].replace(" ","<br>")+'</div><div class="yrs"><ul>'+r[2].map(function(x){return "<li>"+esc(x)+"</li>"}).join("")+"</ul></div>"));
+  });
+  s.appendChild(l);
+  s.appendChild(el("div","split",'<div class="survive"><b>What survives</b>'+esc(survives)+'</div><div class="breaks"><b>What breaks</b>'+esc(breaks)+'</div>'));
+})();
+
+/* 9 starbursting */
+(function(){
+  var s=tech("Starbursting","Questions only. Tap a ray to filter the questions it grew.",stars.length);
+  var w=el("div","starwrap");
+  var kinds=["WHO","WHAT","WHERE","WHEN","WHY","HOW"],cur=null;
+  var svg='<svg class="star" viewBox="-110 -110 220 220" role="group" aria-label="Question star">';
+  kinds.forEach(function(k,i){
+    var a=(i*60-90)*Math.PI/180,a1=a-0.5,a2=a+0.5;
+    var cnt=stars.filter(function(x){return x[0]===k}).length;
+    var r=48+cnt*14;
+    var pts=[0,0,Math.cos(a1)*r*0.5,Math.sin(a1)*r*0.5,Math.cos(a)*r*1.5,Math.sin(a)*r*1.5,Math.cos(a2)*r*0.5,Math.sin(a2)*r*0.5].map(function(v){return v.toFixed(1)});
+    svg+='<g class="ray" data-k="'+k+'" tabindex="0" role="button"><polygon points="'+pts[0]+','+pts[1]+' '+pts[2]+','+pts[3]+' '+pts[4]+','+pts[5]+' '+pts[6]+','+pts[7]+'"/><text text-anchor="middle" x="'+(Math.cos(a)*r*0.95).toFixed(1)+'" y="'+(Math.sin(a)*r*0.95+4).toFixed(1)+'">'+k+' '+cnt+'</text></g>';
+  });
+  svg+='<circle r="13" fill="var(--ink)"/><text x="0" y="4" text-anchor="middle" style="fill:var(--bg)">ALL</text></svg>';
+  w.innerHTML=svg;
+  var list=el("div","qlist");w.appendChild(list);
+  function draw(){
+    list.innerHTML="";stars.forEach(function(q){if(cur&&q[0]!==cur)return;list.appendChild(el("div","qitem",'<small>'+q[0]+'</small><div>'+esc(q[1])+'</div>'))});
+    [].forEach.call(w.querySelectorAll(".ray"),function(r){r.classList.toggle("on",r.getAttribute("data-k")===cur)});
+  }
+  w.addEventListener("click",function(e){var r=e.target.closest(".ray");cur=r?(cur===r.getAttribute("data-k")?null:r.getAttribute("data-k")):null;draw()});
+  w.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){var r=e.target.closest&&e.target.closest(".ray");if(r){e.preventDefault();cur=cur===r.getAttribute("data-k")?null:r.getAttribute("data-k");draw()}}});
+  draw();s.appendChild(w);
+})();
+
+/* 10 rescue */
+var rescueSteps=[];
+(function(){
+  var s=tech("Friday 4:55pm Rescue","Design only for the last five minutes before the deadline. The clock is live.",rescue.length,true);
+  var r=el("div","rescue");
+  r.innerHTML='<div class="rtop"><div class="digital" id="rd">4:55</div><div class="bar"><i id="rb"></i></div></div><div class="rsteps" id="rs"></div>';
+  s.appendChild(r);
+  var box=$("#rs",r);
+  rescue.forEach(function(x){var d=el("div","rstep",'<b>'+x[0]+' PM</b>'+esc(x[1]));box.appendChild(d);rescueSteps.push(d)});
+})();
+
+/* 11 auction */
+(function(){
+  var s=tech("Premium Price Tag Auction","What would a team pay extra for, and why? Gold tags are premium, the green tag is the free tier.",auction.length,true);
+  var g=el("div","tags");
+  auction.forEach(function(a,i){var t=el("div","tag "+(a[2]==="F"?"free":"prem"),'<span class="tier">'+(a[2]==="F"?"FREE":"PREMIUM")+'</span><b>'+esc(a[0])+'</b>'+esc(a[1]));t.style.setProperty("--r",((i%3)-1)*1.2+"deg");g.appendChild(t)});
+  s.appendChild(g);
+})();
+
+/* 12 swarm */
+(function(){
+  var s=tech("Swarm Logic","Dumb local rules, no master plan. Watch a team of dots submit without anyone running the show.",swarm.length);
+  var box=el("div","swarmbox",'<canvas id="cv" aria-label="Swarm simulation"></canvas><div class="cap"><span>teammates: <b id="sw1">0</b>/40 submitted</span><span id="sw2">no rules broken</span></div>');
+  s.appendChild(box);
+  var ol=el("ol","rules");swarm.forEach(function(r){ol.appendChild(el("li",null,esc(r)))});s.appendChild(ol);
+})();
+
+/* 13 budget */
+(function(){
+  var s=tech("1000x Budget","Infinite money, time and people. Go gold.",budget.length);
+  var g=el("div","gold");budget.forEach(function(b,i){g.appendChild(el("div","gcard",'<b>'+(i+1)+'.000x</b>'+esc(b)))});
+  s.appendChild(g);
+})();
+
+/* climax content */
+(function(){
+  var t=$("#themes");themes.forEach(function(x,i){var d=el("div","theme",'<b>'+x[0]+'</b>'+esc(x[1]));if(i===4)d.style.gridColumn="1/-1";t.appendChild(d)});
+  var y=$("#syn");synth.forEach(function(x){y.appendChild(el("div",null,esc(x)))});
+})();
+
+/* ---------- clock + rescue animation ---------- */
+(function(){
+  var ticks=$("#ticks");
+  for(var i=0;i<12;i++){var a=i*30*Math.PI/180;var l=document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute("x1",100+Math.sin(a)*74);l.setAttribute("y1",100-Math.cos(a)*74);l.setAttribute("x2",100+Math.sin(a)*(i%3?68:62));l.setAttribute("y2",100-Math.cos(a)*(i%3?68:62));ticks.appendChild(l)}
+  var ring=$("#ring"),hand=$("#hand"),ct=$("#clockT"),msg=$("#clockMsg"),rd=$("#rd"),rb=$("#rb");
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var dur=24000,t0=performance.now();
+  function frame(now){
+    var p=reduce?0.5:((now-t0)%dur)/dur;           /* 0..1 across 4:55 to 5:00 */
+    var secs=300-p*300,m=Math.floor(secs/60),sc=Math.floor(secs%60);
+    var clockMin=4+(59-m>=0?0:0);
+    var elapsed=p*300,mm=55+Math.floor(elapsed/60),ss=Math.floor(elapsed%60);
+    var label=(mm>=60?"5:00":"4:"+mm)+":"+(ss<10?"0":"")+ss;
+    if(mm>=60)label="5:00:00";
+    ring.setAttribute("stroke-dashoffset",(565.5*p).toFixed(1));
+    hand.setAttribute("transform","rotate("+(p*360)+" 100 100)");
+    ct.textContent=label.replace(/:\d\d$/,"");
+    rd.textContent=label;
+    rb.style.width=(p*100)+"%";
+    var idx=Math.min(5,Math.floor(elapsed/60));
+    rescueSteps.forEach(function(d,i){d.classList.toggle("lit",i<=idx)});
+    msg.textContent=p>0.9?"Late but kind: one tap, a reason chip, 24 hours.":"Five minutes. Plenty, if the sheet is already drafted.";
+    if(!reduce)requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  if(reduce)rescueSteps.forEach(function(d){d.classList.add("lit")});
+})();
+
+/* ---------- swarm sim ---------- */
+(function(){
+  var cv=$("#cv");if(!cv)return;
+  var ctx=cv.getContext("2d"),W,H,N=40,pts=[],done=0,hold=0;
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+  function size(){var r=cv.getBoundingClientRect(),d=window.devicePixelRatio||1;W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0)}
+  function reset(){pts=[];for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H*0.8,vx:(Math.random()-.5)*1.2,vy:(Math.random()-.5)*1.2,s:0,tx:0,ty:0});hold=0}
+  function lock(p,i){p.s=1;var col=i%5;p.tx=W*(0.1+col*0.2)+((Math.random()-.5)*W*0.12);p.ty=H-18-Math.floor(Math.random()*5)*14}
+  function step(){
+    var teal=css("--teal"),amber=css("--amber"),ink=css("--ink"),line=css("--line");
+    ctx.clearRect(0,0,W,H);
+    ctx.strokeStyle=line;ctx.lineWidth=1;
+    for(var c=1;c<5;c++){ctx.beginPath();ctx.moveTo(W*c/5,0);ctx.lineTo(W*c/5,H);ctx.stroke()}
+    ctx.fillStyle=ink;ctx.font="10px ui-monospace,monospace";["MON","TUE","WED","THU","FRI"].forEach(function(d,i){ctx.fillText(d,W*i/5+6,12)});
+    done=pts.filter(function(p){return p.s===1}).length;
+    var nudge=done/N>=0.8;
+    pts.forEach(function(p,i){
+      if(p.s===0){
+        p.vx+=(Math.random()-.5)*.2;p.vy+=(Math.random()-.5)*.2;
+        p.vx=Math.max(-1.3,Math.min(1.3,p.vx));p.vy=Math.max(-1.3,Math.min(1.3,p.vy));
+        p.x+=p.vx;p.y+=p.vy;if(p.x<4||p.x>W-4)p.vx*=-1;if(p.y<18||p.y>H*0.75)p.vy*=-1;
+        var near=0;for(var j=0;j<N;j++){var q=pts[j];if(q.s===1&&Math.abs(q.x-p.x)<70&&Math.abs(q.y-p.y)<70)near++}
+        var chance=0.0008+near*0.0012+(nudge?0.02:0)+(done===0&&i<2?0.004:0);
+        if(Math.random()<chance)lock(p,i);
+      }else{p.x+=(p.tx-p.x)*0.08;p.y+=(p.ty-p.y)*0.08}
+      ctx.beginPath();
+      if(p.s===0&&nudge){ctx.fillStyle=amber;ctx.arc(p.x,p.y,4+Math.sin(performance.now()/180+i)*1.5,0,6.3)}
+      else{ctx.fillStyle=p.s?teal:ink;ctx.arc(p.x,p.y,p.s?5:3.5,0,6.3)}
+      ctx.fill();
+    });
+    $("#sw1").textContent=done;
+    $("#sw2").textContent=nudge?(done===N?"everyone in. no shaming, no leaderboard":"80% in: friendly nudge to the rest"):"dots nudge each other, nobody chases";
+    if(done===N){hold++;if(hold>140)reset()}
+  }
+  function loop(){step();requestAnimationFrame(loop)}
+  size();reset();
+  window.addEventListener("resize",size);
+  if(reduce){for(var i=0;i<N;i++)lock(pts[i],i),pts[i].x=pts[i].tx,pts[i].y=pts[i].ty;step()}else loop();
+})();
+
+/* ---------- climax reveal ---------- */
+(function(){
+  var cells=$("#cells");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cells.classList.add("go");io.disconnect()}})},{threshold:.4});
+    io.observe(cells);
+  }else cells.classList.add("go");
+})();
+})();
+</script>
+</body>
+</html>

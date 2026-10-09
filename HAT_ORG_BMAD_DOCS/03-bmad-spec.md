@@ -23,8 +23,11 @@ The skill appends findings to a running log (`.memlog.md`) and re-derives the sp
 
 | File | Purpose |
 |------|---------|
-| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/spec-timesheet-management.md` | The spec: Why, Capabilities (CAP-1 to CAP-7), Constraints, Non-goals, Success signal, Assumptions. |
+| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/spec-timesheet-management.md` | The spec: Why, Capabilities (CAP-1 to CAP-13), Constraints, Non-goals, Success signal, Assumptions. |
 | `_bmad-output/initiative-timesheet-management/spec-timesheet-management/.memlog.md` | Running log of decisions, capabilities, constraints, assumptions and open questions the spec is derived from. |
+| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/premium-tier.md` | Companion added after the brainstorm ([04-bmad-brainstorm.md](04-bmad-brainstorm.md)): premium tier candidates, not committed scope. |
+
+After the brainstorm re-run the spec has CAP-1 to CAP-13 (CAP-8 to CAP-13 added), and the billable-flag and identity-source questions below are answered as constraints.
 
 ## 5. Review the Spec
 
