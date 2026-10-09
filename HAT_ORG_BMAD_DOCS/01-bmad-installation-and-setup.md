@@ -1,5 +1,7 @@
 # BMAD Installation Guide
 
+**BMad agent:** BMad Agent (`bmad`) | **Skill:** `bmad` (installer)
+
 ## 1. Purpose
 
 This guide explains how to install BMAD, initialize it in a project, and verify that the installation is working.

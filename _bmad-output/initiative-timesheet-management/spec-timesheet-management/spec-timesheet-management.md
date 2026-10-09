@@ -1,7 +1,7 @@
 ---
 id: SPEC-timesheet-management
 companions: [premium-tier.md]
-sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md]
+sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md, ../research-employee-engagement-in-timesheet-filling/research-employee-engagement-in-timesheet-filling.md]
 ---
 
 > **Canonical contract.** This SPEC and the files in `companions:` are the complete, preservation-validated contract for what to build, test, and validate. Source documents listed in frontmatter are for traceability — consult them only if you need narrative rationale or prose color this contract intentionally omits.
@@ -53,6 +53,9 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - **CAP-13** (proposed)
   - **intent:** An employee sees a private weekly insight card of their hours by project.
   - **success:** The card shows the employee's own hours per project for a week and is visible only to them; learnings stay private unless the employee shares them.
+- **CAP-14**
+  - **intent:** Employees get a reminder when their sheet is unsubmitted, and approvers get a reminder when sheets await approval.
+  - **success:** An employee with no submitted sheet for the week receives a reminder before the deadline; an approver with pending sheets receives one; employees on approved leave receive none.
 
 ## Constraints
 
@@ -84,6 +87,9 @@ An employee completes and submits a full weekly sheet in one sitting, and billin
 - Non-goals inferred from the objective are not stated by the user.
 - Anomaly thresholds (such as a 45-hour week) and the late-submission grace rule are starting values for the owner to set.
 - Reopening is only by the original employee and only before approval.
+- Approvals (CAP-6) stay in the core product although competitors gate them behind paid plans, because they are core in an HRMS module.
+- Premium tier boundaries and prices are unvalidated; competitor prices come from vendor pages without a second source.
+- Late-sheet handling never delays pay or hard-locks submission; this rests on US guidance and has not had legal review.
 
 ## Open Questions
 
@@ -91,3 +97,5 @@ An employee completes and submits a full weekly sheet in one sitting, and billin
 - What is the tech stack and deployment target?
 - What is the submission deadline and the length of the late grace window?
 - Which premium capabilities ship first, and how is the tier priced and gated?
+- Do reminders or copy-last-week measurably raise on-time submission? The research found no independent evidence, so a pilot is needed.
+- Which HRMS suites (BambooHR, Rippling, Keka) include timesheet engagement features, and at what tier?

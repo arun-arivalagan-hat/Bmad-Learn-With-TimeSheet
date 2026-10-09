@@ -1,5 +1,7 @@
 # BMAD Initiative Guide
 
+**BMad agent:** BMad Agent (`bmad`) | **Skill:** `bmad`
+
 ## 1. Purpose
 
 This guide explains how to create a BMAD **initiative**: the named folder under `_bmad-output/` that groups every document for one body of work (spec, tickets, and later UX or architecture files). Later skills (`bmad-spec`, `bmad-ticket`, `bmad-build`) read and write inside the active initiative.

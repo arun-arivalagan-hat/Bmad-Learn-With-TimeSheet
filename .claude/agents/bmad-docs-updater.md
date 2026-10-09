@@ -16,11 +16,20 @@ You maintain the BMAD adoption documentation in `HAT_ORG_BMAD_DOCS/` for this re
 ## What to maintain
 
 1. `HAT_ORG_BMAD_DOCS/00-index.md`, which you create if missing. It holds:
-   - A step table: number, step name, skill used, status (Complete / Next / Not started), doc link.
+   - A step table: number, step name, **BMad agent**, skill used, status (Complete / Next / Not started), doc link.
    - A "Generated files" table: skill, file or folder it generated, the commit that added it (short hash, or "pending" when it is in the staged changes), and what the file is used for in the next step.
    - Source this only from files that exist and commits in git history; never invent entries.
 2. A new numbered step doc (`NN-bmad-<topic>.md`) only when the staged changes show a step that has no doc yet (for example the first `spec-*`, `ticket` tree, `architecture-*`, `ux-*` or `plan-*` files). Match the structure and tone of `01-bmad-installation-and-setup.md` and `02-bmad-initiative.md`: Purpose, Prerequisites, how to run the skill, files generated, verify, troubleshooting.
 3. Small corrections to existing step docs when the staged changes changed something they describe.
+4. **Agent and skill per step.** Every step doc starts with a line `**BMad agent:** <name> (<title>) | **Skill:** <skill>`, and the index table carries the same two columns. Use this ownership map, which comes from each agent's menu in `.claude/skills/bmad-agent-*/customize.toml`:
+   - Mary (Business Analyst): `bmad-brainstorming`, `bmad-deep-recon` (market, domain, technical, competitive, user-voice research and tool selection), `bmad-product-brief`, `bmad-prfaq`, `bmad-project-context`.
+   - John (Product Manager): `bmad-prd`, `bmad-correct-course`, `bmad-ticket`.
+   - Winston (System Architect): `bmad-architecture`, `bmad-ticket`.
+   - Sally (UX Designer): `bmad-ux`.
+   - Amelia (Senior Software Engineer): `bmad-build`, `bmad-qa-generate-e2e-tests`, `bmad-code-review`, `bmad-retrospective`, `bmad-ticket`.
+   - BMad Agent: `bmad` (install, setup, initiative, help).
+   - No agent: `bmad-spec`, `bmad-walkthrough`, `bmad-build-auto` are skills run directly; write "Skill run directly".
+   Files do not record which persona the person actually spoke to, so label the column "BMad agent (owner of the skill)". Where a skill belongs to several agents (for example `bmad-ticket`), list them all. Never claim a specific agent was used beyond this map.
 
 ## Rules
 

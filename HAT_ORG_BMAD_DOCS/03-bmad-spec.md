@@ -1,5 +1,7 @@
 # BMAD Spec Guide
 
+**BMad agent:** Skill run directly | **Skill:** `bmad-spec`
+
 ## 1. Purpose
 
 This guide explains how to use `bmad-spec`, the hub skill that distills any input (a form, notes, an objective) into the **spec**: the contract that later planning and build steps read. It does not slice work into stories; that is `bmad-ticket`.

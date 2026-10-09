@@ -1,5 +1,7 @@
 # BMAD Brainstorm Guide
 
+**BMad agent:** Mary (Business Analyst) for `bmad-brainstorming`; skill run directly for `bmad-spec` | **Skill:** `bmad-brainstorming`, `bmad-spec`
+
 ## 1. Purpose
 
 This guide explains how to use `bmad-brainstorming` to generate and converge ideas for an initiative, then feed the result back into the spec through `bmad-spec`. It produces an intent document and a premium-tier companion; it does not slice work into stories (that is `bmad-ticket`).

@@ -1,0 +1,32 @@
+# Competitive digest r1-1: effort-reduction and nudge features (accessed 2026-10-10)
+
+Class legend: official-feature-page | official-help | official-blog/changelog | third-party-tracker | review-blog. Note: WebFetch was blocked for clockify.me and toggl.com, so those vendors were read only via WebSearch summaries (lower confidence).
+
+## Findings
+
+1. Harvest: custom automated reminders, live timers, day/week entry view, Slack/Asana integrations, iPhone/Android apps, timesheet approvals. No auto-fill, calendar or AI mentioned on the page. | https://www.getharvest.com/features | Harvest | undated (references 2025 report) | accessed 2026-10-10 | high | official-feature-page
+2. Harvest: "In Season: Summer 2026" post says a new look (released May 2026) becomes default; "Just shipped" focuses on seeing/managing/acting on data. Specific features not retrieved. | https://www.getharvest.com/blog/in-season-summer-2026 | Harvest | summer 2026 | 2026-10-10 | low (search snippet only) | official-blog
+3. TimeCamp: Free tier has automatic time tracking via keyword lists, 100+ integrations, web/desktop/mobile apps, and an "AI Time Tracker" suggesting entries (page estimates ~$6/user/month token cost). Starter ($3.99): Copy Entries from previous days. Premium ($6.99): calendar view imports events as entries, geofencing, scheduled email reports. Ultimate ($9.99): approvals, mandatory tags. Enterprise: activity tracking (apps/sites) to fill gaps, PIN kiosk. No explicit reminders. Page is internally inconsistent on some tiers. | https://www.timecamp.com/features/ | TimeCamp | undated | 2026-10-10 | med-high | official-feature-page
+4. Clockify: targets-based reminder emails (per capacity or fixed hours; daily/weekly/monthly), manager/admin notifications on missed targets, approval-pending reminders: paid (Standard/Pro/Enterprise). "You forgot to start the timer" reminders are free in desktop app/extension. Skips users on time off. | https://clockify.me/help/track-time-and-expenses/notifications-in-clockify (also /help/administration/targets-reminders) | Clockify | undated | 2026-10-10 | med (via search summary) | official-help
+5. Clockify recent changes: May 2026 changelog added timesheet import field mapping and quick report export; Q2 2026 roundup (15 Jul 2026) adds revert file import, pre-made time-off policies, and an approval change letting users add entries to a pending approval or hold entries until they choose to submit. No AI-drafted timesheet found. | https://cake.com/updates/clockify-q2-2026 | CAKE (Clockify owner) | 2026-07-15 | 2026-10-10 | med | official-blog/changelog
+6. Clockify: free plan changes announced April 2026; third-party tracker reports Aug 2026 plan added and top tier $14.99 to $15.99, unverified. | https://costbench.com/changelog/clockify-plan-added-2026-08/ | costbench | 2026-08 | 2026-10-10 | low | third-party-tracker
+7. Toggl Track: official pages (per search summary) state desktop app integrates Apple/Google/Microsoft calendars and converts events to entries; time-tracking reminders for set times/days; forgotten-timer notification; iCal export of last two weeks of entries. | https://toggl.com/track/toggl-desktop/ ; https://TOGGL.COM/track/ical-integration/?tab=native | Toggl | undated | 2026-10-10 | med (search summary only) | official-feature-page
+8. Toggl Track: Timeline passive app/browser activity capture and AI project suggestions appear only in review blogs; not verified against Toggl pages. | https://aiindigo.com/blog/toggl-track-review-2026-still-the-gold-standard-for-time-tracking | aiindigo | 2026 | 2026-10-10 | low | review-blog
+9. Zoho People: admin-configurable timesheet reminders for (a) no time logged, (b) fewer than N hours logged, (c) not submitted for approval, (d) submitted fewer than N hours; frequency/day configurable; manager notified of reportees yet to submit; exceptions by department/role/designation/group; email. Example: daily 6 PM under-8-hours reminder; Friday 6 PM unsubmitted reminder. Path: Settings > Timesheets > Automation > Reminders. | https://help.zoho.com/portal/en/kb/people/administrator-guide/introduction/articles/timesheet-reminders-zp | Zoho | undated (Zoho People 5.0 Help) | 2026-10-10 | high | official-help
+10. Zoho People: start/end time entry auto-calculates hours (official). No official auto-fill found; a third-party Chrome extension "Zoho Regularise" fills attendance hours, not Zoho-supported. | same help search; https://chrome.google.com/webstore/detail/zoho-regularise/pmomfebmphlhmclhmljppdhbjaakhjch | Zoho / Chrome store | undated | 2026-10-10 | med | official-help / third-party
+11. Replicon (now Deltek): "AI auto-capture" (Dela intelligent timesheets pulling time from 100+ work apps), auto-validation against preconfigured compliance rules (145+ jurisdictions), mobile entry, CloudClock for frontline, approvals. Reminders and anomaly flags not stated. IDC MarketScape cited Nov 2025. Old replicon.com/products/timesheets URL 301-redirects to Deltek. | https://www.deltek.com/products/replicon/ | Deltek | undated (IDC ref Nov 2025) | 2026-10-10 | med (marketing register, no pricing tier) | official-feature-page
+
+## Leads worth chasing
+- Replicon/Deltek "Dela" AI timesheet: help docs, launch date, which plan, how drafts are submitted (the closest thing found to AI-drafted timesheets).
+- Fetch Harvest "In Season: Summer 2026" in full for shipped features; Harvest help for reminder mechanics (who gets them, escalation).
+- Toggl and Clockify official pages directly (fetch was blocked; try help.toggl.com, support.toggl.com, clockify.me/help/whats-new via another route).
+- TimeCamp AI Time Tracker launch date/changelog.
+- Jira/GitHub integration specifics per vendor, Slack/Teams bots (only Harvest Slack seen), and Clockify's April 2026 free-plan change (which features moved paid).
+
+## Looked for and could not find
+- Streaks or gamification in any vendor's official pages.
+- Anomaly flags (outlier hours, missing-day detection) on official pages; only Replicon auto-validation (compliance rules) and Clockify target-miss notifications are adjacent.
+- Official Harvest auto-fill/calendar or AI features.
+- Teams bot for any vendor; Slack bot only Harvest integration listed (not confirmed as reminder delivery).
+- HRMS other than Zoho People (BambooHR, Rippling, Keka) not covered in this round.
+- Page publication dates: most vendor pages are undated.
