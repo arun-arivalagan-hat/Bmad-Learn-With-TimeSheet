@@ -1,0 +1,29 @@
+# Keka timesheet teardown, digest r1-1 (accessed 2026-10-10)
+
+Limits: help.keka.com article pages returned a login page or 403 via WebFetch. G2 returned 403. Help-center claims below come from WebSearch summaries (medium/low). pub_date unknown for all unless stated. Only 1 round used.
+
+## Claims
+
+1. claim: Timesheets sit in Keka PSA ("Projects & Timesheets"), sold as Basic, Pro and Advanced. HRMS tiers (Foundation, Strength, Growth) list attendance, leave, overtime and shifts only, not project timesheets. | source: https://www.keka.com/pricing | publisher: Keka | pub_date: n/a | confidence: high (vendor page fetched directly) | class: vendor-primary | sources_count: 1
+2. claim: PSA Basic includes project time tracking, resource-level timesheet policies, daily submission, start/stop task timer, activity logs, reminders, attachments, custom approval chains, time reports. Pro adds resource mgmt, billing/invoicing, lightweight CRM. Advanced adds payroll transfers from timesheets (QuickBooks, Gusto, Paylocity, Paycom, ADP and others), project health, forecasting. | source: https://www.keka.com/pricing | publisher: Keka | pub_date: n/a | confidence: high for listing | class: vendor-primary | sources_count: 1 (single-source)
+3. claim: No INR or USD prices are published for PSA, HRMS or Hiring on the pricing page (trial / "Talk to us" only). PSA is quote-only. | source: https://www.keka.com/pricing ; https://www.capterra.co.za/software/1066180/keka-psa (search summary: "contact for pricing") | publisher: Keka; Capterra | confidence: high | class: vendor-primary + third-party | sources_count: 2
+4. claim: Third-party (unverified) prices: Zoftwarehub lists HRMS Foundation at INR 6,999/month for up to 100 employees (INR 60 per extra), Growth INR 13,999/month (INR 130 extra), page last updated 2024, so stale. Spendbase gives generic PSA estimates, not Keka-specific. Do not use for decisions. | source: https://zoftwarehub.com/en-ae/products/keka/pricing | publisher: Zoftwarehub | pub_date: 2024 | confidence: low | class: third-party aggregator | sources_count: 1
+5. claim: Keka PSA offers weekly and daily entry (daily enabled in policy), mobile weekly/daily submit, copy from previous submissions, billable / non-billable / custom categories, utilization targets, per-department and per-project policies, min/max hours with late-submission penalties, integration with leave/holiday/week-off calendars. | source: https://help.keka.com/hc/en-us/articles/39946776356753 and related help articles (via WebSearch summary; pages not fetched) | publisher: Keka help center | confidence: medium | class: vendor-docs via search summary | sources_count: 1 (single-source)
+6. claim: Approvals: multiple workflows and approvers, review by employee or project view, reject with reason entered in an overlay; rejected entries can be viewed and resubmitted (web and mobile). Multi-level approval chains by team/project/role; auto-skip when an approver delays. | source: http://www.keka.com/us/timesheet-software (fetched); help.keka.com rejected-timesheet articles (search only) | publisher: Keka | confidence: high for multi-level, medium for reject-with-reason | class: vendor | sources_count: 2 (both vendor)
+7. claim: Reminders: Event Triggers in Global Settings, "Timesheet Submission Reminder", before and after due date, delivery via Email, Slack or Webhook, to employee, manager or roles, with escalation levels. | source: https://help.keka.com/hc/en-us/articles/39946694827793 (search summary; also support.keka.com article 84000391002) | publisher: Keka | confidence: medium | class: vendor-docs via search summary | sources_count: 2 (same vendor, summary only)
+8. claim: Calendar sync with Google and Outlook calendars for automated time tracking; partial-day cap (cannot log more than available hours, e.g. half-day leave allows 4h) in a "new timesheet upgrades in Keka PSA" article (date unknown). | source: https://help.keka.com/admin/new-timesheet-upgrades-in-keka-psa (search summary only; fetch hit login) | publisher: Keka | confidence: low | class: vendor-docs via search summary | sources_count: 1 (single-source)
+9. claim: Reviews: G2 lists Keka at about 4.5/5 (about 1,900 reviews); praise centers on payroll and support. One Sept 2023 reviewer wanted more flexible workflow/approval settings and a faster, feature-equal mobile app. A third-party Firefox add-on (BetterKeka) exists because users submit weekly timesheets too early, which locks entries and needs admin intervention. | source: https://www.g2.com/survey_responses/keka-review-8624783 ; https://addons.mozilla.org/es-ES/firefox/addon/betterkeka/ | publisher: G2; Mozilla Add-ons | pub_date: 2023-09 (G2 review) | confidence: low | class: user-voice via search summary | sources_count: 2 (anecdotal, no counted pattern)
+
+## Leads
+- Fetch help.keka.com PSA articles with a different route (support.keka.com mirrors, Google cache) to confirm approvals, locking, edit history, bulk approve.
+- Keka release notes / blog for the last 12 months; the "new timesheet upgrades in Keka PSA" article needs a dated copy.
+- Capterra Keka PSA page and G2 Keka PSA reviews filtered for 1-3 stars; AmbitionBox and Reddit.
+- Check whether Keka HR (not PSA) has a basic timesheet add-on that the pricing page omits.
+
+## Looked for and could not find
+- Any published INR/USD price for Keka PSA tiers.
+- Named Jira, Teams or Slack timesheet-entry integrations (the product page names none; Slack appears only for reminders).
+- AI or auto-fill features (the product page mentions none).
+- Timesheet locking or period close, edit history, anomaly flags, bulk approve, and a timer beyond PSA Basic's "start/stop task timer": no confirmation beyond the pricing page's "activity logs".
+- Release notes or blog entries dated within the last 12 months.
+- Reddit threads on Keka timesheets; 1-3 star review patterns on G2, Capterra or AmbitionBox (G2 returned 403).

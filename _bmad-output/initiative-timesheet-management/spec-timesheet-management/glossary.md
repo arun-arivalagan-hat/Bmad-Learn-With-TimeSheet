@@ -1,6 +1,6 @@
 # Glossary
 
-Source: research-timesheet-and-time-billing-domain-in-it. Mostly vendor sources; the research was US-default and is not legal advice; the operating country is India.
+Source: research-timesheet-and-time-billing-domain-in-it. Mostly vendor sources; the research was US-default and is not legal advice; the owner chose generic US-style rules.
 
 | Term | Meaning in this spec |
 |---|---|
@@ -14,9 +14,8 @@ Source: research-timesheet-and-time-billing-domain-in-it. Mostly vendor sources;
 | Rate card | Price per role or person used to value hours |
 | Lock | An approved sheet becomes read-only |
 | Adjustment entry | A correction to an approved sheet, recorded against the original week and never a silent edit |
-| Loss of pay (LOP) days | Unpaid days in a pay period, from attendance and leave data; payroll deducts pay for them |
-| Payable days | Days in a pay period an employee is paid for, from attendance and leave data |
-| Payroll cut-off date | Date after which changes no longer count in that period's payroll; later changes become adjustments in the next period |
+| Published sheet | The weekly sheet the Project 1 owner has made available to an employee, usually on Friday; the submission deadline (11:59 pm UTC the next day) counts from publication |
+| Late mark | The late penalty: a recorded mark on a sheet submitted after the deadline, counted per employee and visible to the project reviewer; it never affects pay |
 | Weekly effort | Hours per project for a week; the only entry level in this module, including for salaried IT staff |
 
 ## Timesheet states

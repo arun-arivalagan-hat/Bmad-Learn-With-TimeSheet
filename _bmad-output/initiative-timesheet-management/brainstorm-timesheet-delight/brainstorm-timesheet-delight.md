@@ -37,3 +37,13 @@ Removing effort beats reminding people. Reviewer speed and clarity drive an on-t
 ## Out of scope for now
 
 Ambient time capture, an hours marketplace, and a continuous rolling week. These are interesting but premature.
+
+## Owner decisions (2026-10-10)
+
+- Auto-drafting is out of v1; copy-last-week is in. All capabilities ship free for now, so the premium tier is future only.
+- The billable flag lives on the project. A submitted sheet can be reopened before approval, with a change history. One sheet per employee per week.
+- The owner of the employee's Project 1 publishes the weekly sheet in the app, usually on Friday. It must be submitted by 11:59 pm UTC on the day after publication (Saturday); later sheets are accepted and marked late. The project reviewer then approves or rejects.
+- Identity, project and reviewer lists come from the existing HRMS. A one-tap smiley after submit measures happiness.
+- The owner holds that reminders and copy-last-week raise on-time submission. This is a belief to measure.
+- The payroll handoff and ambient time capture are out of scope.
+- Late sheets are accepted but carry a late penalty (a recorded late mark visible to the project reviewer, never affecting pay). This replaces the earlier no-penalty idea in direction 2, while keeping the kind recovery path.

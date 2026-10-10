@@ -1,7 +1,7 @@
 ---
 id: SPEC-timesheet-management
 companions: [premium-tier.md, glossary.md]
-sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md, ../research-employee-engagement-in-timesheet-filling/research-employee-engagement-in-timesheet-filling.md, ../research-timesheet-and-time-billing-domain-in-it/research-timesheet-and-time-billing-domain-in-it.md]
+sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md, ../research-employee-engagement-in-timesheet-filling/research-employee-engagement-in-timesheet-filling.md, ../research-timesheet-and-time-billing-domain-in-it/research-timesheet-and-time-billing-domain-in-it.md, ../research-india-labour-rules-and-payroll-inputs-fo/research-india-labour-rules-and-payroll-inputs-fo.md, ../research-timesheet-module-technical-approach-insi/research-timesheet-module-technical-approach-insi.md, ../research-bamboohr-rippling-keka-timesheet-teardow/research-bamboohr-rippling-keka-timesheet-teardow.md]
 ---
 
 > **Canonical contract.** This SPEC and the files in `companions:` are the complete, preservation-validated contract for what to build, test, and validate. Source documents listed in frontmatter are for traceability — consult them only if you need narrative rationale or prose color this contract intentionally omits.
@@ -42,8 +42,8 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
   - **intent:** An employee reopens a submitted sheet before approval to correct it, with every change recorded.
   - **success:** A submitted, unapproved sheet can be reopened and resubmitted by its owner; the history shows who changed what and when; an approved sheet cannot be reopened.
 - **CAP-10**
-  - **intent:** An employee who misses the deadline submits late or requests an extension with a reason, without penalty at submission.
-  - **success:** A late sheet is accepted and marked late; an extension request records its reason; neither blocks submission.
+  - **intent:** An employee submits the published weekly sheet by 11:59 pm UTC on the day after it is published (Saturday for the usual Friday publication), and one who misses that deadline can still submit late, with a late penalty, or request an extension with a reason.
+  - **success:** A sheet submitted by 11:59 pm UTC on the day after publication counts as on time; a later sheet is accepted, marked late, and carries a late penalty (a recorded late mark counted per employee and visible to the project reviewer); an extension request records its reason and waives the penalty; none of these blocks submission.
 - **CAP-11** (proposed)
   - **intent:** A reviewer sees sheets with anomalies first and approves clean sheets in bulk.
   - **success:** A sheet with hours over the anomaly threshold, hours on a closed project, or a large jump from the prior week is flagged and listed first; selecting all unflagged sheets approves them in one action.
@@ -56,9 +56,10 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - **CAP-14**
   - **intent:** Employees get a reminder when their sheet is unsubmitted, and approvers get a reminder when sheets await approval.
   - **success:** An employee with no submitted sheet for the week receives a reminder before the deadline; an approver with pending sheets receives one; employees on approved leave receive none.
-- **CAP-15**
-  - **intent:** Payroll receives each employee's loss-of-pay (LOP) days and payable days per pay period, with approved weekly effort and PTO hours as supporting data, after the project reviewer approves.
-  - **success:** For a closed pay period, payroll can read each employee's LOP days, payable days and approved weekly hours; weeks that are unapproved or rejected are never exposed as approved; a change after the payroll cut-off date reaches payroll as a recorded adjustment in the next period.
+- **CAP-15** (retired: the payroll handoff is out of scope; the id is never reused)
+- **CAP-16**
+  - **intent:** The owner of an employee's Project 1 (the primary project) publishes the weekly sheet in the app, usually on Friday, which makes it available to that employee to fill in.
+  - **success:** An employee cannot start a week's sheet until the Project 1 owner has published it; publication records who published and when; the submission deadline counts from that moment.
 
 ## Constraints
 
@@ -69,19 +70,22 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - Identity, project list and reviewer list come from the existing HRMS, not admin-maintained lists.
 - Approved hours are immutable; a later correction creates a recorded adjustment, never a silent edit.
 - Hours are for billing and resourcing, never a performance score; no public individual rankings or shaming lists.
-- A sheet is in exactly one state: draft, submitted, rejected or approved; approved means locked. Terms are defined in `glossary.md`.
+- An employee has exactly one sheet per week; a second sheet for the same employee and week is refused.
+- A sheet is in exactly one state: draft, submitted, rejected or approved; approved means locked. After submission the named project reviewer approves or rejects it. Terms are defined in `glossary.md`.
 - Hours are entered per project per week, never per day; every employee, including exempt IT staff, submits weekly effort only.
-- Retention of submitted sheets, approved sheets and their change history follows India's labour rules for the operating country, with 5 years as the starting value.
-- A late, rejected or incorrect sheet never changes pay for hours worked; this module reports hours and never withholds or reduces pay.
-- After the payroll cut-off date, a change to an approved week reaches payroll as a recorded adjustment in the next period and never alters a closed period.
+- Submitted sheets, approved sheets and their change history are kept at least 3 years, a generic rule modelled on the US; the owner confirms it for the operating country.
+- A late, rejected or incorrect sheet never changes pay for hours worked; this module reports hours and never withholds, delays or reduces pay, and the late penalty is only a recorded late mark.
+- Reminders are scheduled against UTC and sent at most once per employee, reminder kind and week, so a retry or a clock change never sends a duplicate or a late reminder.
 
 ## Non-goals
 
-- Payroll calculation or processing, leave balances or leave approval; this initiative only hands LOP days, payable days and approved hours to payroll (CAP-15).
+- Payroll calculation or processing, leave balances or leave approval.
+- Any payroll handoff: loss-of-pay (LOP) days, payable days, the payroll cut-off, and the payroll data format are out of scope (CAP-15 retired).
 - Invoicing; this initiative supplies billable hours, not invoices.
 - Attendance or clock-in tracking.
 - Auto-drafting the week from calendar or tickets in v1 (see `premium-tier.md`).
 - Ambient time capture, an hours marketplace, and a continuous rolling week.
+- Choosing the tech stack, hosting, observability, backups or CI/CD; these belong to the architecture step, not this spec.
 
 ## Success signal
 
@@ -93,27 +97,23 @@ An employee completes and submits a full weekly sheet in one sitting, and billin
 - Hours are in 0.5 steps, and project hours plus PTO total at most 40 per week.
 - CAP-6 and CAP-7 are in scope for this initiative although the form does not mention them; the brainstorm extended them but they remain unconfirmed.
 - Non-goals inferred from the objective are not stated by the user.
-- Anomaly thresholds (such as a 45-hour week) and the late-submission grace rule are starting values for the owner to set.
+- Anomaly thresholds (such as a 45-hour week) are starting values for the owner to set.
 - Reopening is only by the original employee and only before approval.
 - Approvals (CAP-6) stay in the core product although competitors gate them behind paid plans, because they are core in an HRMS module.
-- Premium tier boundaries and prices are unvalidated; competitor prices come from vendor pages without a second source.
-- Late-sheet handling never delays pay or hard-locks submission; this rests on US guidance, not India's, and has not had legal review.
+- All capabilities ship free for now with no pricing; `premium-tier.md` lists future candidates only, and its competitor prices come from vendor pages without a second source.
+- The owner holds that reminders and copy-last-week raise on-time submission; this is a belief, not research evidence, and the on-time rate is still to be measured.
+- The submission deadline is 11:59 pm UTC on the day after the sheet is published (owner), so Saturday 11:59 pm UTC for the usual Friday publication; a late sheet is still accepted, marked late, and carries the late penalty.
+- Publication by the Project 1 owner opens the whole sheet for the employee, including Projects 2-5; the owner's answer was cut off, so confirm this.
+- The 11:59 pm UTC deadline is a fixed instant for every employee regardless of local time zone.
+- If a sheet is published on a day other than Friday, the deadline is still 11:59 pm on the following day; the owner said publication is mostly Friday.
+- Late-sheet handling never delays pay or hard-locks submission; this rests on US guidance and has not had legal review.
 - Approved means locked, with no separate billed state, because invoicing is a non-goal (confirmed).
 - Utilization and realization use total available hours as the denominator in `glossary.md` (confirmed).
 - The named project reviewer approves project hours; line-manager and finance approval roles are out of scope for now (confirmed).
-- The 5-year retention starting value comes from a single source on India's Labour Codes; the owner confirms the applicable rules.
-- The domain research was US-default, mostly vendor-sourced, and is not legal advice; the operating country is India.
-- LOP and payable days come from the HRMS attendance and leave data, as at Zoho, Keka, greytHR and Razorpay; this module does not compute attendance or leave balances.
-- Approved weekly effort is supporting data for payroll, not the paid-days basis, following Indian vendor practice.
+- The late penalty is the late mark: a recorded mark counted per employee and visible to the project reviewer (confirmed by the owner).
+- An approved extension request waives the late penalty for that sheet.
+- The 3-year retention is the owner's generic rule, based on US practice with no country-specific follow-up; the domain research was US-default, mostly vendor-sourced, and is not legal advice.
 
 ## Open Questions
 
-- Is one sheet per employee per week enforced?
-- What is the tech stack and deployment target?
-- What is the submission deadline and the length of the late grace window?
-- Which premium capabilities ship first, and how is the tier priced and gated?
-- Do reminders or copy-last-week measurably raise on-time submission? The research found no independent evidence, so a pilot is needed.
-- Which HRMS suites (BambooHR, Rippling, Keka) include timesheet engagement features, and at what tier?
-- Which Indian labour rules (Labour Codes, state Shops and Establishments Acts) apply to timesheet records, and for how long?
-- Which module computes LOP and payable days, and what is the monthly payroll cut-off date?
-- What format does payroll need, and does it also need cost rate or overtime inputs?
+None.

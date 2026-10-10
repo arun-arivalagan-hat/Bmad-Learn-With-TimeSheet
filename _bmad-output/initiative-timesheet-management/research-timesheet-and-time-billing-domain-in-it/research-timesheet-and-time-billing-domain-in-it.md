@@ -74,7 +74,7 @@ Not found as a standard term: "utilization realization". No formal "over-allocat
 ## Cross-dimension insights
 
 - The billable flag, the lock state and the audit trail are connected: if billable lives on the project, a lock after approval protects billed numbers, and an adjustment entry keeps the audit trail intact. This matches the spec's constraint that approved hours are immutable.
-- The legal rule that pay cannot be withheld for late sheets fits the spec's CAP-10 (late submit without penalty), and argues against any hard lock on submission.
+- The legal rule that pay cannot be withheld for late sheets fits the spec's CAP-10: a late sheet is accepted and carries only a recorded late mark, and it argues against any hard lock on submission.
 
 ## Recommendations
 
@@ -94,6 +94,15 @@ Not found as a standard term: "utilization realization". No formal "over-allocat
 - What do exempt IT staff need to record? Depends on your policy, since FLSA does not require daily hours for them.
 - What are current utilization benchmarks from a primary source (SPI Research, TSIA)?
 - How do fixed-price and retainer work convert hours to revenue?
+
+## Owner decisions (2026-10-10)
+
+- Retention is a **generic US-style rule**: submitted sheets, approved sheets and change history kept at least 3 years. The country question is closed.
+- Confirmed: approved means locked, utilization uses total available hours, the named project reviewer approves, and everyone submits weekly effort only.
+- One sheet per employee per week is enforced. The weekly sheet is published and must be submitted by 11:59 pm UTC on the day after publication (Saturday for the usual Friday publication, published by the Project 1 owner in the app); the project reviewer then approves or rejects.
+- Retention by country is closed: the generic 3-year rule has no country-specific follow-up.
+- The payroll handoff is out of scope, so the "payroll handoff" open question is closed.
+- Late sheets carry a late penalty that is only a recorded late mark; it never withholds, delays or reduces pay, which fits the pay rule found in this research.
 
 ## Source appendix
 

@@ -77,6 +77,12 @@ updated: '2026-10-10'
 - Is the EPF wage ceiling change official? Check the gazette.
 - Do daily hours need to be kept in the attendance muster roll, even though the timesheet is weekly?
 
+## Owner decisions (2026-10-10)
+
+- India-specific rules were **not adopted**: the owner chose a generic US-style retention rule (at least 3 years). The 5-year India figure and the state-rule questions are kept here as reference only.
+- Retention by country is closed: the generic 3-year rule has no country-specific follow-up.
+- LOP days, payable days, the payroll cut-off and the payroll handoff are **out of scope**, so the payroll recommendations and CAP-15 are not applied. CAP-15 is retired.
+
 ## Source appendix
 
 | # | Supports | Publisher | Pub date | Accessed | Confidence |

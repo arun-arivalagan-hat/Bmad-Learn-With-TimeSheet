@@ -1,6 +1,6 @@
-# BMAD Research Guide
+# BMAD Market Research Guide
 
-**BMad agent:** Mary (Business Analyst) for `bmad-deep-recon`; skill run directly for `bmad-spec` | **Skill:** `bmad-deep-recon`, `bmad-spec`
+**BMad agent:** Mary (Business Analyst), menu option MR; skill run directly for `bmad-spec` | **Skill:** `bmad-deep-recon` (market type), `bmad-spec`
 
 ## 1. Purpose
 
@@ -35,14 +35,11 @@ Then re-run `bmad-spec` so the findings are merged into the spec (the spec lists
 
 The re-run of `bmad-spec` also updates `spec-timesheet-management.md` (adds CAP-14 reminders, new assumptions and open questions), its `.memlog.md`, and `premium-tier.md`.
 
-### Later research runs
+### Other research types
 
-Two further `bmad-deep-recon` runs fed the spec through `bmad-spec`:
+Each research type has its own step doc: domain research (DR) in [06-bmad-domain-research.md](06-bmad-domain-research.md), technical research (TR) in [07-bmad-technical-research.md](07-bmad-technical-research.md), and competitive research (CR) in [08-bmad-competitive-research.md](08-bmad-competitive-research.md).
 
-* `research-timesheet-and-time-billing-domain-in-it/`: domain research (glossary, rules, value chain). It produced `glossary.md` in the spec folder and added timesheet states, retention and pay-rule constraints.
-* `research-india-labour-rules-and-payroll-inputs-fo/`: India labour rules and payroll inputs. It shaped CAP-15 (payroll receives loss-of-pay days and payable days with a cut-off date).
-
-Each folder holds the report, `digests/` and `.memlog.md`. Evidence is mostly vendor-sourced; the India retention figure comes from one source, so the owner confirms it.
+The later spec updates also record owner decisions (one sheet per employee per week, Project 1 owner publishes the sheet via CAP-16, 11:59 pm UTC deadline with a late mark, 3-year retention, all capabilities free for now). Market evidence is mostly vendor-sourced.
 
 ## 5. Verify
 

@@ -87,6 +87,14 @@ Gamification can reduce engagement when it feels forced, and monitoring-style tr
 - What do HRMS suites (BambooHR, Rippling, Keka) include? They were not covered.
 - What would customers pay for AI drafting? No independent willingness-to-pay evidence found.
 
+## Owner decisions (2026-10-10)
+
+- All capabilities ship **free for now** with no pricing; the free vs premium split above stays as future candidates.
+- The owner holds that reminders and copy-last-week raise on-time submission. This is a belief, not research evidence; the on-time rate is still to be measured.
+- The submission deadline is 11:59 pm UTC on the day after the Project 1 owner publishes the weekly sheet (usually Friday, so Saturday); later sheets are accepted and marked late.
+- Competitor research on BambooHR, Rippling and Keka is planned as a separate later run, so that open question is deferred.
+- Late sheets are accepted but carry a late penalty: a recorded late mark visible to the project reviewer, never affecting pay. Keka's late-submission penalties were noted as precedent.
+
 ## Source appendix
 
 | # | Supports | Publisher | Pub date | Accessed | Confidence |
