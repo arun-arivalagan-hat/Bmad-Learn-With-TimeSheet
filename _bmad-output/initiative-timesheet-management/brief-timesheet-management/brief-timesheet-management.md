@@ -30,7 +30,7 @@ A weekly timesheet that works like this:
 
 1. **The sheet is opened.** The owner of an employee's main project (Project 1) opens the week's sheet in the app, usually on Friday.
 2. **The employee fills it in.** They log hours on up to five projects, with what they worked on and who reviews it, plus time off (8 hours per day), their key accomplishments, and what they learned (marked Beginner, Intermediate or Advanced). Their name and email fill in automatically.
-3. **Deadline.** The sheet is due by 11:59 pm UTC the day after it opens (Saturday for a Friday opening). A late sheet is still accepted but gets a **late mark**.
+3. **Deadline.** The sheet is due by 11:59 pm UTC the day after it opens (Saturday for a Friday opening). A late sheet is still accepted but gets a **late mark**, which the employee, the reviewer and HR can see. A sheet that was never opened cannot be marked late.
 4. **Review.** The named project reviewer approves the hours or rejects them with a reason. A rejected sheet returns to the employee to fix and resubmit.
 5. **Locked.** Once approved, the hours are locked. If a mistake is found later, it is fixed with a recorded correction, never a silent edit.
 6. **Used.** Approved hours roll up by project, person and week into billable and non-billable time, so billing and managers read the same numbers.
@@ -43,7 +43,7 @@ We looked at products such as Harvest, Clockify, Toggl, BambooHR, Rippling and K
 
 - It sits **inside our HR system**, so names, projects and reviewers come from the data we already have.
 - Approvals, locking and corrections are part of the basic product, where many competitors charge extra for approvals.
-- Hours are for billing and planning, **never a performance score**, and there are no public rankings or shaming lists.
+- Late marks and approved hours are visible to **HR, who decides any consequences**, so the record has to be accurate and fair. The tool itself never changes anyone's pay, and there are no public rankings or shaming lists.
 
 We are not claiming a technical advantage. The advantage is fit and simplicity. [ASSUMPTION: no further differentiator beyond fit to our process.]
 
@@ -53,6 +53,7 @@ We are not claiming a technical advantage. The advantage is fit and simplicity. 
 - **Project reviewers**: want to see only the sheets for their projects, understand them at a glance, and give a clear reason when they reject one.
 - **Project owners**: open each week's sheet and see who has submitted.
 - **Finance and managers**: need trusted, approved hours per project for billing and planning.
+- **HR**: reads approved hours and late marks, read-only, and decides any consequences for employees.
 
 [ASSUMPTION: the number of employees and projects is not known. The tool is sized for hundreds to a few thousand users.]
 

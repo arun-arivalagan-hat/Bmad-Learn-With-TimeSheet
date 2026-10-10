@@ -15,7 +15,7 @@ Source: research-timesheet-and-time-billing-domain-in-it. Mostly vendor sources;
 | Lock | An approved sheet becomes read-only |
 | Adjustment entry | A correction to an approved sheet, recorded against the original week and never a silent edit |
 | Published sheet | The weekly sheet the Project 1 owner has made available to an employee, usually on Friday; the submission deadline (11:59 pm UTC the next day) counts from publication |
-| Late mark | The late penalty: a recorded mark on a sheet submitted after the deadline, counted per employee and visible to the project reviewer; it never affects pay |
+| Late mark | The late penalty: a recorded mark on a sheet submitted after the deadline, counted per employee and visible to the project reviewer and HR; it never affects pay by itself; HR sees it and decides any consequences |
 | Weekly effort | Hours per project for a week; the only entry level in this module, including for salaried IT staff |
 
 ## Timesheet states

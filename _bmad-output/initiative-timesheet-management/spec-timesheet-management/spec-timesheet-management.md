@@ -43,7 +43,7 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
   - **success:** A submitted, unapproved sheet can be reopened and resubmitted by its owner; the history shows who changed what and when; an approved sheet cannot be reopened.
 - **CAP-10**
   - **intent:** An employee submits the published weekly sheet by 11:59 pm UTC on the day after it is published (Saturday for the usual Friday publication), and one who misses that deadline can still submit late, with a late penalty, or request an extension with a reason.
-  - **success:** A sheet submitted by 11:59 pm UTC on the day after publication counts as on time; a later sheet is accepted, marked late, and carries a late penalty (a recorded late mark counted per employee and visible to the project reviewer); an extension request records its reason and waives the penalty; none of these blocks submission.
+  - **success:** A sheet submitted by 11:59 pm UTC on the day after publication counts as on time; a later sheet is accepted, marked late, and carries a late penalty (a recorded late mark counted per employee and visible to the project reviewer and HR); an extension request records its reason and waives the penalty; none of these blocks submission.
 - **CAP-11** (proposed)
   - **intent:** A reviewer sees sheets with anomalies first and approves clean sheets in bulk.
   - **success:** A sheet with hours over the anomaly threshold, hours on a closed project, or a large jump from the prior week is flagged and listed first; selecting all unflagged sheets approves them in one action.
@@ -60,6 +60,12 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - **CAP-16**
   - **intent:** The owner of an employee's Project 1 (the primary project) publishes the weekly sheet in the app, usually on Friday, which makes it available to that employee to fill in.
   - **success:** An employee cannot start a week's sheet until the Project 1 owner has published it; publication records who published and when; the submission deadline counts from that moment.
+- **CAP-17**
+  - **intent:** HR can read each employee's approved hours, late marks and approval status per week.
+  - **success:** HR sees approved hours, late marks and approval status for any employee and week; HR cannot edit a sheet, its hours or its late marks.
+- **CAP-18**
+  - **intent:** An employee can see their own late marks.
+  - **success:** An employee sees every late mark recorded against them, with the week and the deadline it missed, and sees no other employee's marks.
 
 ## Constraints
 
@@ -69,7 +75,9 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - The billable flag lives on the project.
 - Identity, project list and reviewer list come from the existing HRMS, not admin-maintained lists.
 - Approved hours are immutable; a later correction creates a recorded adjustment, never a silent edit.
-- Hours are for billing and resourcing, never a performance score; no public individual rankings or shaming lists.
+- Late marks and approved hours are visible to HR, and HR decides any consequences for employees; the module never withholds, delays or reduces pay itself, and it publishes no public individual rankings or shaming lists.
+- A sheet is never marked late unless it was published; the deadline counts from publication.
+- An approved sheet is never reported to HR as incorrect; the late mark is the only mark that can attach to an approved sheet.
 - An employee has exactly one sheet per week; a second sheet for the same employee and week is refused.
 - A sheet is in exactly one state: draft, submitted, rejected or approved; approved means locked. After submission the named project reviewer approves or rejects it. Terms are defined in `glossary.md`.
 - Hours are entered per project per week, never per day; every employee, including exempt IT staff, submits weekly effort only.
@@ -110,10 +118,11 @@ An employee completes and submits a full weekly sheet in one sitting, and billin
 - Approved means locked, with no separate billed state, because invoicing is a non-goal (confirmed).
 - Utilization and realization use total available hours as the denominator in `glossary.md` (confirmed).
 - The named project reviewer approves project hours; line-manager and finance approval roles are out of scope for now (confirmed).
-- The late penalty is the late mark: a recorded mark counted per employee and visible to the project reviewer (confirmed by the owner).
-- An approved extension request waives the late penalty for that sheet.
+- The late penalty is the late mark: a recorded mark counted per employee and visible to the project reviewer and HR (confirmed by the owner); HR decides any consequences (decision A).
+- An approved extension request waives the late penalty for that sheet (confirmed with decision A).
+- HR has read-only access; HR cannot edit sheets, hours or late marks.
 - The 3-year retention is the owner's generic rule, based on US practice with no country-specific follow-up; the domain research was US-default, mostly vendor-sourced, and is not legal advice.
 
 ## Open Questions
 
-None.
+- The employee's reporting manager was named as a requester but has no role in the spec; should they see hours and late marks, read-only?

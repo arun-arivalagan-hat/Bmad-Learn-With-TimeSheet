@@ -94,6 +94,7 @@ Gamification can reduce engagement when it feels forced, and monitoring-style tr
 - The submission deadline is 11:59 pm UTC on the day after the Project 1 owner publishes the weekly sheet (usually Friday, so Saturday); later sheets are accepted and marked late.
 - Competitor research on BambooHR, Rippling and Keka is planned as a separate later run, so that open question is deferred.
 - Late sheets are accepted but carry a late penalty: a recorded late mark visible to the project reviewer, never affecting pay. Keka's late-submission penalties were noted as precedent.
+- Decision A: late marks are visible to HR, who decide consequences; the late mark remains the only penalty the tool records.
 
 ## Source appendix
 

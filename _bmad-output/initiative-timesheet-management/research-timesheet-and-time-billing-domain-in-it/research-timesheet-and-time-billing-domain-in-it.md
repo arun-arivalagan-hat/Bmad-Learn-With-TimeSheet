@@ -103,6 +103,7 @@ Not found as a standard term: "utilization realization". No formal "over-allocat
 - Retention by country is closed: the generic 3-year rule has no country-specific follow-up.
 - The payroll handoff is out of scope, so the "payroll handoff" open question is closed.
 - Late sheets carry a late penalty that is only a recorded late mark; it never withholds, delays or reduces pay, which fits the pay rule found in this research.
+- Decision A: HR decides consequences of late marks; the module still never withholds, delays or reduces pay itself.
 
 ## Source appendix
 

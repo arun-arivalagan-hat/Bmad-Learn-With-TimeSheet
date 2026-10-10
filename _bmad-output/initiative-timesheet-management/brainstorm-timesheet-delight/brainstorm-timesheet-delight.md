@@ -47,3 +47,4 @@ Ambient time capture, an hours marketplace, and a continuous rolling week. These
 - The owner holds that reminders and copy-last-week raise on-time submission. This is a belief to measure.
 - The payroll handoff and ambient time capture are out of scope.
 - Late sheets are accepted but carry a late penalty (a recorded late mark visible to the project reviewer, never affecting pay). This replaces the earlier no-penalty idea in direction 2, while keeping the kind recovery path.
+- Decision A (PRFAQ coaching): late marks and approved hours are visible to HR, who decide any consequences; the tool never changes pay itself. This replaces the earlier never-a-performance-score idea.

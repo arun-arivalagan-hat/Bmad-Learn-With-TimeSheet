@@ -83,6 +83,7 @@ updated: '2026-10-10'
 
 - Late sheets are accepted but carry a late penalty, a recorded late mark visible to the project reviewer that never affects pay; Keka's late-submission penalties were the precedent. The owner confirmed the penalty is the late mark.
 - Everything ships free for now, so no tier or price is applied from this research.
+- Decision A: late marks are visible to HR, who decide consequences, like Keka's late-submission penalties but without any effect on pay from the tool.
 
 ## Source appendix
 
