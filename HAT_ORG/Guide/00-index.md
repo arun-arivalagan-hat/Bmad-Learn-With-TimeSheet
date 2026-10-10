@@ -23,6 +23,13 @@ Status values: Not started, Next, In progress, Draft (written, awaiting owner re
 | 13 | Ticket plan (epics and stories) | John (Product Manager), Winston (System Architect), Amelia (Senior Software Engineer) | `bmad-ticket` | Not started | Not written yet |
 | 14 | Build | Amelia (Senior Software Engineer) | `bmad-build` | Not started | Not written yet |
 
+## Tools (not numbered steps)
+
+| Tool | BMad agent (owner of the skill) | Skill used | Doc |
+|------|------|------------|-----|
+| Pre-commit routine: updates the spec and these docs from uncommitted changes, without staging | Skill run directly | `bmad-precommit` (custom, built with `bmad-toolsmith`) | [bmad-precommit.md](../CoreTools/Bmad-Toolsmith/Bmad-Precommit/bmad-precommit.md) |
+| Toolsmith: builds, reviews, validates and packages skills, agents and modules; `bmad-eval` measures them (eval not yet run, harness not recorded) | Smithy (the Toolsmith), `toolsmith` module | `bmad-toolsmith`, `bmad-eval` | [bmad-toolsmith.md](../CoreTools/Bmad-Toolsmith/bmad-toolsmith.md) |
+
 ## Generated files
 
 | Skill | File or folder | Commit | Used for in the next step |
@@ -51,4 +58,6 @@ Status values: Not started, Next, In progress, Draft (written, awaiting owner re
 | `bmad-prfaq` | `_bmad-output/initiative-timesheet-management/prfaq-timesheet-management/prfaq-timesheet-management.md` | 4973556 | Concept test at ignition stage: customer (project manager), the owner's pain numbers (unverified) and decision A (HR decides consequences of late timesheets). Press release, FAQs and verdict still to come; address its gaps before `bmad-ticket`. |
 | (Claude Code agent) | `HAT_ORG/` (this index, `troubleshooting.md` and one step doc per skill or research type, in `Analyst/`, `BmadMethod/` and `CoreTools/`) | b042e23, a3b7b1d, 78fc2c0, e448b7f, 7a16381, 8b31b6b, 4973556, 191ebe6 (moved from `HAT_ORG_BMAD_DOCS/`: pending) | Adoption guide for the team; the index tracks step status. Each step doc lists the files its step generated. |
 | `bmad-project-context` | `AGENTS.md` | 191ebe6 (updated: pending) | The rules every coding agent loads at session start; now points to `HAT_ORG/`; refresh after architecture and after the first code. |
+| `bmad-toolsmith` | `.agents/skills/bmad-precommit/` (`SKILL.md`, `evals/triggers.json`) and `.claude/skills/bmad-precommit` | pending | Custom skill that runs the pre-commit routine on demand against the working tree; documented in [bmad-precommit.md](../CoreTools/Bmad-Toolsmith/Bmad-Precommit/bmad-precommit.md). |
+| `bmad-toolsmith` | `_bmad-output/eval-reports/<timestamp>-bmad-precommit-review.md` | pending | Review of `bmad-precommit`; advice on the skill, not a planning input. |
 | `bmad-project-context` | `CLAUDE.md` | 191ebe6 | One line, `@AGENTS.md`, so Claude Code loads the same rules. |

@@ -1,0 +1,20 @@
+[
+  {"query": "precommit", "should_trigger": true},
+  {"query": "run the pre-commit routine on what I changed so far", "should_trigger": true},
+  {"query": "I just added a new research report under _bmad-output. before I commit, bring the spec and HAT_ORG up to date with it", "should_trigger": true},
+  {"query": "update the connected docs before I commit, but don't stage anything", "should_trigger": true},
+  {"query": "can you do what the git pre-commit hook does, manually? I want to review the spec and HAT_ORG changes first", "should_trigger": true},
+  {"query": "sync the spec and the HAT_ORG index with my uncommitted changes", "should_trigger": true},
+  {"query": "I edited the brief and the prfaq today. make sure everything that depends on them is refreshed before I commit", "should_trigger": true},
+  {"query": "run the spec sync and docs updater agents on my working tree", "should_trigger": true},
+  {"query": "commit my changes with a short message", "should_trigger": false},
+  {"query": "push the main branch to origin", "should_trigger": false},
+  {"query": "stage everything under the spec folder", "should_trigger": false},
+  {"query": "explain what .git/hooks/pre-commit does step by step", "should_trigger": false},
+  {"query": "edit the pre-commit hook so it skips the docs updater when only HAT_ORG changed", "should_trigger": false},
+  {"query": "write a git pre-commit hook that runs eslint and prettier on staged files", "should_trigger": false},
+  {"query": "use bmad-spec to update the spec from the new product brief", "should_trigger": false},
+  {"query": "add a new step doc to HAT_ORG for the architecture step by hand", "should_trigger": false},
+  {"query": "validate the spec against the bmad-spec rules", "should_trigger": false},
+  {"query": "write the PR description for this branch", "should_trigger": false}
+]
