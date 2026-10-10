@@ -1,0 +1,39 @@
+# Digest backend-db-r1-1 (round 1, accessed 2026-10-10)
+
+Scope note: round 1 covered Q4 (versions), parts of Q1 (NestJS scheduling, ORM experience, NestJS 12) and Q3 (PostgreSQL vs MySQL features). Q1 Django/FastAPI/Spring comparison, Q2 React grids, and genuine 6-12 month retrospectives are NOT covered (see "Looked for and could not find"). Fetch results are from WebFetch (small-model summaries of pages), so quotes/figures are summary-level; confidence is capped accordingly.
+
+## Claims
+
+1. Claim: Node.js 26 is "Current" (first released 2026-05-05); v24 (Krypton) and v22 (Jod) are Active LTS. Node 25 and 20 are EOL.
+   - source: https://nodejs.org/en/about/previous-releases | publisher: Node.js Foundation | pub_date: undated (live page) | accessed 2026-10-10 | confidence: med | class: version | sources_count: 2 (with #2, partially conflicting on dates)
+2. Claim: endoflife.date lists Node 26 LTS date 2026-10-28, EOL 2029-04-30 (latest 26.11.1); Node 24 LTS since 2025-10-28, EOL 2028-04-30 (latest 24.21.0); Node 22 EOL 2027-04-30 (latest 22.23.3); Node 20 EOL 2026-04-30.
+   - source: https://endoflife.date/api/v1/products/nodejs/ | publisher: endoflife.date | pub_date: live API | accessed 2026-10-10 | confidence: med | class: version | sources_count: 1
+   - CONFLICT: the nodejs.org page summary gave "end date" Sep 2026 for v24/v22 and Oct 2026 for v26, which contradicts endoflife.date's 2027-2029 EOLs. Likely the summarizer mixed columns (Maintenance/Active dates); the nodejs.org page must be re-read directly (or schedule.json at github.com/nodejs/Release) before stating EOL dates. Also Node 26 not yet LTS until 2026-10-28 per endoflife.date: do not treat 26 as LTS today. Agreed by both: 24 and 22 are LTS lines; 20 and 25 EOL.
+3. Claim: PostgreSQL supported majors are 14-18; current minors 18.6, 17.11, 16.15, 15.19, 14.24; PG 18 EOL 2030-11-14; PG 14 EOL 2026-11-12 (about 1 month away). Five-year support per major; minor releases at least quarterly.
+   - sources: https://www.postgresql.org/support/versioning/ and https://endoflife.date/api/v1/products/postgresql/ | publisher: PostgreSQL Global Development Group; endoflife.date | pub_date: live pages | accessed 2026-10-10 | confidence: high | class: version | sources_count: 2 (agree)
+4. Claim: NestJS 12 appears to have been released (v12.0.0 release pages for nest, @nestjs/cli 12.0.0, @nestjs/swagger 12.0.0 exist on NewReleases), but the exact release date and current npm `latest` tag were NOT confirmed. The InfoQ April 2026 piece describes v12 as planned (draft PR, target early Q3 2026): all official packages move from CommonJS to ESM; Standard Schema (Zod/Valibot/ArkType) option on @Body/@Query/@Param; Vitest replaces Jest for ESM projects; oxlint replaces ESLint; Rspack replaces Webpack; CLI offers `upgrade` schematic for v11 to v12 migration. v11 support window not stated.
+   - sources: https://infoq.com/news/2026/04/nestjs-12-roadmap-esm (InfoQ, 2026-04, plan only); https://newreleases.io/project/github/nestjs/nest/release/v12.0.0 (NewReleases, from search snippet, not fetched) | accessed 2026-10-10 | confidence: low-med (version number current status unverified; official nestjs/nest GitHub releases fetch failed) | class: version | sources_count: 2 (one plan, one tracker snippet)
+5. Claim: @nestjs/schedule provides @Cron (with timeZone, name, waitForCompletion, disabled), @Interval, @Timeout and a dynamic SchedulerRegistry. Every job runs in every process, so N instances run a cron N times; docs point to @OnOneInstance() from @nestjs/locks (lock store PostgreSQL or Redis) and @WithoutOverlapping(). Queues are a separate chapter (BullMQ not verified here).
+   - source: https://docs.nestjs.com/techniques/task-scheduling | publisher: NestJS (official docs) | pub_date: live page | accessed 2026-10-10 | confidence: med-high | class: capability | sources_count: 1 (official)
+   - Relevance: reminders need a single-runner strategy if more than one instance is deployed.
+6. Claim (anecdote): a developer with a year of NestJS reports TypeORM upgrades across several NestJS/TypeORM versions broke things; recommends TypeORM for growing APIs and Prisma for fast, smaller builds. Prisma complaints (2022 Reddit): complex queries, DTO mapping boilerplate with class-validator. MikroORM: Unit of Work/explicit transactions, steeper learning curve, smaller community.
+   - source: web search summary of tabnews.com.br thread and a Reddit thread (not fetched) | publisher: community forums | pub_date: undated / 2022 | accessed 2026-10-10 | confidence: low | class: anecdote | sources_count: 1 each. Stale (Prisma complaints are from 2022; not checked whether since fixed).
+7. Claim: PostgreSQL supports unique partial indexes (`CREATE UNIQUE INDEX ... WHERE predicate`), enforcing uniqueness only among rows matching the predicate. MySQL 8.4 CREATE INDEX has no WHERE clause (no partial indexes) but supports functional key parts and DESC.
+   - sources: https://www.postgresql.org/docs/current/indexes-partial.html ; https://dev.mysql.com/doc/refman/8.4/en/create-index.html | publisher: PostgreSQL docs; Oracle/MySQL docs | pub_date: live | accessed 2026-10-10 | confidence: high (PG), med-high (MySQL: absence inferred from page) | class: capability | sources_count: 2 (one per product, both official)
+   - Relevance: a partial unique index is useful for rules like "one active/non-adjustment sheet per employee per week" while allowing adjustment rows. Plain UNIQUE(employee, week) works on both.
+8. Claim: PostgreSQL row-level locks (FOR UPDATE, FOR NO KEY UPDATE, FOR SHARE, FOR KEY SHARE) and advisory locks (session or transaction level) are documented; SKIP LOCKED/NOWAIT are on the SELECT reference page (not fetched here).
+   - source: https://www.postgresql.org/docs/current/explicit-locking.html | publisher: PostgreSQL docs | accessed 2026-10-10 | confidence: high | class: capability | sources_count: 1 (official)
+9. Claim: PostgreSQL row-level security policies can be per command (ALL/SELECT/INSERT/UPDATE/DELETE) and role-scoped; table owners bypass RLS unless `FORCE ROW LEVEL SECURITY`; superusers and BYPASSRLS roles always bypass. Implication: an INSERT+SELECT-only policy gives append-only for the application role, but owner/superuser is not bound unless forced; GRANT/REVOKE and triggers are the other documented patterns (not fetched this round).
+   - source: https://www.postgresql.org/docs/current/ddl-rowsecurity.html | publisher: PostgreSQL docs | accessed 2026-10-10 | confidence: high (facts), implication is my inference | class: capability | sources_count: 1 (official)
+
+## Leads
+- Node release schedule JSON: https://github.com/nodejs/Release/blob/main/schedule.json to resolve the nodejs.org vs endoflife.date date conflict.
+- Official NestJS release: https://github.com/nestjs/nest/releases and https://docs.nestjs.com/migration-guide (WebFetch of GitHub releases failed); npm registry https://registry.npmjs.org/@nestjs/core for dist-tags.
+- https://docs.nestjs.com/techniques/queues (BullMQ), https://www.postgresql.org/docs/current/sql-grant.html and /plpgsql-trigger.html, pgaudit, temporal_tables extension, MySQL CHECK constraint page and MySQL trigger/privilege docs.
+- NewReleases pages for @nestjs/core, @nestjs/cli 12.0.0 for release dates.
+
+## Looked for and could not find
+- A genuine 6-12 month retrospective on NestJS (or Django/FastAPI/Spring Boot) for line-of-business apps: only feature comparisons and forum opinion surfaced.
+- Any check of whether old TypeORM/Prisma complaints were since fixed (not done).
+- Django, FastAPI, Spring Boot version/maturity data; React form/grid libraries; managed PostgreSQL vs MySQL services; JSON support comparison; audit extensions; MySQL CHECK constraint detail. Not searched in round 1 (budget).
+- Official confirmation of the NestJS 12 release date and npm latest tag.

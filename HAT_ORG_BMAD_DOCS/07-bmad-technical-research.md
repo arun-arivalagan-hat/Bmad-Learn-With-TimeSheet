@@ -22,6 +22,8 @@ Use bmad-deep-recon for technical research: technical approach for a timesheet m
 
 The skill proposes a plan (dimensions, number of assistants, depth, freshness and two-source rules), waits for approval, runs parallel web searches, writes a digest per assistant, and assembles the report. In this run the dimensions were integration, architecture patterns, and implementation reality, with one assistant each.
 
+A second TR run, a stack fit check, used the select mode to confirm or challenge the owner's chosen stack (React with TypeScript, NestJS, PostgreSQL, a status column plus audit table, SendGrid, AWS) against alternatives, with three assistants and a two-source rule. It shares this doc because it is the same research type. It feeds `bmad-architecture` and left the spec unchanged.
+
 Then re-run `bmad-spec` so the module-relevant findings merge into the spec. Findings about infrastructure (stack, hosting, observability, backups, CI/CD) were declared out of scope for the spec and belong to `bmad-architecture`.
 
 ## 4. Files Generated
@@ -31,6 +33,8 @@ Then re-run `bmad-spec` so the module-relevant findings merge into the spec. Fin
 | `_bmad-output/initiative-timesheet-management/research-timesheet-module-technical-approach-insi/research-timesheet-module-technical-approach-insi.md` | The report: executive summary, options per dimension, recommendations for the architecture step, numbered sources and a staleness map. |
 | `_bmad-output/initiative-timesheet-management/research-timesheet-module-technical-approach-insi/digests/` | One digest per assistant: `integration-r1-1.md`, `patterns-r1-1.md`, `stack-deployment-r1-1.md`. |
 | `_bmad-output/initiative-timesheet-management/research-timesheet-module-technical-approach-insi/.memlog.md` | Decisions and claims, each with a verification status. |
+
+Stack fit check files, under `_bmad-output/initiative-timesheet-management/research-stack-fit-check-react-nestjs-postgresql/`: the report `research-stack-fit-check-react-nestjs-postgresql.md` (verdict per pick: five hold, SendGrid challenged), `digests/` (`backend-db-r1-1.md`, `cloud-r1-1.md`, `workflow-email-r1-1.md`, `backend-cloud-r2-1.md`, `email-workflow-r2-1.md`) and `.memlog.md`. Evidence gaps: React barely researched, no official AWS cost figures, no team retrospectives.
 
 What reached the spec: a reminder constraint (UTC, at most once per employee, reminder kind and week) and a Teams note in `premium-tier.md`. The report also records the owner decisions that infrastructure and the payroll handoff are out of scope.
 
