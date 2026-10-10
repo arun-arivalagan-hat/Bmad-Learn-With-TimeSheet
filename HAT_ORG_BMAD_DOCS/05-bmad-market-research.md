@@ -35,6 +35,15 @@ Then re-run `bmad-spec` so the findings are merged into the spec (the spec lists
 
 The re-run of `bmad-spec` also updates `spec-timesheet-management.md` (adds CAP-14 reminders, new assumptions and open questions), its `.memlog.md`, and `premium-tier.md`.
 
+### Later research runs
+
+Two further `bmad-deep-recon` runs fed the spec through `bmad-spec`:
+
+* `research-timesheet-and-time-billing-domain-in-it/`: domain research (glossary, rules, value chain). It produced `glossary.md` in the spec folder and added timesheet states, retention and pay-rule constraints.
+* `research-india-labour-rules-and-payroll-inputs-fo/`: India labour rules and payroll inputs. It shaped CAP-15 (payroll receives loss-of-pay days and payable days with a cut-off date).
+
+Each folder holds the report, `digests/` and `.memlog.md`. Evidence is mostly vendor-sourced; the India retention figure comes from one source, so the owner confirms it.
+
 ## 5. Verify
 
 * The research folder exists under the initiative and holds the report, `digests/` and `.memlog.md`.

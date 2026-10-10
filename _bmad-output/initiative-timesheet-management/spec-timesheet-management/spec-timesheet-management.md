@@ -1,7 +1,7 @@
 ---
 id: SPEC-timesheet-management
-companions: [premium-tier.md]
-sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md, ../research-employee-engagement-in-timesheet-filling/research-employee-engagement-in-timesheet-filling.md]
+companions: [premium-tier.md, glossary.md]
+sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md, ../research-employee-engagement-in-timesheet-filling/research-employee-engagement-in-timesheet-filling.md, ../research-timesheet-and-time-billing-domain-in-it/research-timesheet-and-time-billing-domain-in-it.md]
 ---
 
 > **Canonical contract.** This SPEC and the files in `companions:` are the complete, preservation-validated contract for what to build, test, and validate. Source documents listed in frontmatter are for traceability — consult them only if you need narrative rationale or prose color this contract intentionally omits.
@@ -56,6 +56,9 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - **CAP-14**
   - **intent:** Employees get a reminder when their sheet is unsubmitted, and approvers get a reminder when sheets await approval.
   - **success:** An employee with no submitted sheet for the week receives a reminder before the deadline; an approver with pending sheets receives one; employees on approved leave receive none.
+- **CAP-15**
+  - **intent:** Payroll receives each employee's loss-of-pay (LOP) days and payable days per pay period, with approved weekly effort and PTO hours as supporting data, after the project reviewer approves.
+  - **success:** For a closed pay period, payroll can read each employee's LOP days, payable days and approved weekly hours; weeks that are unapproved or rejected are never exposed as approved; a change after the payroll cut-off date reaches payroll as a recorded adjustment in the next period.
 
 ## Constraints
 
@@ -66,10 +69,15 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - Identity, project list and reviewer list come from the existing HRMS, not admin-maintained lists.
 - Approved hours are immutable; a later correction creates a recorded adjustment, never a silent edit.
 - Hours are for billing and resourcing, never a performance score; no public individual rankings or shaming lists.
+- A sheet is in exactly one state: draft, submitted, rejected or approved; approved means locked. Terms are defined in `glossary.md`.
+- Hours are entered per project per week, never per day; every employee, including exempt IT staff, submits weekly effort only.
+- Retention of submitted sheets, approved sheets and their change history follows India's labour rules for the operating country, with 5 years as the starting value.
+- A late, rejected or incorrect sheet never changes pay for hours worked; this module reports hours and never withholds or reduces pay.
+- After the payroll cut-off date, a change to an approved week reaches payroll as a recorded adjustment in the next period and never alters a closed period.
 
 ## Non-goals
 
-- Payroll, leave balances or leave approval.
+- Payroll calculation or processing, leave balances or leave approval; this initiative only hands LOP days, payable days and approved hours to payroll (CAP-15).
 - Invoicing; this initiative supplies billable hours, not invoices.
 - Attendance or clock-in tracking.
 - Auto-drafting the week from calendar or tickets in v1 (see `premium-tier.md`).
@@ -89,7 +97,14 @@ An employee completes and submits a full weekly sheet in one sitting, and billin
 - Reopening is only by the original employee and only before approval.
 - Approvals (CAP-6) stay in the core product although competitors gate them behind paid plans, because they are core in an HRMS module.
 - Premium tier boundaries and prices are unvalidated; competitor prices come from vendor pages without a second source.
-- Late-sheet handling never delays pay or hard-locks submission; this rests on US guidance and has not had legal review.
+- Late-sheet handling never delays pay or hard-locks submission; this rests on US guidance, not India's, and has not had legal review.
+- Approved means locked, with no separate billed state, because invoicing is a non-goal (confirmed).
+- Utilization and realization use total available hours as the denominator in `glossary.md` (confirmed).
+- The named project reviewer approves project hours; line-manager and finance approval roles are out of scope for now (confirmed).
+- The 5-year retention starting value comes from a single source on India's Labour Codes; the owner confirms the applicable rules.
+- The domain research was US-default, mostly vendor-sourced, and is not legal advice; the operating country is India.
+- LOP and payable days come from the HRMS attendance and leave data, as at Zoho, Keka, greytHR and Razorpay; this module does not compute attendance or leave balances.
+- Approved weekly effort is supporting data for payroll, not the paid-days basis, following Indian vendor practice.
 
 ## Open Questions
 
@@ -99,3 +114,6 @@ An employee completes and submits a full weekly sheet in one sitting, and billin
 - Which premium capabilities ship first, and how is the tier priced and gated?
 - Do reminders or copy-last-week measurably raise on-time submission? The research found no independent evidence, so a pilot is needed.
 - Which HRMS suites (BambooHR, Rippling, Keka) include timesheet engagement features, and at what tier?
+- Which Indian labour rules (Labour Codes, state Shops and Establishments Acts) apply to timesheet records, and for how long?
+- Which module computes LOP and payable days, and what is the monthly payroll cut-off date?
+- What format does payroll need, and does it also need cost rate or overtime inputs?
