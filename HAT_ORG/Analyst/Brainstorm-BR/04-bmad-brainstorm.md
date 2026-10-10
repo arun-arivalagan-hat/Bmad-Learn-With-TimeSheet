@@ -8,8 +8,8 @@ This guide explains how to use `bmad-brainstorming` to generate and converge ide
 
 ## 2. Prerequisites
 
-* Step 2 complete: an active initiative exists ([02-bmad-initiative.md](02-bmad-initiative.md)).
-* Step 3 complete: a first spec exists ([03-bmad-spec.md](03-bmad-spec.md)), so the brainstorm can answer its open questions.
+* Step 2 complete: an active initiative exists ([02-bmad-initiative.md](../../CoreTools/Bmad/Bmad-Initiative/02-bmad-initiative.md)).
+* Step 3 complete: a first spec exists ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)), so the brainstorm can answer its open questions.
 * A topic and goal, for example: "a timesheet people finish on time and enjoy, plus approval and billing flows".
 
 ## 3. Run the Skill
@@ -44,6 +44,5 @@ The re-run of `bmad-spec` also updates `spec-timesheet-management.md` (now CAP-1
 
 ## 6. Troubleshooting
 
-* **Spec did not change after the brainstorm:** Brainstorming does not edit the spec. Re-run `bmad-spec` with the brainstorm as input.
 * **Ideas feel too broad:** Treat `premium-tier.md` as candidates only; keep committed scope in the spec's capabilities and non-goals.
-* **Skills write to `_bmad-output/` root:** No initiative is active. Ask `bmad` to set it.
+* **Spec unchanged after the brainstorm, or files in the wrong folder:** See [troubleshooting.md](../../Guide/troubleshooting.md).

@@ -8,8 +8,8 @@ This guide explains how to run competitive research (Mary's **CR** option) with 
 
 ## 2. Prerequisites
 
-* Steps 1 to 3 complete: installation, an active initiative and a spec ([03-bmad-spec.md](03-bmad-spec.md)).
-* Step 5 recommended: the market research covered standalone trackers, so this run compares HRMS suites against it ([05-bmad-market-research.md](05-bmad-market-research.md)).
+* Steps 1 to 3 complete: installation, an active initiative and a spec ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
+* Step 5 recommended: the market research covered standalone trackers, so this run compares HRMS suites against it ([05-bmad-market-research.md](../Market-Research-MR/05-bmad-market-research.md)).
 * The named competitors and the decision the teardown serves.
 
 ## 3. Run the Skill

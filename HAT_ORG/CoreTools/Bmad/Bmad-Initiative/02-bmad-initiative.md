@@ -6,11 +6,11 @@
 
 This guide explains how to create a BMAD **initiative**: the named folder under `_bmad-output/` that groups every document for one body of work (spec, tickets, and later UX or architecture files). Later skills (`bmad-spec`, `bmad-ticket`, `bmad-build`) read and write inside the active initiative.
 
-Example in this repository: `timesheet-management` (weekly effort capture linked to billing and utilization).
+Example in this repository: `initiative-timesheet-management` (weekly effort capture linked to billing and utilization).
 
 ## 2. Prerequisites
 
-* Step 1 complete: BMAD installed and `bmad status` succeeds ([01-bmad-installation-and-setup.md](01-bmad-installation-and-setup.md)).
+* Step 1 complete: BMAD installed and `bmad status` succeeds ([01-bmad-installation-and-setup.md](../Bmad-Setup/01-bmad-installation-and-setup.md)).
 * A short description of the work (name and objective).
 
 ## 3. Create the Initiative
@@ -39,10 +39,8 @@ Documents follow the layout `<type>-<slug>/<type>-<slug>.md`. Here the initiativ
 
 ## 6. Troubleshooting
 
-* **Skills write to `_bmad-output/` root instead of the initiative:** No initiative is active. Ask `bmad` to set the active initiative.
-* **Wrong initiative receives new files:** Ask `bmad` to switch the active initiative before running the next skill.
-* **Skill hands off to `bmad` when you run `bmad-spec`:** This is expected when no initiative is active; set one first.
+* **Files in the wrong folder, wrong initiative, or a hand-off to `bmad`:** See [troubleshooting.md](../../../Guide/troubleshooting.md).
 
 ## 7. Next Step
 
-Run `bmad-spec` (guide to be added once the spec files are staged).
+Run `bmad-spec` ([03-bmad-spec.md](../../../BmadMethod/Bmad-spec/03-bmad-spec.md)).

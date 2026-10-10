@@ -8,7 +8,7 @@ This guide explains how to write a product brief with `bmad-product-brief`. The 
 
 ## 2. Prerequisites
 
-* Steps 1 and 2 complete: installation and an active initiative ([02-bmad-initiative.md](02-bmad-initiative.md)).
+* Steps 1 and 2 complete: installation and an active initiative ([02-bmad-initiative.md](../../CoreTools/Bmad/Bmad-Initiative/02-bmad-initiative.md)).
 * Steps 3 to 8 recommended: the spec, brainstorm and research are the source material, so the brief can be drafted from them rather than from scratch.
 * The audience and purpose of the brief (here: non-developer readers in the organisation, tracking employee work every week).
 
@@ -40,7 +40,5 @@ Re-run it in update mode when the spec or owner decisions change, or in validate
 
 ## 6. Troubleshooting
 
-* **The skill reports BMad is not set up:** run the `bmad` skill's setup, then run the skill again.
-* **No active initiative:** set one with the `bmad` skill ([02-bmad-initiative.md](02-bmad-initiative.md)).
-* **The brief drifts from the spec:** run it in update mode against the spec; do not patch it by hand.
+* **BMad not set up, no active initiative, or the brief drifts from the spec:** See [troubleshooting.md](../../Guide/troubleshooting.md).
 * **Success targets are missing:** they are marked as assumptions on purpose; set them after the first weeks of real data.

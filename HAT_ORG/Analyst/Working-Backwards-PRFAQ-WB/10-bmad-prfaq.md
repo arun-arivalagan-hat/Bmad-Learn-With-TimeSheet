@@ -8,8 +8,8 @@ This guide explains how to test a concept with `bmad-prfaq`. A PRFAQ is a press 
 
 ## 2. Prerequisites
 
-* Steps 1 and 2 complete: installation and an active initiative ([02-bmad-initiative.md](02-bmad-initiative.md)).
-* Steps 3 to 9 recommended: the spec, research and brief are its inputs ([09-bmad-product-brief.md](09-bmad-product-brief.md)).
+* Steps 1 and 2 complete: installation and an active initiative ([02-bmad-initiative.md](../../CoreTools/Bmad/Bmad-Initiative/02-bmad-initiative.md)).
+* Steps 3 to 9 recommended: the spec, research and brief are its inputs ([09-bmad-product-brief.md](../Product-Brief-PB/09-bmad-product-brief.md)).
 * Time to answer the coach's questions. The skill asks about the customer, the pain and the numbers, and it records the owner's answers.
 
 ## 3. Run the Skill
@@ -30,7 +30,7 @@ Re-run it to continue from the saved stage.
 |------|---------|
 | `_bmad-output/initiative-timesheet-management/prfaq-timesheet-management/prfaq-timesheet-management.md` | The PRFAQ: frontmatter with status and stage, plus coaching notes (customer, pain, owner decisions, open questions). Later stages add the press release, FAQs and verdict. |
 
-Per `help.md`, the skill can also write a `-distillate.md` beside it. None exists yet.
+The skill can also write a `-distillate.md` beside it. None exists yet.
 
 ## 5. Verify
 
@@ -41,7 +41,5 @@ Per `help.md`, the skill can also write a `-distillate.md` beside it. None exist
 
 ## 6. Troubleshooting
 
-* **The skill reports BMad is not set up:** run the `bmad` skill's setup, then run the skill again.
-* **No active initiative:** set one with the `bmad` skill ([02-bmad-initiative.md](02-bmad-initiative.md)).
-* **The PRFAQ contradicts the spec or brief:** update the spec with `bmad-spec` and the brief in update mode; do not patch by hand.
+* **BMad not set up, no active initiative, or the PRFAQ contradicts the spec or brief:** See [troubleshooting.md](../../Guide/troubleshooting.md).
 * **The status stays at `ignition`:** the open questions are unanswered. Answer them and re-run.

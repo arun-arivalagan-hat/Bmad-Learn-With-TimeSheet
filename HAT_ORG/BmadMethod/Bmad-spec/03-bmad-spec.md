@@ -8,7 +8,7 @@ This guide explains how to use `bmad-spec`, the hub skill that distills any inpu
 
 ## 2. Prerequisites
 
-* Step 2 complete: an active initiative exists ([02-bmad-initiative.md](02-bmad-initiative.md)).
+* Step 2 complete: an active initiative exists ([02-bmad-initiative.md](../../CoreTools/Bmad/Bmad-Initiative/02-bmad-initiative.md)).
 * Source input: for this repository, the HAT timesheet form plus the objective "capture actual work effort and link it to billing/utilization".
 
 ## 3. Run the Skill
@@ -25,12 +25,12 @@ The skill appends findings to a running log (`.memlog.md`) and re-derives the sp
 
 | File | Purpose |
 |------|---------|
-| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/spec-timesheet-management.md` | The spec: Why, Capabilities (CAP-1 to CAP-15), Constraints, Non-goals, Success signal, Assumptions. |
+| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/spec-timesheet-management.md` | The spec: Why, Capabilities (see the spec for the current CAP list), Constraints, Non-goals, Success signal, Assumptions. |
 | `_bmad-output/initiative-timesheet-management/spec-timesheet-management/.memlog.md` | Running log of decisions, capabilities, constraints, assumptions and open questions the spec is derived from. |
-| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/premium-tier.md` | Companion added after the brainstorm ([04-bmad-brainstorm.md](04-bmad-brainstorm.md)): premium tier candidates, not committed scope. |
-| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/glossary.md` | Companion added after the domain research ([06-bmad-domain-research.md](06-bmad-domain-research.md)): domain terms and timesheet states. |
+| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/premium-tier.md` | Companion added after the brainstorm ([04-bmad-brainstorm.md](../../Analyst/Brainstorm-BR/04-bmad-brainstorm.md)): premium tier candidates, not committed scope. |
+| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/glossary.md` | Companion added after the domain research ([06-bmad-domain-research.md](../../Analyst/Domain-Research-DR/06-bmad-domain-research.md)): domain terms and timesheet states. |
 
-After the brainstorm re-run the spec has CAP-1 to CAP-13 (CAP-8 to CAP-13 added), and the billable-flag and identity-source questions below are answered as constraints. The research re-runs then added CAP-14 (reminders) and CAP-15 (payroll handoff of loss-of-pay and payable days), so the spec now has CAP-1 to CAP-15.
+After the brainstorm re-run the spec has CAP-1 to CAP-13 (CAP-8 to CAP-13 added), and the billable-flag and identity-source questions below are answered as constraints. The research re-runs then added CAP-14 (reminders) and CAP-15 (payroll handoff). The owner later retired CAP-15 and put the payroll handoff out of scope; its ID is never reused. Later updates added CAP-16 and above; the spec holds the current list.
 
 ## 5. Review the Spec
 
@@ -43,5 +43,5 @@ After the brainstorm re-run the spec has CAP-1 to CAP-13 (CAP-8 to CAP-13 added)
 
 * **Spec is too thin:** `bmad-spec` distills and does not coach. For vague input use `bmad-product-brief` or `bmad-prd` first, then feed the result to `bmad-spec`.
 * **Memlog fails to parse:** Frontmatter values containing a colon must be quoted.
-* **Requirements changed later:** Re-run `bmad-spec` with the new input instead of editing the spec by hand.
+* **Requirements changed later, or another document needs to reach the spec:** See [troubleshooting.md](../../Guide/troubleshooting.md).
 

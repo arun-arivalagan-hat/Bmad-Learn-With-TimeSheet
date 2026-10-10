@@ -8,8 +8,8 @@ This guide explains how to run domain research (Mary's **DR** option) with `bmad
 
 ## 2. Prerequisites
 
-* Step 3 complete: a spec exists ([03-bmad-spec.md](03-bmad-spec.md)).
-* Step 5 recommended: the market research ran first ([05-bmad-market-research.md](05-bmad-market-research.md)).
+* Step 3 complete: a spec exists ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
+* Step 5 recommended: the market research ran first ([05-bmad-market-research.md](../Market-Research-MR/05-bmad-market-research.md)).
 * A domain topic and the decision it serves.
 
 ## 3. Run the Skill
@@ -40,6 +40,5 @@ The India run first shaped CAP-15 (payroll handoff), but the owner later retired
 
 ## 6. Troubleshooting
 
-* **Spec did not change after the research:** Research does not edit the spec. Re-run `bmad-spec` with the report as input.
 * **Legal claims look unconfirmed:** The report states no official source was read; confirm with legal or compliance before relying on them.
-* **Skill writes to `_bmad-output/` root:** No initiative is active. Ask `bmad` to set it.
+* **Spec unchanged after the research, or files in the wrong folder:** See [troubleshooting.md](../../Guide/troubleshooting.md).

@@ -8,8 +8,8 @@ This guide explains how to run technical research (Mary's **TR** option) with `b
 
 ## 2. Prerequisites
 
-* Steps 1 to 3 complete: installation, an active initiative and a spec ([03-bmad-spec.md](03-bmad-spec.md)).
-* Steps 5 and 6 helpful: the market and domain research set the scope ([05-bmad-market-research.md](05-bmad-market-research.md), [06-bmad-domain-research.md](06-bmad-domain-research.md)).
+* Steps 1 to 3 complete: installation, an active initiative and a spec ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
+* Steps 5 and 6 helpful: the market and domain research set the scope ([05-bmad-market-research.md](../Market-Research-MR/05-bmad-market-research.md), [06-bmad-domain-research.md](../Domain-Research-DR/06-bmad-domain-research.md)).
 * A topic, the decision it serves, and any known constraints (here: the existing HRMS stack was unknown, so options are general).
 
 ## 3. Run the Skill
@@ -48,5 +48,4 @@ What reached the spec: a reminder constraint (UTC, at most once per employee, re
 ## 6. Troubleshooting
 
 * **The report names no winner:** that is intended. It gives options with trade-offs; decide in `bmad-architecture`.
-* **Claims look weak:** most are vendor docs or search summaries. Treat low-confidence claims as leads.
-* **The spec did not change:** research does not edit the spec. Re-run `bmad-spec` with the report as input.
+* **Weak claims, or the spec did not change:** See [troubleshooting.md](../../Guide/troubleshooting.md).

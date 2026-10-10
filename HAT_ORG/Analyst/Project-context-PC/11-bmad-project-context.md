@@ -4,12 +4,12 @@
 
 ## 1. Purpose
 
-This guide explains how to create the repository's agent instructions with `bmad-project-context`. It writes a small, verified block of rules into `AGENTS.md`, plus a `CLAUDE.md` that imports it, so every AI assistant that opens the repository starts with the same rules and does not need them repeated each session. It records policy, where things are, how to run and verify the project, and pitfalls that agents have actually hit. It does not describe the whole repository, list the stack, or replace the team docs in `HAT_ORG_BMAD_DOCS/`.
+This guide explains how to create the repository's agent instructions with `bmad-project-context`. It writes a small, verified block of rules into `AGENTS.md`, plus a `CLAUDE.md` that imports it, so every AI assistant that opens the repository starts with the same rules and does not need them repeated each session. It records policy, where things are, how to run and verify the project, and pitfalls that agents have actually hit. It does not describe the whole repository, list the stack, or replace the team docs in `HAT_ORG/`.
 
 ## 2. Prerequisites
 
-* Step 1 complete: BMad is installed ([01-bmad-installation-and-setup.md](01-bmad-installation-and-setup.md)).
-* Steps 2 and 3 recommended: an active initiative and a spec give the skill real rules to record ([03-bmad-spec.md](03-bmad-spec.md)).
+* Step 1 complete: BMad is installed ([01-bmad-installation-and-setup.md](../../CoreTools/Bmad/Bmad-Setup/01-bmad-installation-and-setup.md)).
+* Steps 2 and 3 recommended: an active initiative and a spec give the skill real rules to record ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
 * A repository with no `AGENTS.md` or `CLAUDE.md` (setup), or an existing one (adopt, refresh).
 
 ## 3. Run the Skill

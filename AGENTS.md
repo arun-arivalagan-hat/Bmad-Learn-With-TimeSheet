@@ -11,13 +11,13 @@ Weekly timesheet module for an HRMS. Planning only so far, no application code y
 - Never reuse or renumber a capability ID. CAP-15 is retired; payroll, loss-of-pay days and the payroll cut-off stay out of scope.
 - Owner decisions in the spec memlog and in any "Owner decisions" section outrank research findings. Record a conflict as an open question; never reverse the decision.
 - Keep stack, hosting, observability, backups, CI/CD and email vendor out of the spec. They belong to the architecture step.
-- Never commit, push or stage; the pre-commit hook stages only the spec folder and `HAT_ORG_BMAD_DOCS/`.
+- Never commit, push or stage; the pre-commit hook stages only the spec folder and `HAT_ORG/`.
 
 ## Where things are
 
 - Spec and its companions: `_bmad-output/initiative-timesheet-management/spec-timesheet-management/`. Research, brainstorm, brief and PRFAQ folders sit beside it.
 - Active initiative: `_bmad/custom/config.user.toml`.
-- Step docs for the team: `HAT_ORG_BMAD_DOCS/`, indexed in `00-index.md`; one doc per research type.
+- Step docs for the team: `HAT_ORG/`, indexed in `HAT_ORG/Guide/00-index.md`; one doc per research type, grouped in `Analyst/`, `BmadMethod/` and `CoreTools/`. Problems shared by several steps live in `HAT_ORG/Guide/troubleshooting.md`.
 - Commit-time automation: `.git/hooks/pre-commit`, which is not tracked and is per clone. It runs `bmad-spec-sync` then `bmad-docs-updater` (`.claude/agents/`) and takes about a minute.
 
 ## Running and verifying

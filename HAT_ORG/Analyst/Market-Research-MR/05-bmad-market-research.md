@@ -8,9 +8,9 @@ This guide explains how to use `bmad-deep-recon` to research a topic that suppor
 
 ## 2. Prerequisites
 
-* Step 2 complete: an active initiative exists ([02-bmad-initiative.md](02-bmad-initiative.md)).
-* Step 3 complete: a spec exists ([03-bmad-spec.md](03-bmad-spec.md)).
-* Step 4 recommended: the brainstorm raised the premium-tier and reminder questions the research answers ([04-bmad-brainstorm.md](04-bmad-brainstorm.md)).
+* Step 2 complete: an active initiative exists ([02-bmad-initiative.md](../../CoreTools/Bmad/Bmad-Initiative/02-bmad-initiative.md)).
+* Step 3 complete: a spec exists ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
+* Step 4 recommended: the brainstorm raised the premium-tier and reminder questions the research answers ([04-bmad-brainstorm.md](../Brainstorm-BR/04-bmad-brainstorm.md)).
 * A topic, a research type (here `market`) and the decision the research serves.
 
 ## 3. Run the Skill
@@ -37,9 +37,9 @@ The re-run of `bmad-spec` also updates `spec-timesheet-management.md` (adds CAP-
 
 ### Other research types
 
-Each research type has its own step doc: domain research (DR) in [06-bmad-domain-research.md](06-bmad-domain-research.md), technical research (TR) in [07-bmad-technical-research.md](07-bmad-technical-research.md), and competitive research (CR) in [08-bmad-competitive-research.md](08-bmad-competitive-research.md).
+Each research type has its own step doc: domain research (DR) in [06-bmad-domain-research.md](../Domain-Research-DR/06-bmad-domain-research.md), technical research (TR) in [07-bmad-technical-research.md](../Technical-research-TR-TS/07-bmad-technical-research.md), and competitive research (CR) in [08-bmad-competitive-research.md](../Competitive-research-CR/08-bmad-competitive-research.md).
 
-The later spec updates also record owner decisions (one sheet per employee per week, Project 1 owner publishes the sheet via CAP-16, 11:59 pm UTC deadline with a late mark, 3-year retention, all capabilities free for now). Market evidence is mostly vendor-sourced.
+Market evidence is mostly vendor-sourced. Owner decisions made after the research are recorded in the spec, not here.
 
 ## 5. Verify
 
@@ -51,6 +51,4 @@ The later spec updates also record owner decisions (one sheet per employee per w
 
 ## 6. Troubleshooting
 
-* **Spec did not change after the research:** Research does not edit the spec. Re-run `bmad-spec` with the report as input.
-* **Findings look thin or vendor-biased:** The report states its caveats; treat vendor-sourced claims as starting points and validate before pricing decisions.
-* **Skill writes to `_bmad-output/` root:** No initiative is active. Ask `bmad` to set it.
+* **Shared problems:** See [troubleshooting.md](../../Guide/troubleshooting.md) for an unchanged spec, thin or vendor-biased findings, or files in the wrong folder.
