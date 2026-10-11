@@ -15,8 +15,12 @@ Source: research-timesheet-and-time-billing-domain-in-it. Mostly vendor sources;
 | Lock | An approved sheet becomes read-only |
 | Adjustment entry | A correction to an approved sheet, recorded against the original week and never a silent edit |
 | Published sheet | The weekly sheet the Project 1 owner has made available to an employee, usually on Friday; the submission deadline (11:59 pm UTC the next day) counts from publication |
-| Late mark | The late penalty: a recorded mark on a sheet submitted after the deadline, counted per employee and visible to the project reviewer and HR; it never affects pay by itself; HR sees it and decides any consequences |
+| Late mark | The late penalty: a recorded mark on a sheet submitted after the deadline, counted per employee and visible to the employee, project reviewer, reporting manager and HR; it never affects pay by itself; HR sees it and decides any consequences |
 | Weekly effort | Hours per project for a week; the only entry level in this module, including for salaried IT staff |
+| Project block | One project's entry on a sheet: project, tasks/activities, hours and reviewer; up to 5 per sheet |
+| Project reviewer | The person named for a project who approves or rejects the hours in that project's block |
+| Project 1 owner | The owner of an employee's primary project; publishes the sheet and sees submission status; never approves |
+| Reporting manager | The employee's line manager; read-only view of direct reports' hours and late marks; never approves |
 
 ## Timesheet states
 
@@ -24,8 +28,8 @@ Source: research-timesheet-and-time-billing-domain-in-it. Mostly vendor sources;
 |---|---|
 | Draft | Started, not submitted; the employee can edit |
 | Submitted | Sent to the project reviewer; the employee can reopen it until approval |
-| Rejected | Returned with a reason; the employee edits and resubmits |
-| Approved | Accepted by the reviewer; locked |
+| Rejected | A block returned with a comment; the employee edits that block and resubmits |
+| Approved | Every project block accepted by its reviewer; locked |
 
 Billing and invoicing states belong to another system because invoicing is a non-goal.
 
@@ -33,4 +37,4 @@ Billing and invoicing states belong to another system because invoicing is a non
 
 - Utilization denominator: total hours or hours net of leave. This spec uses total available hours (confirmed).
 - Whether "locked" and "billed" are separate states.
-- Whether the project manager or the line manager approves.
+- Whether the project manager or the line manager approves. This spec: only the named project reviewer approves; the line manager has a read-only view (confirmed).

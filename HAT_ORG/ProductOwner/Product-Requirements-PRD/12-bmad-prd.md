@@ -22,25 +22,30 @@ Use bmad-prd to write a PRD for Timesheet Management from the spec, brief, PRFAQ
 
 The skill detects whether to create, update or validate, and offers to resume an in-progress PRD before starting a new one. Re-run it in update mode when requirements change, or in validate mode for a critique.
 
-After the run, use `bmad-spec` with the PRD as input so the spec absorbs it. Do not edit the spec by hand; see [troubleshooting.md](../../Guide/troubleshooting.md).
+After the run, use `bmad-spec` with the PRD as input so the spec absorbs it. This was done: the spec was re-derived from its memlog and the PRD (CAP-19 and CAP-20 added; CAP-6, 7, 11 and 13 confirmed for v1; the PRD is listed as a spec companion; see [03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)). Do not edit the spec by hand; see [troubleshooting.md](../../Guide/troubleshooting.md).
 
 ## 4. Files Generated
 
 | File | Purpose |
 |------|---------|
-| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/.memlog.md` | Decision log for the run (stakes, working mode, inputs). Present so far. |
-| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/prd-timesheet-management.md` | The PRD itself. Not present yet at the time of writing; it appears when the draft is written. |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/prd-timesheet-management.md` | The PRD (frontmatter `status: final`, 2026-10-11): vision, user journeys, FR-1 to FR-22 each tied to a spec CAP, success metrics; section 9 says no questions are open. |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/.memlog.md` | Decision log for the run (stakes, working mode, owner decisions, deferred items). |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/review-rubric.md` | Output of the review subagent: quality verdict and findings (approval granularity, late-mark rules, metrics). Review advice, not a planning input. |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/reconcile-spec.md` | Output of the reconciliation subagent: gaps between the PRD and the spec, brief and PRFAQ. Review advice, not a planning input. |
+
+In this run the `bmad-review` skill (structure and prose lenses) polished the PRD, and the owner accepted the review fixes: approval per project block, lateness judged on first submission, added FR-21 (40-hour cap) and FR-22 (Project 1 owner status view).
 
 ## 5. Verify
 
-* The PRD file exists and its frontmatter `status` is `final` only after the owner has reviewed it.
-* Every `[ASSUMPTION]`, open question and `[NOTE FOR PM]` is resolved or logged in the memlog.
+* The PRD file exists and its frontmatter `status` is `final` only after the owner has reviewed it (this run: final, 2026-10-11).
+* Every `[ASSUMPTION]`, open question and `[NOTE FOR PM]` is resolved or logged in the memlog. In this run section 9 reads "No questions are open".
 * Owner decisions in the spec memlog are kept: payroll, loss-of-pay and the payroll cut-off stay out of scope, and CAP-15 stays retired.
 * No stack, hosting, observability, backup, CI/CD or email vendor choice appears; those belong to `bmad-architecture`.
 
 ## 6. Troubleshooting
 
 * **BMad not set up, no active initiative, or the spec not updated after the PRD:** See [troubleshooting.md](../../Guide/troubleshooting.md).
+* **Legal question on 3-year retention and late-mark use:** closed by the owner on 2026-10-11. Both stand with no legal review; the owner accepts the risk, so it is recorded as a risk, not an open question. Do not reopen it without a new owner decision.
 * **A PRD run is stuck at draft:** finalizing sets `status: final` only after the memlog audit, input reconciliation and reviewer pass; resume the run instead of starting a new one.
 
 ## Skill Folder Structure
