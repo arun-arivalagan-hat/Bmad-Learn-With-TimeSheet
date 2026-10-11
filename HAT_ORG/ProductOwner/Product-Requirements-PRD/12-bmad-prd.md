@@ -28,17 +28,19 @@ After the run, use `bmad-spec` with the PRD as input so the spec absorbs it. Thi
 
 | File | Purpose |
 |------|---------|
-| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/prd-timesheet-management.md` | The PRD (frontmatter `status: final`, 2026-10-11): vision, user journeys, FR-1 to FR-22 each tied to a spec CAP, success metrics; section 9 says no questions are open. |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/prd-timesheet-management.md` | The PRD (frontmatter `status: final`, 2026-10-11): vision, user journeys, FR-1 to FR-25 each tied to a spec CAP, success metrics; section 9 holds the open questions (18 labelled, with provisional defaults P1 to P15 in section 10.1) for the owner to decide before build. |
 | `_bmad-output/initiative-timesheet-management/prd-timesheet-management/.memlog.md` | Decision log for the run (stakes, working mode, owner decisions, deferred items). |
-| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/review-rubric.md` | Output of the review subagent: quality verdict and findings (approval granularity, late-mark rules, metrics). Review advice, not a planning input. |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/review-rubric.md` | Output of the review subagent: quality verdict and findings, refreshed by later passes. Review advice, not a planning input. |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/validation-report.md` and `validation-report.html` | Validate-mode report (grade Fair after the eighth review: rubric walker plus adversarial reviewer; findings on edge cases of the late-mark, assignment-pending and alternate-chain rules). Critique only; the PRD was not changed by it. |
+| `_bmad-output/initiative-timesheet-management/prd-timesheet-management/review-adversarial-general.md` | Output of the adversarial reviewer (ninth pass): sheet lifecycle gaps, unintended ways to avoid a late mark, provisional items written as policy. Review advice, not a planning input. |
 | `_bmad-output/initiative-timesheet-management/prd-timesheet-management/reconcile-spec.md` | Output of the reconciliation subagent: gaps between the PRD and the spec, brief and PRFAQ. Review advice, not a planning input. |
 
-In this run the `bmad-review` skill (structure and prose lenses) polished the PRD, and the owner accepted the review fixes: approval per project block, lateness judged on first submission, added FR-21 (40-hour cap) and FR-22 (Project 1 owner status view).
+In this run the `bmad-review` skill (structure and prose lenses) polished the PRD, and the owner accepted the review fixes: approval per project block, lateness judged on first submission, added FR-21 (40-hour cap) and FR-22 (Project 1 owner status view). Later owner decisions on 2026-10-11 (spec updated first, then the PRD) grew it to FR-25: delegate and HR cut-off publication, deadline of publication plus 24 hours, block-level states and versions, leave-only sheets, adjustment entries, and an HR exception queue. The status stayed `final` throughout; validation runs were critique only.
 
 ## 5. Verify
 
-* The PRD file exists and its frontmatter `status` is `final` only after the owner has reviewed it (this run: final, 2026-10-11).
-* Every `[ASSUMPTION]`, open question and `[NOTE FOR PM]` is resolved or logged in the memlog. In this run section 9 reads "No questions are open".
+* The PRD file exists and its frontmatter `status` is `final` only after the owner has reviewed it (this run: final, 2026-10-11, kept after later owner-decided updates).
+* Every `[ASSUMPTION]`, open question and `[NOTE FOR PM]` is resolved or logged in the memlog. In this run section 9 lists the open questions on purpose; they are owner decisions still to come, and the provisional defaults P1 to P15 are marked as not approved policy.
 * Owner decisions in the spec memlog are kept: payroll, loss-of-pay and the payroll cut-off stay out of scope, and CAP-15 stays retired.
 * No stack, hosting, observability, backup, CI/CD or email vendor choice appears; those belong to `bmad-architecture`.
 
@@ -46,6 +48,7 @@ In this run the `bmad-review` skill (structure and prose lenses) polished the PR
 
 * **BMad not set up, no active initiative, or the spec not updated after the PRD:** See [troubleshooting.md](../../Guide/troubleshooting.md).
 * **Legal question on 3-year retention and late-mark use:** closed by the owner on 2026-10-11. Both stand with no legal review; the owner accepts the risk, so it is recorded as a risk, not an open question. Do not reopen it without a new owner decision.
+* **Validation reports show critical or high findings on a `final` PRD:** the reports are critique only. Owner decisions are never reversed by them; wording-only fixes go in, anything needing policy stays an open question in section 9.
 * **A PRD run is stuck at draft:** finalizing sets `status: final` only after the memlog audit, input reconciliation and reviewer pass; resume the run instead of starting a new one.
 
 ## Skill Folder Structure

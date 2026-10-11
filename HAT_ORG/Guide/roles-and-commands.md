@@ -21,9 +21,10 @@ The team lead column is filled in by the team. The docs updater never invents a 
 | `UXDesigner/` | Sally (UX Designer) | Not assigned yet | `/bmad-ux` | Capturing how the product looks and behaves | Created by the first run |
 | `Developer/` | Amelia (Senior Software Engineer) | Not assigned yet | `/bmad-build`, `/bmad-qa-generate-e2e-tests`, `/bmad-code-review`, `/bmad-retrospective` | Building a story, testing, reviewing, closing an epic | Created by the first run |
 | `ScrumMaster/` | No persona | Not assigned yet | Uses `/bmad-ticket` (status, what is ready), `/bmad-retrospective`, `/bmad-correct-course` | Running the board, closing an epic, handling a mid-sprint change | Docs stay with the owning role: [ProductOwner](../ProductOwner/), [Developer](../Developer/) |
-| `TeamLead/` | No persona | Not assigned yet | Uses `/bmad-code-review`, `/bmad-walkthrough`, `/bmad-review`, `/bmad-precommit` | Reviewing changes before they are committed | Docs stay with the owning role: [Developer](../Developer/), [CoreTools](../CoreTools/) |
+| `TeamLead/` | No persona | Not assigned yet | Uses `/bmad-code-review`, `/bmad-walkthrough`, `/bmad-review`, `/bmad-precommit` | Reviewing changes before they are committed | Docs stay with the owning role: [Developer](../Developer/) (not created yet), [ToolSmith](../ToolSmith/) for `/bmad-precommit`; `/bmad-review`: [bmad-review.md](../CoreTools/Bmad/Bmad-Review/bmad-review.md) |
 | `BmadMethod/` | No agent | Not assigned yet | `/bmad-spec` | Folding any result into the spec | [BmadMethod](../BmadMethod/) |
-| `CoreTools/` | BMad Agent, Smithy | Not assigned yet | `/bmad`, `/bmad-toolsmith`, `/bmad-precommit` | Setup, initiative, building skills, the pre-commit routine | [CoreTools](../CoreTools/) |
+| `CoreTools/` | BMad Agent | Not assigned yet | `/bmad`, `/bmad-review` | Setup, initiative, reviewing a diff or document | [CoreTools](../CoreTools/) |
+| `ToolSmith/` | Smithy (the Toolsmith) | Not assigned yet | `/bmad-toolsmith`, `/bmad-eval`, `/bmad-precommit` | Building skills, agents and modules; the pre-commit routine | [ToolSmith](../ToolSmith/) |
 
 `/bmad-ticket` is shared by John, Winston and Amelia; its doc lives under `ProductOwner/`.
 

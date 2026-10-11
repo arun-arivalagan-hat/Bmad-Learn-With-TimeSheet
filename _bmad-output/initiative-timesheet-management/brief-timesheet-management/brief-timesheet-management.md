@@ -1,8 +1,8 @@
 ---
 title: Product Brief: Timesheet Management
-status: draft
+status: final
 created: 2026-10-10
-updated: 2026-10-10
+updated: 2026-10-11
 ---
 
 # Product Brief: Timesheet Management
@@ -11,16 +11,16 @@ updated: 2026-10-10
 
 ## Executive Summary
 
-Every week, employees report what they worked on using the HAT timesheet form. Today that form is not connected to billing or to how busy each person is, so decisions about billing clients and planning people's time rest on plans, not on the hours actually worked.
+Every week, employees report what they worked on using the HAT timesheet form (our current weekly form). Today that form is not connected to billing or to how busy each person is, so decisions about billing clients and planning people's time rest on plans, not on the hours actually worked.
 
-Timesheet Management is a weekly timesheet inside our HR system. Each week the sheet is opened for employees, they record the hours they spent on each of their projects, the project reviewer approves or sends it back, and finance and managers can then read the approved hours per project without anyone re-typing them.
+Timesheet Management is a weekly timesheet inside our HR system. Each week the sheet is published for employees, they record the hours they spent on each of their projects, the project reviewer approves or sends it back, and finance and managers can then read the approved hours per project without anyone re-typing them.
 
 The aim is simple: **track the work of every employee every week, accurately and with little effort, and tie those hours to billing and to how people's time is used.** The tool should also be quick and pleasant enough that people submit on time without being chased.
 
 ## The Problem
 
 - Employees fill in the weekly form, but the hours are not tied to billing or utilisation (how much of people's time goes to billable work). Billing and resourcing decisions rest on plans, not on real hours.
-- Reviewing and approving hours is slow and unclear. When approval is late, billing is late, and money can be lost between work done and work billed.
+- Reviewing and approving hours is slow and unclear, and project managers spend about 19 hours a week chasing and collecting hours (owner's figure, not yet verified). When approval is late, billing is late, and money can be lost between work done and work billed.
 - Timesheets are widely disliked as busywork. People forget them, enter them late, or fill them from memory.
 - Corrections after the fact are risky: if approved hours can be changed quietly, billed numbers stop being trustworthy.
 
@@ -28,14 +28,25 @@ The aim is simple: **track the work of every employee every week, accurately and
 
 A weekly timesheet that works like this:
 
-1. **The sheet is opened.** The owner of an employee's main project (Project 1) opens the week's sheet in the app, usually on Friday.
-2. **The employee fills it in.** They log hours on up to five projects, with what they worked on and who reviews it, plus time off (8 hours per day), their key accomplishments, and what they learned (marked Beginner, Intermediate or Advanced). Their name and email fill in automatically.
-3. **Deadline.** The sheet is due by 11:59 pm UTC the day after it opens (Saturday for a Friday opening). A late sheet is still accepted but gets a **late mark**, which the employee, the reviewer and HR can see. A sheet that was never opened cannot be marked late.
-4. **Review.** The named project reviewer approves the hours or rejects them with a reason. A rejected sheet returns to the employee to fix and resubmit. Nobody approves their own timesheet: if a project manager is the named reviewer of their own sheet, their reporting manager (or an authorised delivery manager) approves it instead.
-5. **Locked.** Once approved, the hours are locked. If a mistake is found later, it is fixed with a recorded correction, never a silent edit.
+1. **The sheet is published.** Each week runs Monday to Monday, India time. After the Friday 12:00 PM IST cut-off, the owner of the employee's main project (Project 1, taken from the HR system) or a delegate named for that week publishes it. If they have not, HR can publish it, and the owner, any delegate and HR are reminded.
+2. **The employee fills it in.** They log hours on up to five projects (only Project 1 is required), in half-hour steps, with what they worked on, plus time off, key accomplishments, and what they learned (Beginner, Intermediate or Advanced). Project hours plus time off cannot exceed 40 hours a week. Name, email and each project's reviewer fill in from the HR system.
+3. **Deadline.** The sheet is due 24 hours after it is published, and that is never shortened. A late sheet is still accepted but gets a **late mark**, based only on the first submission. The employee, their reviewer, their reporting manager and HR can see it; the project owner sees only "on time" or "late". An approved extension request removes the mark, and the original stays in the history.
+4. **Review.** Each project's reviewer approves or rejects the hours for their own project, giving a reason when rejecting. Only the rejected project returns to the employee, and the sheet is approved when every project is approved. Nobody approves their own hours: the reporting manager steps in first, then a delivery manager.
+5. **Locked.** Once approved, the hours are locked. A later mistake is fixed by a dated correction with a reason, recorded by the reviewer (or an eligible alternate) on top of the original, which stays visible. HR never records a correction.
 6. **Used.** Approved hours roll up by project, person and week into billable and non-billable time, so billing and managers read the same numbers.
 
-Small things make it easy to finish: copy last week's sheet, reminders for employees and for reviewers, and a quick smiley rating after submitting so we learn how it feels.
+**Special cases**
+- A week fully covered by approved leave needs no sheet: no submission, no late mark, no reminder.
+- A sheet that was never published cannot be marked late.
+- If a reviewer is inactive or on leave, an alternate is used. If nobody is eligible, the review goes to an HR queue, where HR assigns an alternate but never decides.
+- Reviewers see only their own project's hours plus the total.
+- If the HR system's data cannot be checked at that moment, the tool refuses the action and asks the person to try again, rather than guessing.
+
+**Small things that make it easy to finish**
+- Copy last week's sheet.
+- Reminders: at most one of each kind per person per week, none for people on approved leave.
+- A check that flags unusual sheets, so reviewers can approve clean ones in bulk.
+- A short smiley rating after submitting, so we learn how it feels.
 
 ## What Makes This Different
 
@@ -51,26 +62,28 @@ We are not claiming a technical advantage. The advantage is fit and simplicity. 
 
 - **Employees** (the people who fill it in): want it quick, forgiving, and not used against them.
 - **Project reviewers**: want to see only the sheets for their projects, understand them at a glance, and give a clear reason when they reject one.
-- **Project owners**: open each week's sheet and see who has submitted.
+- **Project owners**: publish each week's sheet and see who has submitted.
+- **Reporting managers and delivery managers**: see their direct reports' sheets read-only, and step in to approve when a reviewer cannot.
 - **Finance and managers**: need trusted, approved hours per project for billing and planning.
-- **HR**: reads approved hours and late marks, read-only, and decides any consequences for employees.
-
-[ASSUMPTION: the number of employees and projects is not known. The tool is sized for hundreds to a few thousand users.]
+- **HR**: reads approved hours and late marks, read-only, decides any consequences for employees, publishes a sheet when the owner has not, and assigns an alternate when no reviewer is available.
 
 ## Success Criteria
 
 - An employee can complete and submit a full weekly sheet in **one sitting**.
 - Billing can read a week's **approved hours per project without re-typing anything**.
-- Most sheets are submitted by the deadline. [ASSUMPTION: no target yet. We will measure the on-time rate from launch and set a target after the first weeks.]
-- Employees report that the process feels fine, measured by the smiley rating after submit. [ASSUMPTION: no target yet.]
+- Most sheets are submitted by the deadline. The owner has set no target for now; we measure the on-time share from launch.
+- Employees report that the process feels fine, measured by the trend in the smiley rating. No target for now.
+- Project managers spend far less time collecting hours than today.
 - Approved hours never change silently after approval.
+
+**Watch-outs:** the late-mark rate and the rejection rate, so the tool does not push people to rush or reviewers to reject by habit.
 
 ## Scope
 
 **In the first version**
 - Weekly sheet with up to five projects, time off, accomplishments and learnings.
-- Opening of the sheet by the Project 1 owner, a deadline, and late marks.
-- Approval or rejection with a reason by the project reviewer, locking after approval, and recorded corrections.
+- Publishing of the sheet by the Project 1 owner or a delegate (or HR after the cut-off), a 24-hour deadline, late marks, and extension requests.
+- Approval or rejection per project by the project reviewer, a fallback chain and HR queue when no reviewer is available, locking after approval, and recorded corrections.
 - Copy last week, reminders, the smiley rating, and a private weekly view of your own hours by project.
 - Roll-up of approved hours by project, person and week into billable and non-billable time.
 - Free to use: all capabilities ship free for now, with no pricing.
@@ -84,7 +97,12 @@ We are not claiming a technical advantage. The advantage is fit and simplicity. 
 
 **Rules to know**
 - One sheet per employee per week.
-- Records are kept at least three years. [ASSUMPTION: a generic rule; confirm for our country.]
+- Sized for 160 employees and 20 projects (confirmed by the owner).
+- Records are kept for three years. This is a generic rule with no legal review for our country; the owner accepts the risk.
+
+## Still Open
+
+Decisions not yet made: whether a waived late mark counts as on time in the on-time measure, how long a grace period lasts after an HR system outage, and whether the 40-hour cap applies to later corrections. Reminder timing, the escalation wait and the "unusual sheet" threshold are working defaults, not final. The addendum lists them with values, and the spec and PRD track the full list.
 
 ## Vision
 

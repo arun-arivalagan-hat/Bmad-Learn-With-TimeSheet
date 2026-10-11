@@ -1,6 +1,6 @@
 # BMAD Pre-commit Guide
 
-**SDLC role:** CoreTools | **Team lead:** Not assigned yet | **BMad agent:** Skill run directly | **Skill:** `bmad-precommit` (custom skill built with `bmad-toolsmith`; not part of an installed BMad module)
+**SDLC role:** ToolSmith | **Team lead:** Not assigned yet | **BMad agent:** Skill run directly | **Skill:** `bmad-precommit` (custom skill built with `bmad-toolsmith`; not part of an installed BMad module)
 
 ## 1. Purpose
 
@@ -10,7 +10,7 @@ It is a tool you run when you want it, not a numbered step, and it does not repl
 
 ## 2. Prerequisites
 
-* Step 1 complete: BMAD installed ([01-bmad-installation-and-setup.md](../../Bmad/Bmad-Setup/01-bmad-installation-and-setup.md)).
+* Step 1 complete: BMAD installed ([01-bmad-installation-and-setup.md](../../../CoreTools/Bmad/Bmad-Setup/01-bmad-installation-and-setup.md)).
 * The two agents exist in `.claude/agents/`: `bmad-spec-sync` and `bmad-docs-updater`.
 * The skill exists at `.agents/skills/bmad-precommit/`, with a link in `.claude/skills/`.
 
@@ -67,7 +67,7 @@ The skill itself generates no document. The agents edit the working tree only.
 
 ## 8. Next Step
 
-Use it before each commit. It does not change the next planning step: run `bmad-architecture` ([00-index.md](../../../Guide/00-index.md), step 12).
+Use it before each commit. It does not change the next planning step: run `bmad-architecture` ([00-index.md](../../../Guide/00-index.md), step 13).
 
 ## Skill Folder Structure
 

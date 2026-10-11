@@ -1,6 +1,6 @@
 # BMAD Toolsmith Guide
 
-**SDLC role:** CoreTools | **Team lead:** Not assigned yet | **BMad agent:** Smithy (the Toolsmith), `toolsmith` module | **Skill:** `bmad-toolsmith`, with its companion `bmad-eval`
+**SDLC role:** ToolSmith | **Team lead:** Not assigned yet | **BMad agent:** Smithy (the Toolsmith), `toolsmith` module | **Skill:** `bmad-toolsmith`, with its companion `bmad-eval`
 
 ## 1. Purpose
 
@@ -19,7 +19,7 @@ It is a tool you use when you want to make or judge a skill, not a numbered step
 
 ## 2. Prerequisites
 
-* Step 1 complete: BMAD installed and set up, so `_bmad/` exists ([01-bmad-installation-and-setup.md](../Bmad/Bmad-Setup/01-bmad-installation-and-setup.md)). Without it Smithy offers setup first.
+* Step 1 complete: BMAD installed and set up, so `_bmad/` exists ([01-bmad-installation-and-setup.md](../../CoreTools/Bmad/Bmad-Setup/01-bmad-installation-and-setup.md)). Without it Smithy offers setup first.
 * `uv` installed; every script runs as `uv run`.
 * For `bmad-eval`: a harness recorded once (see section 4).
 
@@ -85,7 +85,7 @@ In this repo it built `bmad-precommit` and its review report; see [bmad-precommi
 
 ## 7. Next Step
 
-After a build, run the trigger eval Smithy offers, then try one real request. After an edit or package of a skill you own, run a review. After a review, use edit mode for the findings you accept. This does not change the next planning step: run `bmad-architecture` ([00-index.md](../../Guide/00-index.md), step 12).
+After a build, run the trigger eval Smithy offers, then try one real request. After an edit or package of a skill you own, run a review. After a review, use edit mode for the findings you accept. This does not change the next planning step: run `bmad-architecture` ([00-index.md](../../Guide/00-index.md), step 13).
 
 ## Skill Folder Structure
 
