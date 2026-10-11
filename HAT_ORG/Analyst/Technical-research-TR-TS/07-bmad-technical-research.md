@@ -1,6 +1,6 @@
 # BMAD Technical Research Guide
 
-**BMad agent:** Mary (Business Analyst), menu option TR | **Skill:** `bmad-deep-recon` (technical type), then `bmad-spec`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst), menu option TR | **Skill:** `bmad-deep-recon` (technical type), then `bmad-spec`
 
 ## 1. Purpose
 
@@ -9,7 +9,7 @@ This guide explains how to run technical research (Mary's **TR** option) with `b
 ## 2. Prerequisites
 
 * Steps 1 to 3 complete: installation, an active initiative and a spec ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
-* Steps 5 and 6 helpful: the market and domain research set the scope ([05-bmad-market-research.md](../Market-Research-MR/05-bmad-market-research.md), [06-bmad-domain-research.md](../Domain-Research-DR/06-bmad-domain-research.md)).
+* Steps 5 and 6 helpful: the domain and market research set the scope ([05-bmad-domain-research.md](../Domain-Research-DR/05-bmad-domain-research.md), [06-bmad-market-research.md](../Market-Research-MR/06-bmad-market-research.md)).
 * A topic, the decision it serves, and any known constraints (here: the existing HRMS stack was unknown, so options are general).
 
 ## 3. Run the Skill

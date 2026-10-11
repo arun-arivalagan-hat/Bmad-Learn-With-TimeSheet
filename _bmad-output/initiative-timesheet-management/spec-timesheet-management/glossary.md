@@ -20,7 +20,10 @@ Source: research-timesheet-and-time-billing-domain-in-it. Mostly vendor sources;
 | Project block | One project's entry on a sheet: project, tasks/activities, hours and reviewer; up to 5 per sheet |
 | Project reviewer | The person named for a project who approves or rejects the hours in that project's block |
 | Project 1 owner | The owner of an employee's primary project; publishes the sheet and sees submission status; never approves |
-| Reporting manager | The employee's line manager; read-only view of direct reports' hours and late marks; never approves |
+| Reporting manager | The employee's line manager; read-only view of direct reports' hours and late marks; approves or rejects only as the alternate approver in a self-review case |
+| Alternate approver | The person who decides a project block when its named reviewer is the employee who submitted the sheet: the employee's designated reporting manager, or an authorized delivery manager when none is designated or the reporting manager is the employee |
+| Authorized delivery manager | A role designated in the existing HRMS that acts as the alternate approver of last resort |
+| Self-review | A project block whose named reviewer is the employee who submitted the sheet; no one approves, rejects or adjusts their own block |
 
 ## Timesheet states
 
@@ -37,4 +40,4 @@ Billing and invoicing states belong to another system because invoicing is a non
 
 - Utilization denominator: total hours or hours net of leave. This spec uses total available hours (confirmed).
 - Whether "locked" and "billed" are separate states.
-- Whether the project manager or the line manager approves. This spec: only the named project reviewer approves; the line manager has a read-only view (confirmed).
+- Whether the project manager or the line manager approves. This spec: only the named project reviewer approves; the line manager has a read-only view and approves only as the alternate approver in a self-review case (confirmed).

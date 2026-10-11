@@ -1,6 +1,6 @@
 # BMAD Competitive Research Guide
 
-**BMad agent:** Mary (Business Analyst), menu option CR | **Skill:** `bmad-deep-recon` (competitive type), then `bmad-spec`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst), menu option CR | **Skill:** `bmad-deep-recon` (competitive type), then `bmad-spec`
 
 ## 1. Purpose
 
@@ -9,7 +9,7 @@ This guide explains how to run competitive research (Mary's **CR** option) with 
 ## 2. Prerequisites
 
 * Steps 1 to 3 complete: installation, an active initiative and a spec ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
-* Step 5 recommended: the market research covered standalone trackers, so this run compares HRMS suites against it ([05-bmad-market-research.md](../Market-Research-MR/05-bmad-market-research.md)).
+* Step 6 recommended: the market research covered standalone trackers, so this run compares HRMS suites against it ([06-bmad-market-research.md](../Market-Research-MR/06-bmad-market-research.md)).
 * The named competitors and the decision the teardown serves.
 
 ## 3. Run the Skill
@@ -28,9 +28,9 @@ Then re-run `bmad-spec` so findings that change a decision reach the spec. In th
 
 | File | Purpose |
 |------|---------|
-| `_bmad-output/initiative-timesheet-management/research-bamboohr-rippling-keka-timesheet-teardow/research-bamboohr-rippling-keka-timesheet-teardow.md` | The report: feature table per competitor, pricing and packaging, customer voice, recommendations, numbered sources. |
-| `_bmad-output/initiative-timesheet-management/research-bamboohr-rippling-keka-timesheet-teardow/digests/` | One digest per competitor: `bamboohr-r1-1.md`, `rippling-r1-1.md`, `keka-r1-1.md`. |
-| `_bmad-output/initiative-timesheet-management/research-bamboohr-rippling-keka-timesheet-teardow/.memlog.md` | Decisions and claims, each with a verification status. |
+| `_bmad-output/initiative-timesheet-management/research-bamboohr-rippling-keka-timesheet-teardow-competitive/research-bamboohr-rippling-keka-timesheet-teardow.md` | The report: feature table per competitor, pricing and packaging, customer voice, recommendations, numbered sources. |
+| `_bmad-output/initiative-timesheet-management/research-bamboohr-rippling-keka-timesheet-teardow-competitive/digests/` | One digest per competitor: `bamboohr-r1-1.md`, `rippling-r1-1.md`, `keka-r1-1.md`. |
+| `_bmad-output/initiative-timesheet-management/research-bamboohr-rippling-keka-timesheet-teardow-competitive/.memlog.md` | Decisions and claims, each with a verification status. |
 
 ## 5. Verify
 

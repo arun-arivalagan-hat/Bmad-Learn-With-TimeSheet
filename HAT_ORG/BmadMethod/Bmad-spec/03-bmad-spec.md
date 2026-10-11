@@ -1,6 +1,6 @@
 # BMAD Spec Guide
 
-**BMad agent:** Skill run directly | **Skill:** `bmad-spec`
+**SDLC role:** BmadMethod | **Team lead:** Not assigned yet | **BMad agent:** Skill run directly | **Skill:** `bmad-spec`
 
 ## 1. Purpose
 
@@ -28,10 +28,10 @@ The skill appends findings to a running log (`.memlog.md`) and re-derives the sp
 | `_bmad-output/initiative-timesheet-management/spec-timesheet-management/spec-timesheet-management.md` | The spec: Why, Capabilities (see the spec for the current CAP list), Constraints, Non-goals, Success signal, Assumptions. |
 | `_bmad-output/initiative-timesheet-management/spec-timesheet-management/.memlog.md` | Running log of decisions, capabilities, constraints, assumptions and open questions the spec is derived from. |
 | `_bmad-output/initiative-timesheet-management/spec-timesheet-management/premium-tier.md` | Companion added after the brainstorm ([04-bmad-brainstorm.md](../../Analyst/Brainstorm-BR/04-bmad-brainstorm.md)): premium tier candidates, not committed scope. |
-| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/glossary.md` | Companion added after the domain research ([06-bmad-domain-research.md](../../Analyst/Domain-Research-DR/06-bmad-domain-research.md)): domain terms and timesheet states. |
+| `_bmad-output/initiative-timesheet-management/spec-timesheet-management/glossary.md` | Companion added after the domain research ([05-bmad-domain-research.md](../../Analyst/Domain-Research-DR/05-bmad-domain-research.md)): domain terms and timesheet states. |
 | `_bmad-output/initiative-timesheet-management/prd-timesheet-management/prd-timesheet-management.md` | The PRD, listed in the spec's `companions`: its journeys, metrics and FR detail stay reachable for UX, architecture and tickets. Written by `bmad-prd`, not by this skill. |
 
-After the brainstorm re-run the spec has CAP-1 to CAP-13 (CAP-8 to CAP-13 added), and the billable-flag and identity-source questions below are answered as constraints. The research re-runs then added CAP-14 (reminders) and CAP-15 (payroll handoff). The owner later retired CAP-15 and put the payroll handoff out of scope; its ID is never reused. Later updates added CAP-16 and above (the PRD run added CAP-19, reporting manager read-only view, and CAP-20, Project 1 owner status view); the spec holds the current list.
+After the brainstorm re-run the spec has CAP-1 to CAP-13 (CAP-8 to CAP-13 added), and the billable-flag and identity-source questions below are answered as constraints. The research re-runs then added CAP-14 (reminders) and CAP-15 (payroll handoff). The owner later retired CAP-15 and put the payroll handoff out of scope; its ID is never reused. Later updates added CAP-16 and above (the PRD run added CAP-19, reporting manager read-only view, and CAP-20, Project 1 owner status view); the spec holds the current list. The user-voice research then found a self-approval gap, and the owner decided that no one approves their own timesheet: CAP-21 routes a block whose named reviewer is the submitter to the reporting manager, or to an authorized delivery manager when there is none ([09-bmad-user-voice-research.md](../../Analyst/User-Voice-UV/09-bmad-user-voice-research.md)).
 
 The spec was then validated (critique) and five findings applied: late-mark visibility stated once, consistent 'employee' and 'project reviewers' wording, CAP-6 and CAP-16 without HOW wording, and the PRD moved from sources to companions (see [12-bmad-prd.md](../../ProductOwner/Product-Requirements-PRD/12-bmad-prd.md)). The owner then closed the legal question (3-year retention accepted, no legal review), so the spec's Open Questions section was removed.
 

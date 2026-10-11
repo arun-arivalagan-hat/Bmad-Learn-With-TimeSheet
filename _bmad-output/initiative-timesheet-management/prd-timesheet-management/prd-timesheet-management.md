@@ -55,6 +55,7 @@ Scale for v1: 160 employees and 20 projects.
   - **Climax:** the employee gets the sheet back with his comment.
   - **Resolution:** the employee edits and resubmits; Ravi approves.
   - **Edge case:** the Project 1 owner can see the sheet's status but cannot approve or reject it.
+  - **Edge case:** Ravi is also a project manager whose own sheet names him as the reviewer of his own block; he sees no approve or reject action there, and his reporting manager decides it (FR-23).
 
 - **UJ-3. Anita misses the deadline.**
   - **Persona + context:** Anita was on leave on Friday and opens the published sheet on Monday.
@@ -78,7 +79,10 @@ Terms are used exactly. Full definitions are in `../spec-timesheet-management/gl
 - **Billable flag** — a flag set on a project that marks its hours as billable.
 - **Project 1 owner** — the owner of an employee's primary project.
 - **Project manager** — manages projects and people; the module's primary customer.
-- **Reporting manager** — the employee's line manager.
+- **Reporting manager** — the employee's line manager; reads direct reports' hours and late marks, and approves or rejects only as the alternate approver in a self-review case.
+- **Alternate approver** — who decides a project block when its named reviewer is the employee who submitted the sheet: the employee's designated reporting manager, or an authorized delivery manager when none is designated or the reporting manager is the employee.
+- **Authorized delivery manager** — a role designated in the existing HRMS; the alternate approver of last resort.
+- **Self-review** — a project block whose named reviewer is the employee who submitted the sheet; no one approves, rejects or adjusts their own block.
 - **Finance** — reads approved hours and exports.
 - **Weekly effort** — hours per project per week, never per day.
 
@@ -156,7 +160,7 @@ An employee requests an extension with a reason. **Consequences:** the request r
 
 ### 4.3 Approval and review
 
-**Description:** The named project reviewer approves or rejects with a comment. The Project 1 owner only views; the reporting manager has no approval role (read-only view in FR-20). Realizes UJ-2.
+**Description:** The named project reviewer approves or rejects with a comment. The Project 1 owner only views; the reporting manager approves only as the alternate approver in a self-review case (FR-23; otherwise a read-only view in FR-20). No one decides a block on their own sheet. Realizes UJ-2.
 
 #### FR-15: Approve or reject with comment (CAP-6)
 **Consequences:**
@@ -164,12 +168,13 @@ An employee requests an extension with a reason. **Consequences:** the request r
 - A rejection requires a comment and returns only that block to the employee, who sees what was rejected and why, fixes it in one click and resubmits.
 - The sheet is Approved and locked when every block is approved; until then it is Submitted.
 - Approved blocks are not reopened by another reviewer's rejection.
+- No one approves or rejects a block on their own sheet; such a block follows FR-23.
 
 #### FR-16: Anomaly-first review and bulk approve (CAP-11)
 **Consequences:** a sheet with hours on a closed project or a sheet whose total hours differ from the prior week by more than 15 hours is flagged and listed first `[ASSUMPTION: the 15-hour jump is a starting value]`; selecting all unflagged sheets approves them in one action.
 
 #### FR-17: Corrections after approval (CAP-9, CAP-7)
-**Consequences:** a correction to an approved sheet is a recorded adjustment entry, never a silent edit, with a reason and who made it. `[ASSUMPTION: the project reviewer records adjustments.]`
+**Consequences:** a correction to an approved sheet is a recorded adjustment entry, never a silent edit, with a reason and who made it. `[ASSUMPTION: the project reviewer records adjustments, or the alternate approver for a self-review block.]`
 
 ### 4.4 Reporting and HR visibility
 
@@ -180,7 +185,15 @@ An employee requests an extension with a reason. **Consequences:** the request r
 **Consequences:** HR sees approved hours, late marks and approval status for any employee and week; HR cannot edit sheets, hours or late marks.
 
 #### FR-20: Reporting manager read-only view (CAP-17 extended)
-A reporting manager sees their direct reports' approved hours, late marks and approval status per week. **Consequences:** the reporting manager cannot edit, approve, reject or waive anything; they see only their own direct reports.
+A reporting manager sees their direct reports' approved hours, late marks and approval status per week. **Consequences:** the reporting manager cannot edit or waive anything and approves or rejects only as the alternate approver in a self-review case (FR-23); they see only their own direct reports.
+
+#### FR-23: Alternate approver for self-review (CAP-21)
+When the reviewer named for a project block is the employee who submitted the sheet (for example a project manager reviewing their own hours), an alternate approver decides that block instead. **Consequences:**
+- The employee sees no approve or reject action on a block of their own sheet.
+- The block goes to the employee's designated reporting manager; when none is designated, or the reporting manager is the employee, it goes to an authorized delivery manager `[ASSUMPTION: the authorized delivery manager is a role designated in the existing HRMS; the owner confirms who designates it]`.
+- The alternate approver decides only that block; the sheet is Approved and locked only when every block is approved.
+- The history records that it was a self-review case and who decided it.
+- The Project 1 owner never approves.
 
 ## 5. Non-goals
 
@@ -195,7 +208,7 @@ A reporting manager sees their direct reports' approved hours, late marks and ap
 ## 6. MVP Scope
 
 ### 6.1 In Scope
-FR-1 through FR-22, for about 160 employees and 20 projects. Everything ships free; there is no pricing.
+FR-1 through FR-23, for about 160 employees and 20 projects. Everything ships free; there is no pricing.
 
 ### 6.2 Out of Scope for MVP
 Everything in section 5, plus the paid-tier candidates in `premium-tier.md` and a client-facing view.
@@ -235,6 +248,7 @@ No questions are open. Resolved decisions are logged in `.memlog.md`.
 - FR-16 — the anomaly jump threshold of 15 hours is a starting value.
 - Section 7 — late mark read as the on-time measure; no targets.
 - FR-12 — the Project 1 reviewer decides extensions.
-- FR-17 — the project reviewer records adjustments.
+- FR-17 — the project reviewer records adjustments, or the alternate approver for a self-review block.
+- FR-23 — the authorized delivery manager is a role designated in the existing HRMS; the owner confirms who designates it.
 - FR-21 — flat 40-hour cap, no overtime or holiday handling.
 - Section 7 — SM-2 and SM-4 are checked by a monthly question; no tooling.

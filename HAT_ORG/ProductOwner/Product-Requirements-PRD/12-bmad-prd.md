@@ -1,6 +1,6 @@
 # BMAD PRD Guide
 
-**BMad agent:** John (Product Manager) | **Skill:** `bmad-prd`
+**SDLC role:** Product Owner | **Team lead:** Not assigned yet | **BMad agent:** John (Product Manager) | **Skill:** `bmad-prd`
 
 ## 1. Purpose
 

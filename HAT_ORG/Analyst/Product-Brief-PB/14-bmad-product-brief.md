@@ -1,6 +1,6 @@
 # BMAD Product Brief Guide
 
-**BMad agent:** Mary (Business Analyst) | **Skill:** `bmad-product-brief`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst) | **Skill:** `bmad-product-brief`
 
 ## 1. Purpose
 

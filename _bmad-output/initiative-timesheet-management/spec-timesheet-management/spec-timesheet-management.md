@@ -1,7 +1,7 @@
 ---
 id: SPEC-timesheet-management
 companions: [premium-tier.md, glossary.md, ../prd-timesheet-management/prd-timesheet-management.md]
-sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md, ../research-employee-engagement-in-timesheet-filling/research-employee-engagement-in-timesheet-filling.md, ../research-timesheet-and-time-billing-domain-in-it/research-timesheet-and-time-billing-domain-in-it.md, ../research-india-labour-rules-and-payroll-inputs-fo/research-india-labour-rules-and-payroll-inputs-fo.md, ../research-timesheet-module-technical-approach-insi/research-timesheet-module-technical-approach-insi.md, ../research-bamboohr-rippling-keka-timesheet-teardow/research-bamboohr-rippling-keka-timesheet-teardow.md]
+sources: [../brainstorm-timesheet-delight/brainstorm-timesheet-delight.md, ../research-employee-engagement-in-timesheet-filling-market/research-employee-engagement-in-timesheet-filling.md, ../research-timesheet-and-time-billing-domain-in-it/research-timesheet-and-time-billing-domain-in-it.md, ../research-india-labour-rules-and-payroll-inputs-domain/research-india-labour-rules-and-payroll-inputs-fo.md, ../research-timesheet-module-technical-approach-insi/research-timesheet-module-technical-approach-insi.md, ../research-bamboohr-rippling-keka-timesheet-teardow-competitive/research-bamboohr-rippling-keka-timesheet-teardow.md]
 ---
 
 > **Canonical contract.** This SPEC and the files in `companions:` are the complete, preservation-validated contract for what to build, test, and validate. Source documents listed in frontmatter are for traceability — consult them only if you need narrative rationale or prose color this contract intentionally omits.
@@ -31,7 +31,7 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
   - **success:** A submitted sheet shows the submitter's name and email without the employee typing them; every required field is enforced at submit.
 - **CAP-6**
   - **intent:** The reviewer named for each project approves or rejects the hours in their project's block; a rejection carries a comment and shows the employee what was rejected.
-  - **success:** A reviewer sees only sheets with hours against their project and decides only their own block; a rejected block returns to the employee alone, with the comment, for the employee to fix and resubmit; a rejection without a comment is refused; the sheet is approved and locked only when every block is approved; neither the Project 1 owner nor the reporting manager can approve or reject.
+  - **success:** A reviewer sees only sheets with hours against their project and decides only their own block; a rejected block returns to the employee alone, with the comment, for the employee to fix and resubmit; a rejection without a comment is refused; the sheet is approved and locked only when every block is approved; the Project 1 owner can never approve or reject, and the reporting manager can only as the alternate approver in CAP-21.
 - **CAP-7**
   - **intent:** Approved hours roll up by project, employee and week into billable vs non-billable hours and utilization, and finance can export them per project with an audit trail.
   - **success:** For a given week, the roll-up for each project equals the sum of its approved hours; unapproved hours are excluded; the export reproduces the roll-up and lists who approved each line and when.
@@ -68,10 +68,13 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
   - **success:** An employee sees every late mark recorded against them, with the week and the deadline it missed, and sees no other employee's marks.
 - **CAP-19**
   - **intent:** A reporting manager can read their direct reports' approved hours, late marks and approval status per week.
-  - **success:** A reporting manager sees these for their direct reports only, and cannot edit, approve, reject or waive anything.
+  - **success:** A reporting manager sees these for their direct reports only, and cannot edit or waive anything; approving or rejecting is possible only as the alternate approver in CAP-21.
 - **CAP-20**
   - **intent:** The Project 1 owner can see which of their published sheets were submitted on time, submitted late or are not yet submitted.
   - **success:** The owner sees each published sheet's submission status; the view is read-only and offers no approve or reject action.
+- **CAP-21**
+  - **intent:** No one decides a block on their own sheet: when the reviewer named for a project block is the employee who submitted the sheet, an alternate approver decides that block instead.
+  - **success:** An employee never sees an approve or reject action on a block of their own sheet; such a block goes to the employee's designated reporting manager, or, when none is designated or the reporting manager is the employee, to an authorized delivery manager; the alternate approver decides only that block; the history records that it was a self-review case and who decided it.
 
 ## Constraints
 
@@ -86,7 +89,7 @@ Employees report weekly work on the HAT timesheet form, but the hours are not ti
 - A sheet is never marked late unless it was published; the deadline counts from publication.
 - An approved sheet is never reported to HR as incorrect; the late mark is the only mark that can attach to an approved sheet.
 - An employee has exactly one sheet per week; a second sheet for the same employee and week is refused.
-- A sheet is in exactly one state: draft, submitted, rejected or approved; approved means locked and happens when every project block is approved. Each named project reviewer decides only their own block. Terms are defined in `glossary.md`.
+- A sheet is in exactly one state: draft, submitted, rejected or approved; approved means locked and happens when every project block is approved. Each named project reviewer decides only their own block, and no one decides a block on their own sheet (CAP-21). Terms are defined in `glossary.md`.
 - Hours are entered per project per week, never per day; every employee, including exempt IT staff, submits weekly effort only.
 - Submitted sheets, approved sheets and their change history are kept at least 3 years, a generic rule modelled on the US; the owner chose it with no country-specific follow-up.
 - A late, rejected or incorrect sheet never changes pay for hours worked; this module reports hours and never withholds, delays or reduces pay, and the late penalty is only a recorded late mark.
@@ -123,8 +126,10 @@ An employee completes and submits a full weekly sheet in one sitting, and billin
 - Late-sheet handling never delays pay or hard-locks submission; this rests on US guidance and has not had legal review. The owner accepts this and the 3-year retention with no legal review.
 - Approved means locked, with no separate billed state, because invoicing is a non-goal (confirmed).
 - Utilization and realization use total available hours as the denominator in `glossary.md` (confirmed).
-- The named project reviewer approves project hours; line-manager and finance approval roles are out of scope (confirmed; the reporting manager has a read-only view only, CAP-19).
+- The named project reviewer approves project hours; line-manager and finance approval roles are out of scope (confirmed; the reporting manager has a read-only view, CAP-19, and approves only as the alternate approver in a self-review case, CAP-21).
 - The late penalty is the late mark: a recorded mark counted per employee (confirmed by the owner; visibility in the constraints); HR decides any consequences (decision A).
 - An approved extension request waives the late penalty for that sheet; the project reviewer for the employee's Project 1 decides it, with no limit on how many an employee requests.
-- An adjustment entry on an approved sheet is recorded with a reason and who made it, by the project reviewer.
+- An adjustment entry on an approved sheet is recorded with a reason and who made it, by the project reviewer, or by the alternate approver for a self-review block.
 - HR has read-only access to sheets, hours and late marks; its only write action is publishing a sheet when the Project 1 owner has not.
+- The authorized delivery manager is a role designated in the existing HRMS and is the fallback when no reporting manager is designated or the reporting manager is the employee; who designates it is not stated, so the owner confirms.
+- The alternate approver decides only the self-review block; the rest of the sheet follows its normal reviewers, and the sheet locks only when every block is approved.

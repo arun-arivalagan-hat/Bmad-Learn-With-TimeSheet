@@ -1,6 +1,6 @@
 # BMAD Project Context Guide
 
-**BMad agent:** Mary (Business Analyst), menu option PC | **Skill:** `bmad-project-context`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst), menu option PC | **Skill:** `bmad-project-context`
 
 ## 1. Purpose
 

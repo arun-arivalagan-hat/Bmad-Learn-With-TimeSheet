@@ -31,7 +31,7 @@ A weekly timesheet that works like this:
 1. **The sheet is opened.** The owner of an employee's main project (Project 1) opens the week's sheet in the app, usually on Friday.
 2. **The employee fills it in.** They log hours on up to five projects, with what they worked on and who reviews it, plus time off (8 hours per day), their key accomplishments, and what they learned (marked Beginner, Intermediate or Advanced). Their name and email fill in automatically.
 3. **Deadline.** The sheet is due by 11:59 pm UTC the day after it opens (Saturday for a Friday opening). A late sheet is still accepted but gets a **late mark**, which the employee, the reviewer and HR can see. A sheet that was never opened cannot be marked late.
-4. **Review.** The named project reviewer approves the hours or rejects them with a reason. A rejected sheet returns to the employee to fix and resubmit.
+4. **Review.** The named project reviewer approves the hours or rejects them with a reason. A rejected sheet returns to the employee to fix and resubmit. Nobody approves their own timesheet: if a project manager is the named reviewer of their own sheet, their reporting manager (or an authorised delivery manager) approves it instead.
 5. **Locked.** Once approved, the hours are locked. If a mistake is found later, it is fixed with a recorded correction, never a silent edit.
 6. **Used.** Approved hours roll up by project, person and week into billable and non-billable time, so billing and managers read the same numbers.
 

@@ -1,6 +1,6 @@
 # BMAD Pre-commit Guide
 
-**BMad agent:** Skill run directly | **Skill:** `bmad-precommit` (custom skill built with `bmad-toolsmith`; not part of an installed BMad module)
+**SDLC role:** CoreTools | **Team lead:** Not assigned yet | **BMad agent:** Skill run directly | **Skill:** `bmad-precommit` (custom skill built with `bmad-toolsmith`; not part of an installed BMad module)
 
 ## 1. Purpose
 

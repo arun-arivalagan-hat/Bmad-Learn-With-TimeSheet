@@ -1,6 +1,6 @@
 # BMAD Toolsmith Guide
 
-**BMad agent:** Smithy (the Toolsmith), `toolsmith` module | **Skill:** `bmad-toolsmith`, with its companion `bmad-eval`
+**SDLC role:** CoreTools | **Team lead:** Not assigned yet | **BMad agent:** Smithy (the Toolsmith), `toolsmith` module | **Skill:** `bmad-toolsmith`, with its companion `bmad-eval`
 
 ## 1. Purpose
 

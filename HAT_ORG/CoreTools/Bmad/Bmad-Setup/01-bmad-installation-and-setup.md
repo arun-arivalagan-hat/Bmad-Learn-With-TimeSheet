@@ -1,6 +1,6 @@
 # BMAD Installation Guide
 
-**BMad agent:** BMad Agent (`bmad`) | **Skill:** `bmad` (installer)
+**SDLC role:** CoreTools | **Team lead:** Not assigned yet | **BMad agent:** BMad Agent (`bmad`) | **Skill:** `bmad` (installer)
 
 ## 1. Purpose
 

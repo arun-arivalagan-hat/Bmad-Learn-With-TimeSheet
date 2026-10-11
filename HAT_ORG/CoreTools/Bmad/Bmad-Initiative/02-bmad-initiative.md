@@ -1,6 +1,6 @@
 # BMAD Initiative Guide
 
-**BMad agent:** BMad Agent (`bmad`) | **Skill:** `bmad`
+**SDLC role:** CoreTools | **Team lead:** Not assigned yet | **BMad agent:** BMad Agent (`bmad`) | **Skill:** `bmad`
 
 ## 1. Purpose
 

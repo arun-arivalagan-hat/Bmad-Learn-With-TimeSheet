@@ -1,6 +1,6 @@
 # BMAD PRFAQ Guide
 
-**BMad agent:** Mary (Business Analyst) | **Skill:** `bmad-prfaq`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst) | **Skill:** `bmad-prfaq`
 
 ## 1. Purpose
 
@@ -9,7 +9,7 @@ This guide explains how to test a concept with `bmad-prfaq`. A PRFAQ is a press 
 ## 2. Prerequisites
 
 * Steps 1 and 2 complete: installation and an active initiative ([02-bmad-initiative.md](../../CoreTools/Bmad/Bmad-Initiative/02-bmad-initiative.md)).
-* Steps 3 to 9 recommended: the spec, research and brief are its inputs ([09-bmad-product-brief.md](../Product-Brief-PB/09-bmad-product-brief.md)).
+* Steps 3 to 9 and 14 recommended: the spec and research (steps 3 to 9) and the brief (step 14) are its inputs ([14-bmad-product-brief.md](../Product-Brief-PB/14-bmad-product-brief.md)).
 * Time to answer the coach's questions. The skill asks about the customer, the pain and the numbers, and it records the owner's answers.
 
 ## 3. Run the Skill

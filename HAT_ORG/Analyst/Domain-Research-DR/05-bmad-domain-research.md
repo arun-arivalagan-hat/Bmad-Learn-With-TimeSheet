@@ -1,6 +1,6 @@
 # BMAD Domain Research Guide
 
-**BMad agent:** Mary (Business Analyst), menu option DR; skill run directly for `bmad-spec` | **Skill:** `bmad-deep-recon` (domain type), `bmad-spec`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst), menu option DR; skill run directly for `bmad-spec` | **Skill:** `bmad-deep-recon` (domain type), `bmad-spec`
 
 ## 1. Purpose
 
@@ -9,7 +9,7 @@ This guide explains how to run domain research (Mary's **DR** option) with `bmad
 ## 2. Prerequisites
 
 * Step 3 complete: a spec exists ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
-* Step 5 recommended: the market research ran first ([05-bmad-market-research.md](../Market-Research-MR/05-bmad-market-research.md)).
+* No earlier research step is needed. Market research (MR) follows in [06-bmad-market-research.md](../Market-Research-MR/06-bmad-market-research.md).
 * A domain topic and the decision it serves.
 
 ## 3. Run the Skill
@@ -27,7 +27,7 @@ Then re-run `bmad-spec` so the findings are merged into the spec and its glossar
 | File | Purpose |
 |------|---------|
 | `_bmad-output/initiative-timesheet-management/research-timesheet-and-time-billing-domain-in-it/` | Report, `digests/` (glossary, rules, value-chain) and `.memlog.md`; domain evidence, vendor-sourced and US-default. |
-| `_bmad-output/initiative-timesheet-management/research-india-labour-rules-and-payroll-inputs-fo/` | Report, `digests/` (labour-rules, payroll-inputs) and `.memlog.md`; India labour and payroll evidence, medium confidence at most, secondary sources. |
+| `_bmad-output/initiative-timesheet-management/research-india-labour-rules-and-payroll-inputs-domain/` | Report, `digests/` (labour-rules, payroll-inputs) and `.memlog.md`; India labour and payroll evidence, medium confidence at most, secondary sources. |
 | `_bmad-output/initiative-timesheet-management/spec-timesheet-management/glossary.md` | Written by `bmad-spec` after the first run: domain terms and timesheet states. |
 
 The India run first shaped CAP-15 (payroll handoff), but the owner later retired CAP-15 and put the payroll handoff out of scope, so treat that run as background. Its retention figure (5 years) is single-source; the spec uses 3 years by owner decision.

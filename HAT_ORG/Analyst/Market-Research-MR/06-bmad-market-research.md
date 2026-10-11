@@ -1,6 +1,6 @@
 # BMAD Market Research Guide
 
-**BMad agent:** Mary (Business Analyst), menu option MR; skill run directly for `bmad-spec` | **Skill:** `bmad-deep-recon` (market type), `bmad-spec`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst), menu option MR; skill run directly for `bmad-spec` | **Skill:** `bmad-deep-recon` (market type), `bmad-spec`
 
 ## 1. Purpose
 
@@ -10,6 +10,7 @@ This guide explains how to use `bmad-deep-recon` to research a topic that suppor
 
 * Step 2 complete: an active initiative exists ([02-bmad-initiative.md](../../CoreTools/Bmad/Bmad-Initiative/02-bmad-initiative.md)).
 * Step 3 complete: a spec exists ([03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
+* Step 5 recommended: the domain research gives the vocabulary and rules ([05-bmad-domain-research.md](../Domain-Research-DR/05-bmad-domain-research.md)).
 * Step 4 recommended: the brainstorm raised the premium-tier and reminder questions the research answers ([04-bmad-brainstorm.md](../Brainstorm-BR/04-bmad-brainstorm.md)).
 * A topic, a research type (here `market`) and the decision the research serves.
 
@@ -29,15 +30,15 @@ Then re-run `bmad-spec` so the findings are merged into the spec (the spec lists
 
 | File | Purpose |
 |------|---------|
-| `_bmad-output/initiative-timesheet-management/research-employee-engagement-in-timesheet-filling/research-employee-engagement-in-timesheet-filling.md` | The research report: executive summary, recommendation, caveats, findings per dimension, numbered sources. |
-| `_bmad-output/initiative-timesheet-management/research-employee-engagement-in-timesheet-filling/digests/` | One digest per dimension and round (competitive, pain-and-behavior, pricing); the evidence behind the report. |
-| `_bmad-output/initiative-timesheet-management/research-employee-engagement-in-timesheet-filling/.memlog.md` | Running log of decisions and claims, each with a verification status. |
+| `_bmad-output/initiative-timesheet-management/research-employee-engagement-in-timesheet-filling-market/research-employee-engagement-in-timesheet-filling.md` | The research report: executive summary, recommendation, caveats, findings per dimension, numbered sources. |
+| `_bmad-output/initiative-timesheet-management/research-employee-engagement-in-timesheet-filling-market/digests/` | One digest per dimension and round (competitive, pain-and-behavior, pricing); the evidence behind the report. |
+| `_bmad-output/initiative-timesheet-management/research-employee-engagement-in-timesheet-filling-market/.memlog.md` | Running log of decisions and claims, each with a verification status. |
 
 The re-run of `bmad-spec` also updates `spec-timesheet-management.md` (adds CAP-14 reminders, new assumptions and open questions), its `.memlog.md`, and `premium-tier.md`.
 
 ### Other research types
 
-Each research type has its own step doc: domain research (DR) in [06-bmad-domain-research.md](../Domain-Research-DR/06-bmad-domain-research.md), technical research (TR) in [07-bmad-technical-research.md](../Technical-research-TR-TS/07-bmad-technical-research.md), and competitive research (CR) in [08-bmad-competitive-research.md](../Competitive-research-CR/08-bmad-competitive-research.md).
+Each research type has its own step doc: domain research (DR) in [05-bmad-domain-research.md](../Domain-Research-DR/05-bmad-domain-research.md), technical research (TR) in [07-bmad-technical-research.md](../Technical-research-TR-TS/07-bmad-technical-research.md), and competitive research (CR) in [08-bmad-competitive-research.md](../Competitive-research-CR/08-bmad-competitive-research.md).
 
 Market evidence is mostly vendor-sourced. Owner decisions made after the research are recorded in the spec, not here.
 

@@ -1,6 +1,6 @@
 # BMAD Brainstorm Guide
 
-**BMad agent:** Mary (Business Analyst) for `bmad-brainstorming`; skill run directly for `bmad-spec` | **Skill:** `bmad-brainstorming`, `bmad-spec`
+**SDLC role:** Analyst | **Team lead:** Not assigned yet | **BMad agent:** Mary (Business Analyst) for `bmad-brainstorming`; skill run directly for `bmad-spec` | **Skill:** `bmad-brainstorming`, `bmad-spec`
 
 ## 1. Purpose
 
