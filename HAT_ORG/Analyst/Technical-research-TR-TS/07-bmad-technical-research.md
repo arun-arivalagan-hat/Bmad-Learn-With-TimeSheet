@@ -49,3 +49,36 @@ What reached the spec: a reminder constraint (UTC, at most once per employee, re
 
 * **The report names no winner:** that is intended. It gives options with trade-offs; decide in `bmad-architecture`.
 * **Weak claims, or the spec did not change:** See [troubleshooting.md](../../Guide/troubleshooting.md).
+
+## Skill Folder Structure
+
+Layout of the installed `bmad-deep-recon` skill (`.claude/skills/bmad-deep-recon/`), which mirrors its [upstream folder](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-deep-recon):
+
+* `SKILL.md`: the entry point. Frontmatter (name, description) tells the harness when to trigger; the body holds the instructions.
+* `bmod.toml`: module metadata, which module the skill belongs to and where it is sourced from on GitHub.
+* `customize.toml`: the override surface; team and personal overrides live in `_bmad/custom/`, never in this file.
+* `references/`: one file per intent (`draft`, `process`, `run`, `lifecycle`) plus `verification`, `synthesis`, `selection` and `finalize`; loaded only when that step is reached.
+* `types/`: one research pack per type (`market`, `domain`, `technical`, `competitive`, `user-voice`, `academic-lit`).
+* `assets/`: `research.template.md`, the report skeleton.
+* `scripts/`: `recon_kit.py`, helper for run folders and claim logs.
+
+
+## Skill Steps
+
+Steps the skill itself runs, in order (from its `SKILL.md`):
+
+`bmad-deep-recon` picks the research type from the ask (here: technical) and routes on the intent:
+
+1. **Draft:** compose a deep-research prompt for your own tool.
+2. **Process:** file a finished report, extract its claims and distill the downstream summary.
+3. **Run:** native research. Resolve effort, hold the plan gate (the one hard stop), run the search loop, then verify and synthesize.
+4. **Refresh / Deepen:** update or extend an existing run folder.
+
+Every intent ends by finalizing the run folder (`brief.md`, `imports/`, `digests/`, report, `.memlog.md`). Then `bmad-spec` folds the findings into the spec (see [03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
+
+## Official References
+
+* [Technical Research](https://docs.bmad-method.org/plan/research-a-decision/)
+* [Skills and Agents (all skills)](https://docs.bmad-method.org/reference/skills-and-agents/)
+* [GitHub: `bmad-deep-recon` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-deep-recon)
+* [GitHub: BMAD-METHOD repository](https://github.com/bmad-code-org/BMAD-METHOD)

@@ -45,3 +45,37 @@ What went into this repository's block: never hand-edit the spec or glossary (lo
 * **Rules do not load:** confirm `CLAUDE.md` contains `@AGENTS.md` and start a new session; instruction chains are built at session start.
 * **The file grew long:** instruction-following degrades as the loaded set grows. Cut the weakest lines or move them behind a trigger.
 * **Hooks enforce, files guide:** `AGENTS.md` does not block anything. If a rule must hold, enforce it with a hook such as the pre-commit hook.
+
+## Skill Folder Structure
+
+Layout of the installed `bmad-project-context` skill (`.claude/skills/bmad-project-context/`), which mirrors its [upstream folder](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-project-context):
+
+* `SKILL.md`: the entry point. Frontmatter (name, description) tells the harness when to trigger; the body holds the instructions.
+* `bmod.toml`: module metadata, which module the skill belongs to and where it is sourced from on GitHub.
+* `customize.toml`: the override surface; team and personal overrides live in `_bmad/custom/`, never in this file.
+* `references/`: `best-practices.md` (what makes agent instructions good) and `template.md` (the `AGENTS.md` block); both are loaded first on every run.
+* No `scripts/`: it reads and writes the repo's own files.
+
+
+## Skill Steps
+
+Steps the skill itself runs, in order (from its `SKILL.md`):
+
+No files are written until step 5.
+
+1. **Assess and report** what instruction files exist and how they measure up.
+2. **Ask what you bring:** rules, standards and outside documents no scan reaches.
+3. **Discover and verify** with parallel scans of config, CI, source and history.
+4. **Interview the gaps:** only what no scan can answer.
+5. **Show the block, then write it** (`AGENTS.md`, plus `CLAUDE.md` pointing at it).
+6. **Close:** what went in, what stayed out and why, and how to maintain it.
+
+Variants: Refresh (step 1 as a diff), Adoption, Greenfield, Migration, plus `record` for pitfalls and an audit.
+
+## Official References
+
+* [Project Context](https://docs.bmad-method.org/existing-codebases/set-and-maintain-project-context/)
+* [Official documentation: The Theory of Project Context](https://docs.bmad-method.org/existing-codebases/theory-of-project-context/)
+* [Skills and Agents (all skills)](https://docs.bmad-method.org/reference/skills-and-agents/)
+* [GitHub: `bmad-project-context` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-project-context)
+* [GitHub: BMAD-METHOD repository](https://github.com/bmad-code-org/BMAD-METHOD)

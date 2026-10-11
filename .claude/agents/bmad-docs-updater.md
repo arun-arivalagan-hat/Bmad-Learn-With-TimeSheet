@@ -34,6 +34,23 @@ You maintain the BMAD adoption documentation in `HAT_ORG/` for this repository. 
    - No agent: `bmad-spec`, `bmad-walkthrough`, `bmad-build-auto` are skills run directly; write "Skill run directly".
    Files do not record which persona the person actually spoke to, so label the column "BMad agent (owner of the skill)". Where a skill belongs to several agents (for example `bmad-ticket`), list them all. Never claim a specific agent was used beyond this map.
 
+8. **Skill Steps and Official References.** Every step doc ends with these sections after rule 9's folder structure, in this order:
+   - `## Skill Steps`: the stages the skill itself runs, in order, read from its `.claude/skills/<skill>/SKILL.md` and `references/`. Never invent stages. A custom skill with no upstream page (for example `bmad-precommit`) says so.
+   - `## Official References`: a bullet list of links. Use an **alias as the link text**, so the reader sees the topic, not the URL slug: `[Brainstorming](https://docs.bmad-method.org/plan/explore-and-validate-an-idea/)`. Where the official docs have no page named after the topic, keep the topic as the alias and point it at the closest page. Always include `[Skills and Agents (all skills)]`, a `[GitHub: <skill> skill source]` link to `https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/<skill>`, and `[GitHub: BMAD-METHOD repository]` (`https://github.com/bmad-code-org/BMAD-METHOD`). Alias map (base `https://docs.bmad-method.org/`):
+     - Brainstorming, PRFAQ (Working Backwards): `plan/explore-and-validate-an-idea/`
+     - Product Brief: `plan/choose-a-planning-path/`
+     - Market, Domain, Technical, Competitive Research (and user voice): `plan/research-a-decision/`
+     - Spec, PRD: `plan/define-requirements-and-a-specification/`
+     - Architecture, UX: `plan/design-ux-and-architecture/`
+     - Ticket plan: `plan/break-work-into-stories-and-track-it/`
+     - Project Context: `existing-codebases/set-and-maintain-project-context/`
+     - Build: `build/build-a-change/`; Code review: `build/review-a-change/`; Retrospective: `build/finish-an-epic/`
+     - Installation and setup: `start/install-bmad/`; Initiative: `start/get-answers-about-bmad/`
+     - Toolsmith: `toolsmith/toolsmith/`; Eval: `toolsmith/bmad-eval/`
+     Verify a new URL returns 200 (`curl -sL -o /dev/null -w '%{http_code}'`) only if Bash allows it; otherwise use only the map above and never guess a slug.
+
+9. **Skill Folder Structure.** Each step doc has a `## Skill Folder Structure` section just before `## Skill Steps`: a short bullet list (one line per entry) of what the skill's installed folder `.claude/skills/<skill>/` holds and what each part is for. Get it from `ls -L` or Glob of that folder, never from memory. The standard parts are `SKILL.md` (entry point), `bmod.toml` (module metadata), `customize.toml` (override surface), `references/` (loaded on demand), `assets/` (templates), `scripts/` and `evals/`; name only those the skill really has and say so when a common one is absent. Link the upstream folder `https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/<skill>`. Keep it to about 4 to 8 bullets.
+
 ## Rules
 
 - Edit only files inside `HAT_ORG/`.

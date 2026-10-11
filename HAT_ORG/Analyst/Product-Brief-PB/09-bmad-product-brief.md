@@ -42,3 +42,30 @@ Re-run it in update mode when the spec or owner decisions change, or in validate
 
 * **BMad not set up, no active initiative, or the brief drifts from the spec:** See [troubleshooting.md](../../Guide/troubleshooting.md).
 * **Success targets are missing:** they are marked as assumptions on purpose; set them after the first weeks of real data.
+
+## Skill Folder Structure
+
+Layout of the installed `bmad-product-brief` skill (`.claude/skills/bmad-product-brief/`), which mirrors its [upstream folder](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-product-brief):
+
+* `SKILL.md`: the entry point. Frontmatter (name, description) tells the harness when to trigger; the body holds the instructions.
+* `bmod.toml`: module metadata, which module the skill belongs to and where it is sourced from on GitHub.
+* `customize.toml`: the override surface; team and personal overrides live in `_bmad/custom/`, never in this file.
+* `assets/`: `brief-template.md`, the brief skeleton.
+* No `references/` or `scripts/`: discovery, constraints and finalize are all in `SKILL.md`.
+
+
+## Skill Steps
+
+Steps the skill itself runs, in order (from its `SKILL.md`):
+
+1. **Pick the intent:** Create, Update or Validate.
+2. **Discovery:** take the user's brain dump, why the brief exists, domain and form factor; choose Fast path (batched questions, `[ASSUMPTION]` tags) or Coaching path (section by section).
+3. **Draft** with a persistent workspace (`status: draft`, `.memlog.md`), aiming for 1 to 2 pages and moving overflow to `addendum.md`.
+4. **Finalize:** memlog audit and addendum review, polish against the doc standards, external handoffs, then tell the user it is ready and suggest next steps via `bmad`.
+
+## Official References
+
+* [Product Brief](https://docs.bmad-method.org/plan/choose-a-planning-path/)
+* [Skills and Agents (all skills)](https://docs.bmad-method.org/reference/skills-and-agents/)
+* [GitHub: `bmad-product-brief` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-product-brief)
+* [GitHub: BMAD-METHOD repository](https://github.com/bmad-code-org/BMAD-METHOD)

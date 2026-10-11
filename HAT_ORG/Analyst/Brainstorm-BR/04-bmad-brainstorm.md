@@ -46,3 +46,35 @@ The re-run of `bmad-spec` also updates `spec-timesheet-management.md` (now CAP-1
 
 * **Ideas feel too broad:** Treat `premium-tier.md` as candidates only; keep committed scope in the spec's capabilities and non-goals.
 * **Spec unchanged after the brainstorm, or files in the wrong folder:** See [troubleshooting.md](../../Guide/troubleshooting.md).
+
+## Skill Folder Structure
+
+Layout of the installed `bmad-brainstorming` skill (`.claude/skills/bmad-brainstorming/`), which mirrors its [upstream folder](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-brainstorming):
+
+* `SKILL.md`: the entry point. Frontmatter (name, description) tells the harness when to trigger; the body holds the instructions.
+* `bmod.toml`: module metadata, which module the skill belongs to and where it is sourced from on GitHub.
+* `customize.toml`: the override surface; team and personal overrides live in `_bmad/custom/`, never in this file.
+* `references/`: one file per stance (`mode-facilitator`, `mode-partner`, `mode-autonomous`) plus `converge`, `finalize`, `resume`, `headless` and `in-chat-techniques`.
+* `assets/`: `brain-methods.csv` (technique catalog), `brain-selector.html` (composer page) and icons.
+* `scripts/`: `brain.py`, lists and shows techniques without loading the whole catalog.
+
+
+## Skill Steps
+
+Steps the skill itself runs, in order (from its `SKILL.md`):
+
+1. **Frame:** ask what is being brainstormed and why, and whether there are inputs or special requests.
+2. **Choose a stance and techniques:** pick Facilitator, Creative Partner or Ideate for me, and a batch of techniques (composer page or in chat).
+3. **Run techniques:** run each until it stops producing, logging every idea to `.memlog.md`.
+4. **Converge (optional):** narrow and decide on the chosen directions.
+5. **Wrap up:** synthesis, `status: complete`, intent document and HTML view.
+6. **Resume:** pick up an earlier session from its memlog.
+
+Then `bmad-spec` merges the result into the spec (see its steps in [03-bmad-spec.md](../../BmadMethod/Bmad-spec/03-bmad-spec.md)).
+
+## Official References
+
+* [Brainstorming](https://docs.bmad-method.org/plan/explore-and-validate-an-idea/)
+* [Skills and Agents (all skills)](https://docs.bmad-method.org/reference/skills-and-agents/)
+* [GitHub: `bmad-brainstorming` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-brainstorming)
+* [GitHub: BMAD-METHOD repository](https://github.com/bmad-code-org/BMAD-METHOD)

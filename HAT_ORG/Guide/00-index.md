@@ -19,9 +19,10 @@ Status values: Not started, Next, In progress, Draft (written, awaiting owner re
 | 9 | Product brief: for non-technical readers (awaiting owner review) | Mary (Business Analyst) | `bmad-product-brief` | Draft | [09-bmad-product-brief.md](../Analyst/Product-Brief-PB/09-bmad-product-brief.md) |
 | 10 | PRFAQ: concept test (ignition stage, press release not written) | Mary (Business Analyst) | `bmad-prfaq` | In progress | [10-bmad-prfaq.md](../Analyst/Working-Backwards-PRFAQ-WB/10-bmad-prfaq.md) |
 | 11 | Project context (PC): `AGENTS.md` and `CLAUDE.md` agent instructions | Mary (Business Analyst) | `bmad-project-context` | Complete | [11-bmad-project-context.md](../Analyst/Project-context-PC/11-bmad-project-context.md) |
-| 12 | Architecture (records the stack and hosting decisions the spec leaves out) | Winston (System Architect) | `bmad-architecture` | Next | Not written yet |
-| 13 | Ticket plan (epics and stories) | John (Product Manager), Winston (System Architect), Amelia (Senior Software Engineer) | `bmad-ticket` | Not started | Not written yet |
-| 14 | Build | Amelia (Senior Software Engineer) | `bmad-build` | Not started | Not written yet |
+| 12 | PRD (requirements; run started, document not yet written) | John (Product Manager) | `bmad-prd` | In progress | [12-bmad-prd.md](../BmadMethod/Product-Requirements-PRD/12-bmad-prd.md) |
+| 13 | Architecture (records the stack and hosting decisions the spec leaves out) | Winston (System Architect) | `bmad-architecture` | Next | Not written yet |
+| 14 | Ticket plan (epics and stories) | John (Product Manager), Winston (System Architect), Amelia (Senior Software Engineer) | `bmad-ticket` | Not started | Not written yet |
+| 15 | Build | Amelia (Senior Software Engineer) | `bmad-build` | Not started | Not written yet |
 
 ## Tools (not numbered steps)
 
@@ -56,8 +57,9 @@ Status values: Not started, Next, In progress, Draft (written, awaiting owner re
 | `bmad-product-brief` | `_bmad-output/initiative-timesheet-management/brief-timesheet-management/brief-timesheet-management.md` | 8b31b6b (updated: 4973556) | Plain-language summary of problem, scope and success criteria for non-developer readers; draft awaiting owner review. Now says HR sees late marks and decides consequences. Input to `bmad-ticket` and `bmad-architecture` alongside the spec. |
 | `bmad-product-brief` | `_bmad-output/initiative-timesheet-management/brief-timesheet-management/.memlog.md` | 8b31b6b (updated: 4973556) | Decision and assumption log the brief is updated against. |
 | `bmad-prfaq` | `_bmad-output/initiative-timesheet-management/prfaq-timesheet-management/prfaq-timesheet-management.md` | 4973556 | Concept test at ignition stage: customer (project manager), the owner's pain numbers (unverified) and decision A (HR decides consequences of late timesheets). Press release, FAQs and verdict still to come; address its gaps before `bmad-ticket`. |
-| (Claude Code agent) | `HAT_ORG/` (this index, `troubleshooting.md` and one step doc per skill or research type, in `Analyst/`, `BmadMethod/` and `CoreTools/`) | b042e23, a3b7b1d, 78fc2c0, e448b7f, 7a16381, 8b31b6b, 4973556, 191ebe6 (moved from `HAT_ORG_BMAD_DOCS/`: pending) | Adoption guide for the team; the index tracks step status. Each step doc lists the files its step generated. |
+| (Claude Code agent) | `HAT_ORG/` (this index, `troubleshooting.md` and one step doc per skill or research type, in `Analyst/`, `BmadMethod/` and `CoreTools/`) | b042e23, a3b7b1d, 78fc2c0, e448b7f, 7a16381, 8b31b6b, 4973556, 191ebe6, e7aeff6, df0b925 (updated: pending, Skill Steps and Official References added, PRD doc added) | Adoption guide for the team; the index tracks step status. Each step doc lists the files its step generated. |
 | `bmad-project-context` | `AGENTS.md` | 191ebe6 (updated: pending) | The rules every coding agent loads at session start; now points to `HAT_ORG/`; refresh after architecture and after the first code. |
 | `bmad-toolsmith` | `.agents/skills/bmad-precommit/` (`SKILL.md`, `evals/triggers.json`) and `.claude/skills/bmad-precommit` | pending | Custom skill that runs the pre-commit routine on demand against the working tree; documented in [bmad-precommit.md](../CoreTools/Bmad-Toolsmith/Bmad-Precommit/bmad-precommit.md). |
 | `bmad-toolsmith` | `_bmad-output/eval-reports/<timestamp>-bmad-precommit-review.md` | pending | Review of `bmad-precommit`; advice on the skill, not a planning input. |
 | `bmad-project-context` | `CLAUDE.md` | 191ebe6 | One line, `@AGENTS.md`, so Claude Code loads the same rules. |
+| `bmad-prd` | `_bmad-output/initiative-timesheet-management/prd-timesheet-management/.memlog.md` | pending | Decision log of the PRD run (internal tool, Fast path, inputs); the PRD file is not written yet. Feeds `bmad-spec`, `bmad-ux`, `bmad-architecture` and `bmad-ticket` once it exists. |

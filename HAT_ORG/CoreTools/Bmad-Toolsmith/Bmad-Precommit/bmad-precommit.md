@@ -68,3 +68,28 @@ The skill itself generates no document. The agents edit the working tree only.
 ## 8. Next Step
 
 Use it before each commit. It does not change the next planning step: run `bmad-architecture` ([00-index.md](../../../Guide/00-index.md), step 12).
+
+## Skill Folder Structure
+
+A custom skill in this repository (`.agents/skills/bmad-precommit/`, linked from `.claude/skills/`), not from upstream. It is the minimal skill shape:
+
+* `SKILL.md`: the whole routine (classify, spec sync, docs update, report).
+* `evals/triggers.json`: cases that check when the skill should and should not trigger.
+* No `bmod.toml`, `customize.toml`, `references/` or `scripts/`, because it belongs to no module and loads no extra files.
+
+## Skill Steps
+
+`bmad-precommit` is a custom skill in this repository, so it has no upstream page. Its steps (from its `SKILL.md`):
+
+1. **Classify** the uncommitted changes; stop if none are BMad-related.
+2. **Spec sync:** launch `bmad-spec-sync` when planning inputs changed.
+3. **Re-read the tree** with `git status` because the spec step may have added files.
+4. **Docs update:** launch `bmad-docs-updater` with every changed path.
+5. **Report** what each agent changed; nothing is staged.
+
+## Official References
+
+* [Pre-commit (built with Toolsmith)](https://docs.bmad-method.org/toolsmith/toolsmith/)
+* [Official documentation: Eval Runner](https://docs.bmad-method.org/toolsmith/bmad-eval/)
+* [GitHub: `bmad-toolsmith` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-toolsmith)
+* [GitHub: BMAD-METHOD repository](https://github.com/bmad-code-org/BMAD-METHOD)

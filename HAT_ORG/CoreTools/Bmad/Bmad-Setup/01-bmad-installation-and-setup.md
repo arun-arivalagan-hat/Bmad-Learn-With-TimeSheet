@@ -117,12 +117,36 @@ After updating, verify the setup and status again.
 * **Missing modules:** Verify the selected modules and installed version.
 * **Version mismatch:** Confirm that the plugin and project installations are using the intended versions.
 
+## Skill Folder Structure
+
+Layout of the installed `bmad` skill (`.claude/skills/bmad/`), which mirrors its [upstream folder](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad):
+
+* `SKILL.md`: the entry point. Frontmatter (name, description) tells the harness when to trigger; the body holds the instructions.
+* `bmod.toml`: module metadata, which module the skill belongs to and where it is sourced from on GitHub.
+* `customize.toml`: the override surface; team and personal overrides live in `_bmad/custom/`, never in this file.
+* `references/`: `setup`, `initiative`, `migrate` and `help`, one per action the skill routes to.
+* `scripts/`: `setup.py` and `setup_check.py` (install and check), `resolve_config.py` (reads config), `knowledge.py` (module help), `memlog.py`, `roster.py` and others.
+* `assets/`: `config.template.toml`, the starting config.
+
+
+## Skill Steps
+
+Steps the `bmad` skill runs for setup (from `references/setup.md`):
+
+1. **Check:** run the setup check to see whether BMad, its modules and the config are in place.
+2. **Fix:** repair or complete what the check reports missing, add a module, or change a config answer.
+3. **Verify** with the check again; for help and next-step advice `bmad` reads each installed module's own help.
+
 ## 8. Official References
 
 * [BMAD Installation Guide](https://docs.bmad-method.org/start/install-bmad/)
 * [BMAD Method Repository](https://github.com/bmad-code-org/BMAD-METHOD)
 * [BMAD Plugin Marketplace](https://github.com/bmad-code-org/bmad-plugins)
 * [Skills CLI Repository](https://github.com/vercel-labs/skills)
+* [Get Answers About BMad](https://docs.bmad-method.org/start/get-answers-about-bmad/)
+* [Add Modules](https://docs.bmad-method.org/customize/add-modules/)
+* [Skills and Agents (all skills)](https://docs.bmad-method.org/reference/skills-and-agents/)
+* [GitHub: `bmad` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad)
 
 ---
 

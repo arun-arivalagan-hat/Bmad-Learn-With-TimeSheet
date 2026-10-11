@@ -86,3 +86,35 @@ In this repo it built `bmad-precommit` and its review report; see [bmad-precommi
 ## 7. Next Step
 
 After a build, run the trigger eval Smithy offers, then try one real request. After an edit or package of a skill you own, run a review. After a review, use edit mode for the findings you accept. This does not change the next planning step: run `bmad-architecture` ([00-index.md](../../Guide/00-index.md), step 12).
+
+## Skill Folder Structure
+
+Layout of the installed `bmad-toolsmith` skill (`.claude/skills/bmad-toolsmith/`), which mirrors its [upstream folder](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-toolsmith):
+
+* `SKILL.md`: the entry point. Frontmatter (name, description) tells the harness when to trigger; the body holds the instructions.
+* `bmod.toml`: module metadata, which module the skill belongs to and where it is sourced from on GitHub.
+* `customize.toml`: the override surface; team and personal overrides live in `_bmad/custom/`, never in this file.
+* Route files at the root: `discover.md` (every build starts here), `ship.md` (lenses run before hand-over), `canon.md` and `ecosystem.md`.
+* `approaches/`, `shapes/`, `modes/`: how to build (eval-first, lean, scaffold...), what shape to build (plain skill, agent, module...), and what to do to an existing skill (convert, edit, review, validate, package, migrate).
+* `lenses/`: the review checks (architecture, contract, customization, determinism, leanness, trigger).
+* `scripts/`: scaffolding and scanning helpers (`init_skill.py`, `prepass.py`, `count_tokens.py`...); `evals/triggers.json`: its own trigger eval.
+* Companion `bmad-eval` has `references/` (eval and grader format), `scripts/` (`run_evals.py`, `run_triggers.py`) and `evals/`.
+
+
+## Skill Steps
+
+Steps the skill itself runs, in order (from its `SKILL.md`):
+
+1. **Discover:** every new skill starts in a conversation that ends with an approved read-back; nothing is written before that.
+2. **Choose an approach and shape:** for example eval-first, lean or scaffold; plain skill, agent or module. Only the route file reached is loaded.
+3. **Build, or work on an existing skill** with a mode: convert, edit, review, validate, package or migrate.
+4. **Ship:** the lenses (architecture, contract, customization, determinism, leanness, trigger) run over what was written and Smithy fixes what they find.
+5. **Measure:** hand the skill to `bmad-eval` (baseline, variant, quality and trigger evals).
+
+## Official References
+
+* [Toolsmith](https://docs.bmad-method.org/toolsmith/toolsmith/)
+* [Official documentation: Eval Runner (`bmad-eval`)](https://docs.bmad-method.org/toolsmith/bmad-eval/)
+* [Skills and Agents (all skills)](https://docs.bmad-method.org/reference/skills-and-agents/)
+* [GitHub: `bmad-toolsmith` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-toolsmith)
+* [GitHub: BMAD-METHOD repository](https://github.com/bmad-code-org/BMAD-METHOD)

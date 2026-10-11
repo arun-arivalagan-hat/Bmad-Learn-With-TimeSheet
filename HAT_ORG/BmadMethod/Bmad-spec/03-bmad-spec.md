@@ -45,3 +45,31 @@ After the brainstorm re-run the spec has CAP-1 to CAP-13 (CAP-8 to CAP-13 added)
 * **Memlog fails to parse:** Frontmatter values containing a colon must be quoted.
 * **Requirements changed later, or another document needs to reach the spec:** See [troubleshooting.md](../../Guide/troubleshooting.md).
 
+## Skill Folder Structure
+
+Layout of the installed `bmad-spec` skill (`.claude/skills/bmad-spec/`), which mirrors its [upstream folder](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-spec):
+
+* `SKILL.md`: the entry point. Frontmatter (name, description) tells the harness when to trigger; the body holds the instructions.
+* `bmod.toml`: module metadata, which module the skill belongs to and where it is sourced from on GitHub.
+* `customize.toml`: the override surface; team and personal overrides live in `_bmad/custom/`, never in this file.
+* `assets/`: `spec-template.md` (the kernel skeleton) and `headless-schemas.md` (output shapes for headless runs).
+* No `references/` or `scripts/`: the whole operation lives in `SKILL.md`; the memlog script comes from the shared `_bmad/scripts/`.
+
+
+## Skill Steps
+
+Steps the skill itself runs, in order (from its `SKILL.md`):
+
+1. **Read the input** and its linked materials; if a `.memlog.md` exists, the run becomes an update and the memlog is the authority on decisions and capability IDs.
+2. **Sort the content:** trust pre-sorted input (brief, PRD); sort mixed input yourself into the kernel and companions.
+3. **Distill** into the five-field kernel, either express (every gap becomes an open question) or guided (walk the fields with you).
+4. **Log** each decision, capability and constraint to `.memlog.md` as it is made.
+5. **Self-validate** against the Spec Law (intent and success per capability, stable IDs, explicit non-goals).
+6. **Output** `spec-<slug>.md` and companions; optionally hand off to `bmad-ticket`.
+
+## Official References
+
+* [Spec](https://docs.bmad-method.org/plan/define-requirements-and-a-specification/)
+* [Skills and Agents (all skills)](https://docs.bmad-method.org/reference/skills-and-agents/)
+* [GitHub: `bmad-spec` skill source](https://github.com/bmad-code-org/BMAD-METHOD/tree/main/skills/bmad-spec)
+* [GitHub: BMAD-METHOD repository](https://github.com/bmad-code-org/BMAD-METHOD)
